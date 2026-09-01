@@ -1,54 +1,15 @@
-<!DOCTYPE html>
-<html lang="sq">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portali i Lajmeve</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
+{% extends "base.html" %}
 
-    <!-- Menuja (Navbar) me Kërkim dhe Kategori -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="{% url 'faqja_kryesore' %}">PORTALI I LAJMEVE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <!-- Menytë e Kategorive Dinamike -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'faqja_kryesore' %}">Të gjitha</a>
-                    </li>
-                    {% for kat in kategorite %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'faqja_kryesore' %}?kategoria={{ kat.id }}">{{ kat.emri }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-
-                <!-- Formular i Kërkimit -->
-                <form class="d-flex" method="GET" action="{% url 'faqja_kryesore' %}">
-                    <input class="form-control me-2" type="search" name="kerko" placeholder="Kërko lajme..." value="{{ request.GET.kerko }}">
-                    <button class="btn btn-outline-light" type="submit">Kërko</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Përmbajtja Kryesore -->
-    <div class="container mb-5">
-        <h2 class="mb-4 border-bottom pb-2">Lajmet e Fundit</h2>
-        
-        <div class="row">
-            {% for artikull in lajmet %}
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        
-                        <!-- Shfaqja e fotos nëse ekziston -->
+{% block content %}
+    <h2 class="mb-4 border-bottom pb-2">Lajmet e Fundit</h2>
+    
+    <div class="row">
+        {% for artikull in lajmet %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    
+                    <!-- Foto me Link -->
+                    <a href="{% url 'detajet_e_lajmit' artikull.pk %}">
                         {% if artikull.foto %}
                             <img src="{{ artikull.foto.url }}" class="card-img-top" alt="{{ artikull.titulli }}" style="height: 200px; object-fit: cover;">
                         {% else %}
@@ -56,61 +17,69 @@
                                 <span>Pa Imazh</span>
                             </div>
                         {% endif %}
+                    </a>
+                    
+                    <div class="card-body">
+                        <!-- Kategoria me Link -->
+                        {% if artikull.kategoria %}
+                            <a href="{% url 'faqja_kryesore' %}?kategoria={{ artikull.kategoria.id }}" class="text-decoration-none">
+                                <span class="badge bg-primary mb-2">{{ artikull.kategoria.emri }}</span>
+                            </a>
+                        {% endif %}
                         
-                        <div class="card-body">
-                            <span class="badge bg-primary mb-2">{{ artikull.kategoria.emri }}</span>
-                            <h5 class="card-title">{{ artikull.titulli }}</h5>
-                            <p class="card-text text-muted">{{ artikull.permbajtja|truncatewords:20 }}</p>
-                        </div>
-                        <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
-                            <small class="text-muted">{{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small>
-                            <a href="{% url 'detajet_e_lajmit' artikull.pk %}" class="btn btn-sm btn-outline-primary">Lexo më shumë</a>
-                        </div>
+                        <!-- Titulli me Link -->
+                        <h5 class="card-title">
+                            <a href="{% url 'detajet_e_lajmit' artikull.pk %}" class="text-decoration-none text-dark">
+                                {{ artikull.titulli }}
+                            </a>
+                        </h5>
+                        
+                        <p class="card-text text-muted">{{ artikull.permbajtja|truncatewords:20 }}</p>
+                    </div>
+
+                    <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
+                        <small class="text-muted">{{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small>
+                        <a href="{% url 'detajet_e_lajmit' artikull.pk %}" class="btn btn-sm btn-outline-primary">Lexo më shumë</a>
                     </div>
                 </div>
-            {% empty %}
-                <div class="col-12">
-                    <div class="alert alert-info">Nuk ka asnjë lajm të publikuar ende.</div>
-                </div>
-            {% endfor %}
-        </div>
-
-        <!-- Navigimi i Faqeve (Pagination) - I VENDOSUR SAKTE KËTU POSHTË ARTIKUJVE -->
-        {% if lajmet.has_other_pages %}
-        <nav class="d-flex justify-content-center mt-4">
-            <ul class="pagination">
-                {% if lajmet.has_previous %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ lajmet.previous_page_number }}{% if request.GET.kategoria %}&kategoria={{ request.GET.kategoria }}{% endif %}{% if request.GET.kerko %}&kerko={{ request.GET.kerko }}{% endif %}">&laquo; Mbrapa</a>
-                    </li>
-                {% else %}
-                    <li class="page-item disabled"><span class="page-link">&laquo; Mbrapa</span></li>
-                {% endif %}
-
-                {% for i in lajmet.paginator.page_range %}
-                    {% if lajmet.number == i %}
-                        <li class="page-item active"><span class="page-link">{{ i }}</span></li>
-                    {% else %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page={{ i }}{% if request.GET.kategoria %}&kategoria={{ request.GET.kategoria }}{% endif %}{% if request.GET.kerko %}&kerko={{ request.GET.kerko }}{% endif %}">{{ i }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-
-                {% if lajmet.has_next %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ lajmet.next_page_number }}{% if request.GET.kategoria %}&kategoria={{ request.GET.kategoria }}{% endif %}{% if request.GET.kerko %}&kerko={{ request.GET.kerko }}{% endif %}">Para &raquo;</a>
-                    </li>
-                {% else %}
-                    <li class="page-item disabled"><span class="page-link">Para &raquo;</span></li>
-                {% endif %}
-            </ul>
-        </nav>
-        {% endif %}
-
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info">Nuk ka asnjë lajm të publikuar ende.</div>
+            </div>
+        {% endfor %}
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <!-- Navigimi i Faqeve (Pagination) -->
+    {% if lajmet.has_other_pages %}
+    <nav class="d-flex justify-content-center mt-4">
+        <ul class="pagination">
+            {% if lajmet.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ lajmet.previous_page_number }}{% if request.GET.kategoria %}&kategoria={{ request.GET.kategoria }}{% endif %}{% if request.GET.kerko %}&kerko={{ request.GET.kerko }}{% endif %}">&laquo; Mbrapa</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">&laquo; Mbrapa</span></li>
+            {% endif %}
+
+            {% for i in lajmet.paginator.page_range %}
+                {% if lajmet.number == i %}
+                    <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ i }}{% if request.GET.kategoria %}&kategoria={{ request.GET.kategoria }}{% endif %}{% if request.GET.kerko %}&kerko={{ request.GET.kerko }}{% endif %}">{{ i }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if lajmet.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ lajmet.next_page_number }}{% if request.GET.kategoria %}&kategoria={{ request.GET.kategoria }}{% endif %}{% if request.GET.kerko %}&kerko={{ request.GET.kerko }}{% endif %}">Para &raquo;</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Para &raquo;</span></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+{% endblock %}
