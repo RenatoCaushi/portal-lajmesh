@@ -3,19 +3,19 @@
 {% block content %}
 
     <!-- SLIDER (CAROUSEL) I LAJMEVE KRYESORE -->
-    {% if lajmet %}
+    {% if slider_lajmet %}
     <div id="lajmetCarousel" class="carousel slide mb-5 shadow rounded overflow-hidden" data-bs-ride="carousel">
         
         <!-- Indikatorët e Slider-it -->
         <div class="carousel-indicators">
-            {% for artikull in lajmet|slice:":3" %}
+            {% for artikull in slider_lajmet %}
                 <button type="button" data-bs-target="#lajmetCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="true"></button>
             {% endfor %}
         </div>
 
         <!-- Elementet e Slider-it -->
         <div class="carousel-inner">
-            {% for artikull in lajmet|slice:":3" %}
+            {% for artikull in slider_lajmet %}
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
                     {% if artikull.foto %}
                         <img src="{{ artikull.foto.url }}" class="d-block w-100" alt="{{ artikull.titulli }}" style="height: 400px; object-fit: cover;">
@@ -28,7 +28,9 @@
                     <!-- Vetëm Titulli mbi foto -->
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3 mb-3">
                         {% if artikull.kategoria %}
-                            <span class="badge bg-primary mb-2">{{ artikull.kategoria.emri }}</span>
+                            <a href="{% url 'faqja_kryesore' %}?kategoria={{ artikull.kategoria.id }}" class="text-decoration-none">
+                                <span class="badge bg-primary mb-2">{{ artikull.kategoria.emri }}</span>
+                            </a>
                         {% endif %}
                         <h4 class="mb-0">
                             <a href="{% url 'detajet_e_lajmit' artikull.pk %}" class="text-white text-decoration-none fw-bold">

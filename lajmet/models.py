@@ -22,14 +22,14 @@ class Artikull(models.Model):
     def __str__(self):
         return self.titulli
 
-class Koment(models.Model):
-    artikulli = models.ForeignKey(Artikull, on_delete=models.CASCADE, related_name='komentet')
-    emri = models.CharField(max_length=80)
-    teksti = models.TextField()
-    data_krijimit = models.DateTimeField(auto_now_add=True)
+from django.db import models
 
-    class Meta:
-        verbose_name_plural = "Komentet"
+class Koment(models.Model):
+    artikulli = models.ForeignKey('Artikull', on_delete=models.CASCADE, related_name='komentet')
+    emri = models.CharField(max_length=100, default="Anonim", blank=True, null=True)
+    permbajtja = models.TextField()  # <--- Sigurohu qe eshte me 'e' dhe jo 'ë' apo emer tjeter
+    data_publikimit = models.DateTimeField(auto_now_add=True)
+    is_approved = models.BooleanField(default=True, verbose_name="I aprovuar")
 
     def __str__(self):
-        return f"Koment nga {self.emri} në {self.artikulli.titulli}"
+        return f"Koment te {self.artikulli.titulli}"

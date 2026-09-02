@@ -5,6 +5,10 @@ from .models import Artikull, Kategoria, Koment
 
 def faqja_kryesore(request):
     lajmet_list = Artikull.objects.all().order_by('-data_publikimit')
+    
+    # 3 Lajmet më të fundit fikse për Slider-in
+    slider_lajmet = lajmet_list[:3]
+    
     kategorite = Kategoria.objects.all()
 
     # Kërkimi me fjalë kyçe
@@ -26,20 +30,29 @@ def faqja_kryesore(request):
 
     context = {
         'lajmet': lajmet,
+        'slider_lajmet': slider_lajmet,  # U shtua këtu
         'kategorite': kategorite,
     }
     return render(request, 'lajmet/index.html', context)
 
-# Funksioni që mungonte:
 def detajet_e_lajmit(request, pk):
-    artikulli = get_object_or_404(Artikull, pk=pk)
+    artikull = get_object_or_404(Artikull, pk=pk)
     
-    # Trajtimi i dërgimit të komenteve
     if request.method == 'POST':
-        emri = request.POST.get('emri')
-        teksti = request.POST.get('teksti')
-        if emri and teksti:
-            Koment.objects.create(artikulli=artikulli, emri=emri, teksti=teksti)
-            return redirect('detajet_e_lajmit', pk=artikulli.pk)
+        permbajtja = request.POST.get('permbajtja')
+        if permbajtja:
+            Koment.objects.create(
+                artikulli=artikull,
+                emri="Anonim",
+                permbajtja=permbajtja,
+                is_approved=True  # Ndryshoje në False nëse dëshiron që çdo koment të kalojë me verifikim paraprak nga admini
+            )
+            return redirect('detajet_e_lajmit', pk=artikull.pk)
 
-    return render(request, 'lajmet/detajet.html', {'artikull': artikulli})
+    # Shfaq vetëm komentet e aprovuara
+    komentet = artikull.komentet.filter(is_approved=True).order_by('-data_publikimit')
+    
+    return render(request, 'lajmet/detajet.html', {
+        'artikull': artikull,
+        'komentet': komentet,
+    })

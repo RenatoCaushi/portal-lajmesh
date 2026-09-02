@@ -4,7 +4,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-8">
         
-        <!-- Butoni Mbrapsht dhe Kategoria me Link -->
+        <!-- Butoni Mbrapsht dhe Kategoria -->
         <div class="d-flex align-items-center gap-2 mb-3">
             <a href="{% url 'faqja_kryesore' %}" class="btn btn-outline-secondary btn-sm">&larr; Kthehu te Kryefaqja</a>
             {% if artikull.kategoria %}
@@ -30,10 +30,82 @@
         {% endif %}
 
         <!-- Përmbajtja e Lajmit -->
-        <div class="lh-lg fs-5 text-dark mb-5">
+        <div class="lh-lg fs-5 mb-4">
             {{ artikull.permbajtja|linebreaks }}
+        </div>
+
+        <!-- BLLOKU I SHPËRNDARJES SOCIALE -->
+        <div class="d-flex align-items-center flex-wrap gap-2 my-4 py-3 border-top border-bottom">
+            <span class="fw-bold me-2"><i class="bi bi-share-fill me-1"></i>Shpërndaje:</span>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" 
+               target="_blank" class="btn btn-sm btn-primary">
+                <i class="bi bi-facebook"></i> Facebook
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://api.whatsapp.com/send?text={{ artikull.titulli|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" 
+               target="_blank" class="btn btn-sm btn-success">
+                <i class="bi bi-whatsapp"></i> WhatsApp
+            </a>
+
+            <!-- X (Twitter) -->
+            <a href="https://twitter.com/intent/tweet?text={{ artikull.titulli|urlencode }}&url={{ request.build_absolute_uri|urlencode }}" 
+               target="_blank" class="btn btn-sm btn-dark">
+                <i class="bi bi-twitter-x"></i> X
+            </a>
+
+            <!-- Kopjo Linkun -->
+            <button onclick="kopjoLinkun()" class="btn btn-sm btn-outline-secondary">
+                <i class="bi bi-link-45deg"></i> Kopjo Linkun
+            </button>
+        </div>
+
+        <!-- SEKSIONI I KOMENTEVE -->
+        <div class="mt-4 mb-5">
+            <h3 class="mb-4 fw-bold">Komentet ({{ komentet.count|default:0 }})</h3>
+
+            <!-- Formular vetëm me fushën e komentit -->
+            <div class="card mb-4 shadow-sm border-0 bg-body-tertiary">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-3">Lini një koment</h5>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Komenti juaj</label>
+                            <textarea name="permbajtja" class="form-control" rows="3" placeholder="Shkruani komentin këtu..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary px-4">Dërgo Komentin</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Lista e Komenteve -->
+            {% for koment in komentet %}
+                <div class="card mb-3 shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="fw-bold mb-0 text-primary">
+                                {% if koment.emri %}{{ koment.emri }}{% else %}Anonim{% endif %}
+                            </h6>
+                            <small class="text-muted">{{ koment.data_publikimit|date:"d/m/Y H:i" }}</small>
+                        </div>
+                        <p class="card-text mb-0">{{ koment.permbajtja }}</p>
+                    </div>
+                </div>
+                <p class="text-muted">Nuk ka asnjë koment ende. Bëhu i pari që komenton!</p>
+            {% endfor %}
         </div>
 
     </div>
 </div>
+
+<!-- JavaScript për Kopjimin e Linkut -->
+<script>
+function kopjoLinkun() {
+    navigator.clipboard.writeText(window.location.href);
+    alert("Linku i artikullit u kopjua me sukses!");
+}
+</script>
 {% endblock %}
