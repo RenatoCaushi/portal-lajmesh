@@ -5,15 +5,12 @@
     <!-- SLIDER (CAROUSEL) I LAJMEVE KRYESORE -->
     {% if slider_lajmet %}
     <div id="lajmetCarousel" class="carousel slide mb-5 shadow rounded overflow-hidden" data-bs-ride="carousel">
-        
-        <!-- Indikatorët e Slider-it -->
         <div class="carousel-indicators">
             {% for artikull in slider_lajmet %}
                 <button type="button" data-bs-target="#lajmetCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="true"></button>
             {% endfor %}
         </div>
 
-        <!-- Elementet e Slider-it -->
         <div class="carousel-inner">
             {% for artikull in slider_lajmet %}
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -25,7 +22,6 @@
                         </div>
                     {% endif %}
                     
-                    <!-- Vetëm Titulli mbi foto -->
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3 mb-3">
                         {% if artikull.kategoria %}
                             <a href="{% url 'faqja_kryesore' %}?kategoria={{ artikull.kategoria.id }}" class="text-decoration-none">
@@ -42,7 +38,6 @@
             {% endfor %}
         </div>
 
-        <!-- Shigjetat majtas/djathtas -->
         <button class="carousel-control-prev" type="button" data-bs-target="#lajmetCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Mbrapa</span>
@@ -54,15 +49,42 @@
     </div>
     {% endif %}
 
+    <!-- SEKSIONI I VEÇANTË I VIDEOVE YOUTUBE (NGA MODELI VIDEO) -->
+    {% if videot %}
+        <div class="my-5 p-4 bg-dark text-white rounded shadow-lg">
+            <h2 class="mb-4 text-warning border-bottom border-warning pb-2">
+                <i class="bi bi-youtube me-2"></i>Videot e Fundit
+            </h2>
+
+            <div class="row g-4 justify-content-center">
+                {% for video in videot %}
+                    <div class="col-lg-10 mb-4">
+                        <div class="card bg-secondary text-white border-0 shadow rounded overflow-hidden">
+                            <!-- VIDEO E MADHE YOUTUBE -->
+                            <div class="ratio ratio-16x9">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/{{ video.youtube_id }}?origin=http://127.0.0.1:8000" 
+                                    title="{{ video.titulli }}" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
     <!-- LISTA E LAJMEVE TË TJERA -->
     <h2 class="mb-4 border-bottom pb-2">Lajmet e Fundit</h2>
     
     <div class="row">
         {% for artikull in lajmet %}
             <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
+                <div class="card h-100 shadow-sm border-0">
                     
-                    <!-- Foto me Link -->
                     <a href="{% url 'detajet_e_lajmit' artikull.pk %}">
                         {% if artikull.foto %}
                             <img src="{{ artikull.foto.url }}" class="card-img-top" alt="{{ artikull.titulli }}" style="height: 200px; object-fit: cover;">
@@ -74,15 +96,13 @@
                     </a>
                     
                     <div class="card-body">
-                        <!-- Kategoria me Link -->
                         {% if artikull.kategoria %}
                             <a href="{% url 'faqja_kryesore' %}?kategoria={{ artikull.kategoria.id }}" class="text-decoration-none">
                                 <span class="badge bg-primary mb-2">{{ artikull.kategoria.emri }}</span>
                             </a>
                         {% endif %}
                         
-                        <!-- Titulli me Link -->
-                        <h5 class="card-title">
+                        <h5 class="card-title fw-bold">
                             <a href="{% url 'detajet_e_lajmit' artikull.pk %}" class="text-decoration-none text-dark">
                                 {{ artikull.titulli }}
                             </a>
@@ -92,7 +112,7 @@
                     </div>
 
                     <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
-                        <small class="text-muted">{{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small>
+                        <small class="text-muted"><i class="bi bi-clock me-1"></i>{{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small>
                         <a href="{% url 'detajet_e_lajmit' artikull.pk %}" class="btn btn-sm btn-outline-primary">Lexo më shumë</a>
                     </div>
                 </div>

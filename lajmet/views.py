@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.core.paginator import Paginator
-from .models import Artikull, Kategoria, Koment
+from .models import Artikull, Kategoria, Koment, Video  # Shto Video te importet
 
 def faqja_kryesore(request):
     lajmet_list = Artikull.objects.all().order_by('-data_publikimit')
@@ -10,6 +10,9 @@ def faqja_kryesore(request):
     slider_lajmet = lajmet_list[:3]
     
     kategorite = Kategoria.objects.all()
+
+    # Merr videot nga bazë e të dhënave (p.sh. 4 më të fundit)
+    videot = Video.objects.all()[:4]
 
     # Kërkimi me fjalë kyçe
     kerko = request.GET.get('kerko')
@@ -23,20 +26,25 @@ def faqja_kryesore(request):
     if kategoria_id:
         lajmet_list = lajmet_list.filter(kategoria_id=kategoria_id)
 
-    # Faqëzimi (Pagination) - 3 lajme për faqe
-    paginator = Paginator(lajmet_list, 3) 
+    # Faqëzimi (Pagination) - 6 lajme për faqe
+    paginator = Paginator(lajmet_list, 6) 
     page_number = request.GET.get('page')
     lajmet = paginator.get_page(page_number)
 
     context = {
         'lajmet': lajmet,
-        'slider_lajmet': slider_lajmet,  # U shtua këtu
+        'slider_lajmet': slider_lajmet,
         'kategorite': kategorite,
+        'videot': videot,  # Shto videot te konteksti
     }
     return render(request, 'lajmet/index.html', context)
 
 def detajet_e_lajmit(request, pk):
     artikull = get_object_or_404(Artikull, pk=pk)
+    
+    # Inkremento numrin e shikimeve
+    artikull.shikime += 1
+    artikull.save(update_fields=['shikime'])
     
     if request.method == 'POST':
         permbajtja = request.POST.get('permbajtja')
@@ -45,7 +53,7 @@ def detajet_e_lajmit(request, pk):
                 artikulli=artikull,
                 emri="Anonim",
                 permbajtja=permbajtja,
-                is_approved=True  # Ndryshoje në False nëse dëshiron që çdo koment të kalojë me verifikim paraprak nga admini
+                is_approved=True
             )
             return redirect('detajet_e_lajmit', pk=artikull.pk)
 
