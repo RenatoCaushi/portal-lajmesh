@@ -85,3 +85,35 @@ class Video(models.Model):
 
   def __str__(self):
     return self.titulli
+
+class Reklama(models.Model):
+  titulli = models.CharField(
+      max_length=100, verbose_name="Emri i Reklamës / Klientit"
+  )
+  imazhi = models.ImageField(upload_to="reklama/", verbose_name="Foto Banneri")
+  linku = models.URLField(verbose_name="Linku i Destinacionit")
+  is_active = models.BooleanField(
+      default=True, verbose_name="Aktivizo Reklamën"
+  )
+  data_krijimit = models.DateTimeField(auto_now_add=True)
+
+  class Meta:
+    verbose_name = "Reklamë"
+    verbose_name_plural = "Reklumat"
+
+  def __str__(self):
+    return self.titulli
+
+# --- MODELI I RI PËR NJOFTIMET (PUSH NOTIFICATIONS) ---
+class PushNotificationSubscription(models.Model):
+    onesignal_player_id = models.CharField(
+        max_length=255, unique=True, verbose_name="OneSignal Player ID"
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Data e regjistrimit")
+
+    class Meta:
+        verbose_name = "Abonim Njoftimesh"
+        verbose_name_plural = "Abonimet e Njoftimeve"
+
+    def __str__(self):
+        return f"Abonues - {self.onesignal_player_id[:10]}..."

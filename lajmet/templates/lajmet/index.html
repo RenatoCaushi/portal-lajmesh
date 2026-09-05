@@ -49,6 +49,15 @@
     </div>
     {% endif %}
 
+    <!-- SEKSIONI I REKLAMËS BANNER -->
+    {% if reklama %}
+        <div class="my-4 text-center">
+            <a href="{{ reklama.linku }}" target="_blank" rel="noopener noreferrer">
+                <img src="{{ reklama.imazhi.url }}" alt="{{ reklama.titulli }}" class="img-fluid rounded shadow" style="max-height: 150px; width: 100%; object-fit: cover;">
+            </a>
+        </div>
+    {% endif %}
+
     <!-- SEKSIONI I VEÇANTË I VIDEOVE YOUTUBE (NGA MODELI VIDEO) -->
     {% if videot %}
         <div class="my-5 p-4 bg-dark text-white rounded shadow-lg">

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Kategoria, Artikull, Koment, Video
+from .models import Kategoria, Artikull, Koment, Video, Reklama
 
 @admin.register(Kategoria)
 class KategoriaAdmin(admin.ModelAdmin):
@@ -23,3 +23,10 @@ class KomentAdmin(admin.ModelAdmin):
 class VideoAdmin(admin.ModelAdmin):
     list_display = ('titulli', 'youtube_id', 'data_publikimit')
     search_fields = ('titulli',)
+
+@admin.register(Reklama)
+class ReklamaAdmin(admin.ModelAdmin):
+  list_display = ('titulli', 'is_active', 'data_krijimit')
+  list_filter = ('is_active', 'data_krijimit')
+  search_fields = ('titulli',)
+  list_editable = ('is_active',)
