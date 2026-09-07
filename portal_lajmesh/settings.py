@@ -107,16 +107,18 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+# Static & Media Files (CSS, JS, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Shto këtë rresht që WhiteNoise të përfshijë dosjen media në përmbajtjen statike
+# Vendos dosjen media brenda STATICFILES_DIRS me prefiksin 'media'
+# Kjo garanton që fusha nga bazat e të dhënave (/media/lajmet/...) të përputhet 100%
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'media'),
+    ('media', os.path.join(BASE_DIR, 'media')),
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Kalojmë te klasa jo-manifest e WhiteNoise për të lejuar shfaqjen e imazheve dinakë
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
