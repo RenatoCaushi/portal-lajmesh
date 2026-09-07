@@ -38,9 +38,9 @@
             </div>
         {% endif %}
 
-        <!-- Përmbajtja e Lajmit -->
-        <div class="lh-lg fs-5 mb-4">
-            {{ artikull.permbajtja|linebreaks }}
+        <!-- Përmbajtja e Lajmit me Embeds (Facebook / Instagram) -->
+        <div class="lh-lg fs-5 mb-4 article-body">
+            {{ artikull.permbajtja_me_embeds|safe }}
         </div>
 
         <!-- BLLOKU I SHPËRNDARJES SOCIALE -->
