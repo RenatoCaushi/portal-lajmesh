@@ -1,90 +1,9 @@
 [
 {
-    "model": "auth.user",
-    "fields": {
-        "password": "pbkdf2_sha256$1500000$cNjTHxgzkAP6Ep5wnS3EOu$uvBb2MC4hokmMiTX1xei6dJvzJk5k6MfXjKUWx62uFA=",
-        "last_login": "2026-09-07T11:38:01.384Z",
-        "is_superuser": true,
-        "username": "Renatoo",
-        "first_name": "",
-        "last_name": "",
-        "email": "ren.caushi22@gmail.com",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2026-09-01T13:18:09.030Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "142yjhavccpwq6a526u3v4vrhjw2ttf4",
-    "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pAyIFCX7nsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnERSpx-N8L4SHUHfMd6azK2ui4zyV2RB-1yapye18P9OyjYy7cmj0xgKIPNhMZF53RKhvU5uoEVGjt4rUZFEbRnSx7siIwKonWQOYv3B_wcOFg:1x1OTe:Y7XKt63bMYdh1VNLcf4_FoV_EsrJ4geSmT98nY5TUGI",
-        "expire_date": "2026-09-15T13:24:38.565Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "6ai52rzg97x5xe4geuipb9roc9bbo92v",
-    "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pAyIFCX7nsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnERSpx-N8L4SHUHfMd6azK2ui4zyV2RB-1yapye18P9OyjYy7cmj0xgKIPNhMZF53RKhvU5uoEVGjt4rUZFEbRnSx7siIwKonWQOYv3B_wcOFg:1x2wcC:yauszLppA5HSGUuRnGST0s_LXoYdxTSBxjSi7lz8LQ0",
-        "expire_date": "2026-09-19T20:03:52.446Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "92gsw3urb2s5gwerqkxyd5o81d8edrrs",
-    "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pAyIFCX7nsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnERSpx-N8L4SHUHfMd6azK2ui4zyV2RB-1yapye18P9OyjYy7cmj0xgKIPNhMZF53RKhvU5uoEVGjt4rUZFEbRnSx7siIwKonWQOYv3B_wcOFg:1x1TxA:tbmcNv-MiEPmX8j-6CU8UOqds5vw9mxcdMBYGiOgHFw",
-        "expire_date": "2026-09-15T19:15:28.168Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "c1rekf5asfun9spzat1ttnsp992m88pr",
-    "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pAyIFCX7nsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnERSpx-N8L4SHUHfMd6azK2ui4zyV2RB-1yapye18P9OyjYy7cmj0xgKIPNhMZF53RKhvU5uoEVGjt4rUZFEbRnSx7siIwKonWQOYv3B_wcOFg:1x3Xfl:RHEts0MEbGi486t1lQowxm54iitm5HQMtj3xelRw0zE",
-        "expire_date": "2026-09-21T11:38:01.402Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "iubzgdtk0stn77ixbjjv8pobveagc1vm",
-    "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pAyIFCX7nsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnERSpx-N8L4SHUHfMd6azK2ui4zyV2RB-1yapye18P9OyjYy7cmj0xgKIPNhMZF53RKhvU5uoEVGjt4rUZFEbRnSx7siIwKonWQOYv3B_wcOFg:1x2SQq:f-45iJPc_80S7fgTs1AcqhtdZQ1_3zvqNcSYznEF3_I",
-        "expire_date": "2026-09-18T11:50:08.032Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "k065aded755nx69kkkegas46vdbrymia",
-    "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pAyIFCX7nsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnERSpx-N8L4SHUHfMd6azK2ui4zyV2RB-1yapye18P9OyjYy7cmj0xgKIPNhMZF53RKhvU5uoEVGjt4rUZFEbRnSx7siIwKonWQOYv3B_wcOFg:1x2qGL:4tUzvclea8WlKzn5VR-RQWQhq6fp-bmwoj7lpMOMgA0",
-        "expire_date": "2026-09-19T13:16:53.442Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "lbl2j4wndyhdqgqiwex2kz0llgsh8s7s",
-    "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pAyIFCX7nsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnERSpx-N8L4SHUHfMd6azK2ui4zyV2RB-1yapye18P9OyjYy7cmj0xgKIPNhMZF53RKhvU5uoEVGjt4rUZFEbRnSx7siIwKonWQOYv3B_wcOFg:1x2pBQ:vKd9J1tFcTl6AsT6uegBlt7r4HEdVXSV5_GfCvfRVOo",
-        "expire_date": "2026-09-19T12:07:44.544Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "x63vy5v1lzj2gygbpg5yv64ptnax6276",
-    "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2pAyIFCX7nsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnERSpx-N8L4SHUHfMd6azK2ui4zyV2RB-1yapye18P9OyjYy7cmj0xgKIPNhMZF53RKhvU5uoEVGjt4rUZFEbRnSx7siIwKonWQOYv3B_wcOFg:1x1r0F:8Qxn9YvxMsgQFHRfzwrirrOSj7uksu3zN1NQApbDuzQ",
-        "expire_date": "2026-09-16T19:52:11.473Z"
-    }
-},
-{
     "model": "lajmet.kategoria",
     "pk": 1,
     "fields": {
-        "emri": "Politikë"
+        "emri": "PolitikÃ«"
     }
 },
 {
@@ -119,8 +38,8 @@
     "model": "lajmet.artikull",
     "pk": 1,
     "fields": {
-        "titulli": "Sali Berisha udhëton drejt SHBA-ve",
-        "permbajtja": "Kreu i PD, Sali Berisha do të udhëtojë më 9 shtator në SHBA. Pas marrjes së vizës amerikane, ish kryeministri do të marrë pjesë në konventën e Partisë Republikane në Teksas.",
+        "titulli": "Sali Berisha udhÃ«ton drejt SHBA-ve",
+        "permbajtja": "Kreu i PD, Sali Berisha do tÃ« udhÃ«tojÃ« mÃ« 9 shtator nÃ« SHBA. Pas marrjes sÃ« vizÃ«s amerikane, ish kryeministri do tÃ« marrÃ« pjesÃ« nÃ« konventÃ«n e PartisÃ« Republikane nÃ« Teksas.",
         "data_publikimit": "2026-09-01T13:27:31.407Z",
         "kategoria": 1,
         "foto": "lajmet/sali_berisha.jpeg",
@@ -132,8 +51,8 @@
     "model": "lajmet.artikull",
     "pk": 2,
     "fields": {
-        "titulli": "Protestuesit rrethojnë hyrjen kryesore të Kryeministrisë, përplasen me efektivët e Policisë",
-        "permbajtja": "Në ditën e 94-ët të tubimit para Kryeministrisë, ka pasur tensione dhe përplasje mes protestuesve dhe forcave të Policisë.\r\n\r\nTensionet kanë nisur pasi protestuesit kaluan pas godinës së Kryeministrisë, për të bllokuar hyrjen kryesore, ku futet e del eskorta e kryeministrit Edi Rama dhe zyrtarëve të tjerë.",
+        "titulli": "Protestuesit rrethojnÃ« hyrjen kryesore tÃ« KryeministrisÃ«, pÃ«rplasen me efektivÃ«t e PolicisÃ«",
+        "permbajtja": "NÃ« ditÃ«n e 94-Ã«t tÃ« tubimit para KryeministrisÃ«, ka pasur tensione dhe pÃ«rplasje mes protestuesve dhe forcave tÃ« PolicisÃ«.\r\n\r\nTensionet kanÃ« nisur pasi protestuesit kaluan pas godinÃ«s sÃ« KryeministrisÃ«, pÃ«r tÃ« bllokuar hyrjen kryesore, ku futet e del eskorta e kryeministrit Edi Rama dhe zyrtarÃ«ve tÃ« tjerÃ«.",
         "data_publikimit": "2026-09-01T19:19:44.961Z",
         "kategoria": 2,
         "foto": "lajmet/protesta.JPG",
@@ -145,8 +64,8 @@
     "model": "lajmet.artikull",
     "pk": 3,
     "fields": {
-        "titulli": "Trump paralajmëron: SHBA do ta godasë ashpër Iranin",
-        "permbajtja": "Presidenti amerikan, Donald Trump, tha se forcat amerikane do ta godasin “ashpër” Iranin , pasi Korpusi i Gardës Revolucionare Islamike (IRGC) lëshoi raketa drejt dy bazave amerikane në Jordani, teksa sekretari i Thesarit, Scott Bessent, u zotua se do të shtojë presionin ekonomik ndaj Teheranit.\r\n\r\n“Do t’i godasim ashpër”, citohet t’i ketë thënë Trump një gazetari të Fox News më 31 gusht. “Do të ketë përgjigje”.\r\n\r\nTrump tha se mbrojtja ajrore amerikane ka penguar të gjitha raketat iraniane që mund të kishin shkaktuar dëme, pasi IRGC-ja pretendoi se ka lëshuar raketa balistike drejt bazave Mbreti Husein dhe Al Azrak në Jordani, duke shkaktuar “dëme të mëdha”.",
+        "titulli": "Trump paralajmÃ«ron: SHBA do ta godasÃ« ashpÃ«r Iranin",
+        "permbajtja": "Presidenti amerikan, Donald Trump, tha se forcat amerikane do ta godasin â€œashpÃ«râ€ Iranin , pasi Korpusi i GardÃ«s Revolucionare Islamike (IRGC) lÃ«shoi raketa drejt dy bazave amerikane nÃ« Jordani, teksa sekretari i Thesarit, Scott Bessent, u zotua se do tÃ« shtojÃ« presionin ekonomik ndaj Teheranit.\r\n\r\nâ€œDo tâ€™i godasim ashpÃ«râ€, citohet tâ€™i ketÃ« thÃ«nÃ« Trump njÃ« gazetari tÃ« Fox News mÃ« 31 gusht. â€œDo tÃ« ketÃ« pÃ«rgjigjeâ€.\r\n\r\nTrump tha se mbrojtja ajrore amerikane ka penguar tÃ« gjitha raketat iraniane qÃ« mund tÃ« kishin shkaktuar dÃ«me, pasi IRGC-ja pretendoi se ka lÃ«shuar raketa balistike drejt bazave Mbreti Husein dhe Al Azrak nÃ« Jordani, duke shkaktuar â€œdÃ«me tÃ« mÃ«dhaâ€.",
         "data_publikimit": "2026-09-01T19:21:14.548Z",
         "kategoria": 4,
         "foto": "lajmet/trump.JPG",
@@ -158,8 +77,8 @@
     "model": "lajmet.artikull",
     "pk": 4,
     "fields": {
-        "titulli": "Trump: Nuk po përpiqem që Teherani të negociojë, Hormuzi është nën kontrollin e SHBA",
-        "permbajtja": "Presidenti amerikan, Donald Trump deklaroi se nuk po përpiqet që ta ulë Iranin në tryezën e negociatave.\r\n\r\nPërmes një postimi në Truth Social, Trump u shpreh se Ngushtica e Hormuzit është nën kontrollin e SHBA dhe ekonomia e Iranit po fundoset.\r\n\r\n“Nuk po përpiqem ta detyroj Iranin të ulet në tryezën e negociatave. Nuk më intereson nëse ata nënshkruajnë një marrëveshje që nuk do të thotë asgjë për ta. Ne kemi kontroll pothuajse të plotë të Ngushticës së Hormuzit dhe ekonomia e tyre po shembet. Ata thjesht po presin të pashmangshmen. Kur do të ngrihet populli iranian dhe do të luftojë?”, tha ai.\r\n\r\nTeherani ka nisur sulme me raketa dhe dronë ndaj objektivave amerikane në Jordani, Kuvajt, Irak dhe Bahrein, pasi forcat amerikane rifilluan sulmet kundër Iranit të martën.\r\n\r\nShtetet e Bashkuara kanë sulmuar dy cisterna nafte të qeverisë iraniane në valën e fundit të sulmeve, raporton Axios, duke cituar burime që thonë se është hera e parë që ushtria amerikane ka shënjestruar cisternat e naftës të Teheranit në hakmarrje për sulmet iraniane në Ngushticën e Hormuzit.\r\n\r\nSulmi është pjesë e strategjisë “cisternë nafte pas cisterne” të miratuar nga Presidenti Donald Trump për të penguar sulmet ndaj Hormuzit. Një total prej 100 objektivash u goditën gjatë sulmeve.\r\n\r\nSipas Axios, Shtetet e Bashkuara kanë sulmuar dy cisterna nafte të qeverisë iraniane në valën e fundit të sulmeve, duke cituar burime që thonë se është hera e parë që ushtria amerikane ka shënjestruar cisternat e naftës të Teheranit në hakmarrje për sulmet iraniane në Ngushticën e Hormuzit. Një total prej 100 objektivash u goditën gjatë sulmeve.",
+        "titulli": "Trump: Nuk po pÃ«rpiqem qÃ« Teherani tÃ« negociojÃ«, Hormuzi Ã«shtÃ« nÃ«n kontrollin e SHBA",
+        "permbajtja": "Presidenti amerikan, Donald Trump deklaroi se nuk po pÃ«rpiqet qÃ« ta ulÃ« Iranin nÃ« tryezÃ«n e negociatave.\r\n\r\nPÃ«rmes njÃ« postimi nÃ« Truth Social, Trump u shpreh se Ngushtica e Hormuzit Ã«shtÃ« nÃ«n kontrollin e SHBA dhe ekonomia e Iranit po fundoset.\r\n\r\nâ€œNuk po pÃ«rpiqem ta detyroj Iranin tÃ« ulet nÃ« tryezÃ«n e negociatave. Nuk mÃ« intereson nÃ«se ata nÃ«nshkruajnÃ« njÃ« marrÃ«veshje qÃ« nuk do tÃ« thotÃ« asgjÃ« pÃ«r ta. Ne kemi kontroll pothuajse tÃ« plotÃ« tÃ« NgushticÃ«s sÃ« Hormuzit dhe ekonomia e tyre po shembet. Ata thjesht po presin tÃ« pashmangshmen. Kur do tÃ« ngrihet populli iranian dhe do tÃ« luftojÃ«?â€, tha ai.\r\n\r\nTeherani ka nisur sulme me raketa dhe dronÃ« ndaj objektivave amerikane nÃ« Jordani, Kuvajt, Irak dhe Bahrein, pasi forcat amerikane rifilluan sulmet kundÃ«r Iranit tÃ« martÃ«n.\r\n\r\nShtetet e Bashkuara kanÃ« sulmuar dy cisterna nafte tÃ« qeverisÃ« iraniane nÃ« valÃ«n e fundit tÃ« sulmeve, raporton Axios, duke cituar burime qÃ« thonÃ« se Ã«shtÃ« hera e parÃ« qÃ« ushtria amerikane ka shÃ«njestruar cisternat e naftÃ«s tÃ« Teheranit nÃ« hakmarrje pÃ«r sulmet iraniane nÃ« NgushticÃ«n e Hormuzit.\r\n\r\nSulmi Ã«shtÃ« pjesÃ« e strategjisÃ« â€œcisternÃ« nafte pas cisterneâ€ tÃ« miratuar nga Presidenti Donald Trump pÃ«r tÃ« penguar sulmet ndaj Hormuzit. NjÃ« total prej 100 objektivash u goditÃ«n gjatÃ« sulmeve.\r\n\r\nSipas Axios, Shtetet e Bashkuara kanÃ« sulmuar dy cisterna nafte tÃ« qeverisÃ« iraniane nÃ« valÃ«n e fundit tÃ« sulmeve, duke cituar burime qÃ« thonÃ« se Ã«shtÃ« hera e parÃ« qÃ« ushtria amerikane ka shÃ«njestruar cisternat e naftÃ«s tÃ« Teheranit nÃ« hakmarrje pÃ«r sulmet iraniane nÃ« NgushticÃ«n e Hormuzit. NjÃ« total prej 100 objektivash u goditÃ«n gjatÃ« sulmeve.",
         "data_publikimit": "2026-09-02T20:20:38.935Z",
         "kategoria": 4,
         "foto": "lajmet/trumpi.JPG",
@@ -171,8 +90,8 @@
     "model": "lajmet.artikull",
     "pk": 5,
     "fields": {
-        "titulli": "Gjermania thotë se Rusia qëndron pas \"sulmit hibrid\" në aeroportin e Lajpcigut",
-        "permbajtja": "Gjermania e ka akuzuar Rusinë për kryerjen e asaj që ministri i Brendshëm i vendit e quajti “sulm hibrid”, që përfshinte një dron të mbushur me eksploziv, i cili shkaktoi ndërprerje të fluturimeve në aeroportin e Lajpcigut në fillim të gushtit. Berlini tha se incidenti ishte pjesë e një fushate operacionesh destabilizuese kundër Evropës.\r\n\r\nAutoritetet gjermane thanë se do ta mbyllnin Konsullatën Ruse në Bon dhe do të shkëpusin kontratën e qirasë për një qendër kulturore ruse në Berlin, si pasojë e përpjekjes për sulm me dron në aeroport.\r\n\r\nDeklarata e zyrtarëve të Qeverisë gjermane më 1 shtator u bë teksa autoritetet reaguan ndaj asaj që e quajtën sulm sabotues, që përfshinte disa pajisje shpërthyese të vendosura pranë një termocentrali me qymyr, rreth 100 kilometra në juglindje të Berlinit.",
+        "titulli": "Gjermania thotÃ« se Rusia qÃ«ndron pas \"sulmit hibrid\" nÃ« aeroportin e Lajpcigut",
+        "permbajtja": "Gjermania e ka akuzuar RusinÃ« pÃ«r kryerjen e asaj qÃ« ministri i BrendshÃ«m i vendit e quajti â€œsulm hibridâ€, qÃ« pÃ«rfshinte njÃ« dron tÃ« mbushur me eksploziv, i cili shkaktoi ndÃ«rprerje tÃ« fluturimeve nÃ« aeroportin e Lajpcigut nÃ« fillim tÃ« gushtit. Berlini tha se incidenti ishte pjesÃ« e njÃ« fushate operacionesh destabilizuese kundÃ«r EvropÃ«s.\r\n\r\nAutoritetet gjermane thanÃ« se do ta mbyllnin KonsullatÃ«n Ruse nÃ« Bon dhe do tÃ« shkÃ«pusin kontratÃ«n e qirasÃ« pÃ«r njÃ« qendÃ«r kulturore ruse nÃ« Berlin, si pasojÃ« e pÃ«rpjekjes pÃ«r sulm me dron nÃ« aeroport.\r\n\r\nDeklarata e zyrtarÃ«ve tÃ« QeverisÃ« gjermane mÃ« 1 shtator u bÃ« teksa autoritetet reaguan ndaj asaj qÃ« e quajtÃ«n sulm sabotues, qÃ« pÃ«rfshinte disa pajisje shpÃ«rthyese tÃ« vendosura pranÃ« njÃ« termocentrali me qymyr, rreth 100 kilometra nÃ« juglindje tÃ« Berlinit.",
         "data_publikimit": "2026-09-02T20:47:02.517Z",
         "kategoria": 4,
         "foto": "lajmet/dthfr.JPG",
@@ -184,8 +103,8 @@
     "model": "lajmet.artikull",
     "pk": 6,
     "fields": {
-        "titulli": "Zelensky paralajmëron kompanitë ajrore: Qielli rus po bëhet i rrezikshëm",
-        "permbajtja": "Presidenti ukrainas Volodymyr Zelensky ka paralajmëruar kompanitë ajrore që vazhdojnë të përdorin hapësirën ajrore ruse, duke thënë se ajo po bëhet gjithnjë e më e rrezikshme për shkak të intensifikimit të sulmeve me dronë.\r\n\r\n“Qielli rus po bëhet plotësisht i rrezikshëm”, deklaroi Zelensky, duke theksuar se Ukraina nuk synon avionët civilë apo jetët e njerëzve të pafajshëm.\r\n\r\nSipas tij, sulmet me dronë në territorin rus do të vazhdojnë në një shkallë që kompanitë ajrore duhet ta marrin në konsideratë.\r\n\r\nPresidenti rus Vladimir Putin i cilësoi deklaratat si një “deklaratë të terrorizmit shtetëror” dhe tha se “me terroristët nuk negociohet”. Ai paralajmëroi gjithashtu se Rusia do të vazhdojë sulmet ndaj Ukrainës.\r\n\r\nSulmet ukrainase me dronë kanë shkaktuar në muajt e fundit ndërprerje të fluturimeve në disa aeroporte ruse, përfshirë ato të Moskës. Sipas rregullave ruse të mbrojtjes ajrore, fluturimet pezullohen kur zbulohet një dron në zonën përkatëse.\r\n\r\nShumica e kompanive ajrore perëndimore e shmangin hapësirën ajrore ruse që prej pushtimit të Ukrainës në vitin 2022, ndërsa kompani nga Kina, Turqia dhe vendet e Gjirit Persik vazhdojnë ta përdorin atë për të kursyer kohë dhe karburant.\r\n\r\nParalajmërimet vijnë në një kohë kur lufta mes Rusisë dhe Ukrainës po intensifikohet dhe sulmet po shtrihen gjithnjë e më thellë në territorin rus.",
+        "titulli": "Zelensky paralajmÃ«ron kompanitÃ« ajrore: Qielli rus po bÃ«het i rrezikshÃ«m",
+        "permbajtja": "Presidenti ukrainas Volodymyr Zelensky ka paralajmÃ«ruar kompanitÃ« ajrore qÃ« vazhdojnÃ« tÃ« pÃ«rdorin hapÃ«sirÃ«n ajrore ruse, duke thÃ«nÃ« se ajo po bÃ«het gjithnjÃ« e mÃ« e rrezikshme pÃ«r shkak tÃ« intensifikimit tÃ« sulmeve me dronÃ«.\r\n\r\nâ€œQielli rus po bÃ«het plotÃ«sisht i rrezikshÃ«mâ€, deklaroi Zelensky, duke theksuar se Ukraina nuk synon avionÃ«t civilÃ« apo jetÃ«t e njerÃ«zve tÃ« pafajshÃ«m.\r\n\r\nSipas tij, sulmet me dronÃ« nÃ« territorin rus do tÃ« vazhdojnÃ« nÃ« njÃ« shkallÃ« qÃ« kompanitÃ« ajrore duhet ta marrin nÃ« konsideratÃ«.\r\n\r\nPresidenti rus Vladimir Putin i cilÃ«soi deklaratat si njÃ« â€œdeklaratÃ« tÃ« terrorizmit shtetÃ«rorâ€ dhe tha se â€œme terroristÃ«t nuk negociohetâ€. Ai paralajmÃ«roi gjithashtu se Rusia do tÃ« vazhdojÃ« sulmet ndaj UkrainÃ«s.\r\n\r\nSulmet ukrainase me dronÃ« kanÃ« shkaktuar nÃ« muajt e fundit ndÃ«rprerje tÃ« fluturimeve nÃ« disa aeroporte ruse, pÃ«rfshirÃ« ato tÃ« MoskÃ«s. Sipas rregullave ruse tÃ« mbrojtjes ajrore, fluturimet pezullohen kur zbulohet njÃ« dron nÃ« zonÃ«n pÃ«rkatÃ«se.\r\n\r\nShumica e kompanive ajrore perÃ«ndimore e shmangin hapÃ«sirÃ«n ajrore ruse qÃ« prej pushtimit tÃ« UkrainÃ«s nÃ« vitin 2022, ndÃ«rsa kompani nga Kina, Turqia dhe vendet e Gjirit Persik vazhdojnÃ« ta pÃ«rdorin atÃ« pÃ«r tÃ« kursyer kohÃ« dhe karburant.\r\n\r\nParalajmÃ«rimet vijnÃ« nÃ« njÃ« kohÃ« kur lufta mes RusisÃ« dhe UkrainÃ«s po intensifikohet dhe sulmet po shtrihen gjithnjÃ« e mÃ« thellÃ« nÃ« territorin rus.",
         "data_publikimit": "2026-09-02T20:55:39.383Z",
         "kategoria": 4,
         "foto": "lajmet/zelensky.JPG",
@@ -197,8 +116,8 @@
     "model": "lajmet.artikull",
     "pk": 8,
     "fields": {
-        "titulli": "Digjen disa shtëpi në Himarë, situata me zjarre drejt përmirësimit",
-        "permbajtja": "Gjashtë banesa u dogjën dhe 36 persona u evakuuan për shkak të zjarrit që përfshiu Himarën më 4 gusht. Megjithatë, të shtunën, autoritetet thanë se situata me zjarre në këtë qytet në jug të Shqipërisë është përmirësuar dhe po mbahet nën kontroll.\r\n\r\nZjarri shpërtheu mbrëmjen e së premtes në lagjen ‘1 Maji’ të qytetit të Himarës. Për shkak të erës flakët zbritën nga kodra dhe u përhapën me shpejtësi.\r\n\r\nAgjencia Kombëtare e Mbrojtjes Civile thotë se për të përballuar situatën e vështirë gjatë natës u angazhuan rreth 300 forca operacionale, ku përfshihen zjarrfikës, strukturat e emergjencave, pushtetit vendor dhe policisë, si dhe 171 efektivë të Forcave të Armatosura të Shqipërisë.\r\n\r\nBanorë të Himarës thanë se zjarri përparoi shumë shpejt drejt banesave të tyre, në disa prej të cilave kishte edhe turistë të huaj.\r\n\r\n“Unë kam ambiente shërbimi, të gjithë turistët u evakuuan për sigurinë e tyre. I thamë të zbresin poshtë në qendër derisa të qetësohet gjendja. Presim të vijë energjia që të kthehemi sadopak në normalitet” tha për mediat lokale një banore.\r\n\r\n“Zjarri ka ulur intensitetin, situata është përmirësuar, rreziku për banesat është shmangur dhe puna për shuarjen vijon”, thekson Agjencia Kombëtare e Mbrojtjes Civile.\r\n\r\nMinistri i Mbrojtjes i Shqipërisë, Ermal Nufi e cilësoi ditën e djeshme, si një ndër më të vështirat të situatës së zjarreve gjatë gjithë sezonit veror. Problematike ka qenë situata edhe në fshatin Levan të Fierit, ku u rrezikuan disa banesa nga zjarri.",
+        "titulli": "Digjen disa shtÃ«pi nÃ« HimarÃ«, situata me zjarre drejt pÃ«rmirÃ«simit",
+        "permbajtja": "GjashtÃ« banesa u dogjÃ«n dhe 36 persona u evakuuan pÃ«r shkak tÃ« zjarrit qÃ« pÃ«rfshiu HimarÃ«n mÃ« 4 gusht. MegjithatÃ«, tÃ« shtunÃ«n, autoritetet thanÃ« se situata me zjarre nÃ« kÃ«tÃ« qytet nÃ« jug tÃ« ShqipÃ«risÃ« Ã«shtÃ« pÃ«rmirÃ«suar dhe po mbahet nÃ«n kontroll.\r\n\r\nZjarri shpÃ«rtheu mbrÃ«mjen e sÃ« premtes nÃ« lagjen â€˜1 Majiâ€™ tÃ« qytetit tÃ« HimarÃ«s. PÃ«r shkak tÃ« erÃ«s flakÃ«t zbritÃ«n nga kodra dhe u pÃ«rhapÃ«n me shpejtÃ«si.\r\n\r\nAgjencia KombÃ«tare e Mbrojtjes Civile thotÃ« se pÃ«r tÃ« pÃ«rballuar situatÃ«n e vÃ«shtirÃ« gjatÃ« natÃ«s u angazhuan rreth 300 forca operacionale, ku pÃ«rfshihen zjarrfikÃ«s, strukturat e emergjencave, pushtetit vendor dhe policisÃ«, si dhe 171 efektivÃ« tÃ« Forcave tÃ« Armatosura tÃ« ShqipÃ«risÃ«.\r\n\r\nBanorÃ« tÃ« HimarÃ«s thanÃ« se zjarri pÃ«rparoi shumÃ« shpejt drejt banesave tÃ« tyre, nÃ« disa prej tÃ« cilave kishte edhe turistÃ« tÃ« huaj.\r\n\r\nâ€œUnÃ« kam ambiente shÃ«rbimi, tÃ« gjithÃ« turistÃ«t u evakuuan pÃ«r sigurinÃ« e tyre. I thamÃ« tÃ« zbresin poshtÃ« nÃ« qendÃ«r derisa tÃ« qetÃ«sohet gjendja. Presim tÃ« vijÃ« energjia qÃ« tÃ« kthehemi sadopak nÃ« normalitetâ€ tha pÃ«r mediat lokale njÃ« banore.\r\n\r\nâ€œZjarri ka ulur intensitetin, situata Ã«shtÃ« pÃ«rmirÃ«suar, rreziku pÃ«r banesat Ã«shtÃ« shmangur dhe puna pÃ«r shuarjen vijonâ€, thekson Agjencia KombÃ«tare e Mbrojtjes Civile.\r\n\r\nMinistri i Mbrojtjes i ShqipÃ«risÃ«, Ermal Nufi e cilÃ«soi ditÃ«n e djeshme, si njÃ« ndÃ«r mÃ« tÃ« vÃ«shtirat tÃ« situatÃ«s sÃ« zjarreve gjatÃ« gjithÃ« sezonit veror. Problematike ka qenÃ« situata edhe nÃ« fshatin Levan tÃ« Fierit, ku u rrezikuan disa banesa nga zjarri.",
         "data_publikimit": "2026-09-05T12:10:45.532Z",
         "kategoria": 2,
         "foto": "lajmet/Capture_aDl9mQD.JPG",
@@ -210,8 +129,8 @@
     "model": "lajmet.artikull",
     "pk": 9,
     "fields": {
-        "titulli": "Sali Berisha kalon oqeanin/ Kreu i PD mbërrin në SHBA, pritet nga shqiptarët në aeroport",
-        "permbajtja": "Kryetari i Partisë Demokratike, Sali Berisha, ka mbërritur në Shtetet e Bashkuara të Amerikës, ku do të qëndrojë për rreth një javë, në kuadër të një turi të programuar me disa aktivitete dhe takime.\r\n\r\nLajmin e mbërritjes e ka bërë të ditur vetë Berisha përmes një postimi në rrjetet sociale, ku ka publikuar edhe pamje nga pritja që i është bërë nga shqiptarë në SHBA. Në video, kreu i PD-së shihet duke përshëndetur dhe biseduar me bashkatdhetarët që kishin dalë për ta takuar.\r\n\r\n“Përtej oqeanit, një pritje shqiptare, një moment mirënjohjeje”, shkruan Berisha në përshkrimin e videos.\r\n\r\n<iframe src=\"https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2785049151888714%2F&show_text=true&width=267&t=0\" width=\"267\" height=\"591\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\" allowFullScreen=\"true\"></iframe>\r\n\r\nGjatë qëndrimit në SHBA, Berisha pritet të marrë pjesë në disa aktivitete, ndërsa një prej eventeve kryesore të axhendës së tij është Konventa Kombëtare Republikane, e cila do të zhvillohet në Dallas më 9 dhe 10 shtator.\r\n\r\nNë axhendë janë parashikuar gjithashtu edhe takime me komunitetin shqiptar. Takimi i parë pritet të zhvillohet të dielën, më 6 shtator, në New York, ndërsa një tjetër është planifikuar më 8 shtator në Texas.\r\n\r\nVizita e Berishës në SHBA vjen pas një zhvillimi të rëndësishëm në raport me autoritetet amerikane. Në qershor të këtij viti, Departamenti Amerikan i Shtetit anuloi masat kufizuese ndaj tij, rreth pesë vite pasi Berishës dhe familjes së tij iu ndalua hyrja në territorin amerikan.",
+        "titulli": "Sali Berisha kalon oqeanin/ Kreu i PD mbÃ«rrin nÃ« SHBA, pritet nga shqiptarÃ«t nÃ« aeroport",
+        "permbajtja": "Kryetari i PartisÃ« Demokratike, Sali Berisha, ka mbÃ«rritur nÃ« Shtetet e Bashkuara tÃ« AmerikÃ«s, ku do tÃ« qÃ«ndrojÃ« pÃ«r rreth njÃ« javÃ«, nÃ« kuadÃ«r tÃ« njÃ« turi tÃ« programuar me disa aktivitete dhe takime.\r\n\r\nLajmin e mbÃ«rritjes e ka bÃ«rÃ« tÃ« ditur vetÃ« Berisha pÃ«rmes njÃ« postimi nÃ« rrjetet sociale, ku ka publikuar edhe pamje nga pritja qÃ« i Ã«shtÃ« bÃ«rÃ« nga shqiptarÃ« nÃ« SHBA. NÃ« video, kreu i PD-sÃ« shihet duke pÃ«rshÃ«ndetur dhe biseduar me bashkatdhetarÃ«t qÃ« kishin dalÃ« pÃ«r ta takuar.\r\n\r\nâ€œPÃ«rtej oqeanit, njÃ« pritje shqiptare, njÃ« moment mirÃ«njohjejeâ€, shkruan Berisha nÃ« pÃ«rshkrimin e videos.\r\n\r\n<iframe src=\"https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2785049151888714%2F&show_text=true&width=267&t=0\" width=\"267\" height=\"591\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\" allowFullScreen=\"true\"></iframe>\r\n\r\nGjatÃ« qÃ«ndrimit nÃ« SHBA, Berisha pritet tÃ« marrÃ« pjesÃ« nÃ« disa aktivitete, ndÃ«rsa njÃ« prej eventeve kryesore tÃ« axhendÃ«s sÃ« tij Ã«shtÃ« Konventa KombÃ«tare Republikane, e cila do tÃ« zhvillohet nÃ« Dallas mÃ« 9 dhe 10 shtator.\r\n\r\nNÃ« axhendÃ« janÃ« parashikuar gjithashtu edhe takime me komunitetin shqiptar. Takimi i parÃ« pritet tÃ« zhvillohet tÃ« dielÃ«n, mÃ« 6 shtator, nÃ« New York, ndÃ«rsa njÃ« tjetÃ«r Ã«shtÃ« planifikuar mÃ« 8 shtator nÃ« Texas.\r\n\r\nVizita e BerishÃ«s nÃ« SHBA vjen pas njÃ« zhvillimi tÃ« rÃ«ndÃ«sishÃ«m nÃ« raport me autoritetet amerikane. NÃ« qershor tÃ« kÃ«tij viti, Departamenti Amerikan i Shtetit anuloi masat kufizuese ndaj tij, rreth pesÃ« vite pasi BerishÃ«s dhe familjes sÃ« tij iu ndalua hyrja nÃ« territorin amerikan.",
         "data_publikimit": "2026-09-05T20:29:45.341Z",
         "kategoria": 1,
         "foto": "lajmet/saliu.JPG",
@@ -234,7 +153,7 @@
     "model": "lajmet.video",
     "pk": 1,
     "fields": {
-        "titulli": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
+        "titulli": "Sali Berisha udhÃ«ton drejt SHBA-ve: UdhÃ«tim i viteve pÃ«r mua, miqve do u them qÃ« unÃ« erdha",
         "youtube_id": "ufRy7OTX_lE",
         "data_publikimit": "2026-09-04T12:12:45.745Z"
     }
@@ -248,510 +167,6 @@
         "linku": "https://www.fibank.al/en/individe/depozita-dhe-investime/depozita/depozite-me-afat-%22kursimet-e-viteve-te-arta-2026%22/",
         "is_active": true,
         "data_krijimit": "2026-09-05T13:19:06.075Z"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 1,
-    "fields": {
-        "action_time": "2026-09-01T13:27:11.075Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "kategoria"
-        ],
-        "object_id": "1",
-        "object_repr": "Politikë",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 2,
-    "fields": {
-        "action_time": "2026-09-01T13:27:31.409Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "1",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 3,
-    "fields": {
-        "action_time": "2026-09-01T13:34:19.376Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "1",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 4,
-    "fields": {
-        "action_time": "2026-09-01T13:41:00.101Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "kategoria"
-        ],
-        "object_id": "2",
-        "object_repr": "Aktualitet",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 5,
-    "fields": {
-        "action_time": "2026-09-01T13:41:45.484Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "kategoria"
-        ],
-        "object_id": "3",
-        "object_repr": "Rajon",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 6,
-    "fields": {
-        "action_time": "2026-09-01T13:41:50.365Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "kategoria"
-        ],
-        "object_id": "4",
-        "object_repr": "Bota",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 7,
-    "fields": {
-        "action_time": "2026-09-01T13:41:54.685Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "kategoria"
-        ],
-        "object_id": "5",
-        "object_repr": "Sport",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 8,
-    "fields": {
-        "action_time": "2026-09-01T19:19:44.966Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "2",
-        "object_repr": "Protestuesit rrethojnë hyrjen kryesore të Kryeministrisë, përplasen me efektivët e Policisë",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 9,
-    "fields": {
-        "action_time": "2026-09-01T19:21:14.550Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "3",
-        "object_repr": "Trump: SHBA do ta godasë ashpër Iranin",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 10,
-    "fields": {
-        "action_time": "2026-09-02T20:20:38.941Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "4",
-        "object_repr": "Trump: Nuk po përpiqem që Teherani të negociojë, Hormuzi është nën kontrollin e SHBA",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 11,
-    "fields": {
-        "action_time": "2026-09-02T20:25:22.551Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "4",
-        "object_repr": "Trump: Nuk po përpiqem që Teherani të negociojë, Hormuzi është nën kontrollin e SHBA",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 12,
-    "fields": {
-        "action_time": "2026-09-02T20:25:47.946Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "3",
-        "object_repr": "Trump paralajmëronL SHBA do ta godasë ashpër Iranin",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"Titulli\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 13,
-    "fields": {
-        "action_time": "2026-09-02T20:26:08.097Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "3",
-        "object_repr": "Trump paralajmëron: SHBA do ta godasë ashpër Iranin",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"Titulli\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 14,
-    "fields": {
-        "action_time": "2026-09-02T20:47:02.520Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "5",
-        "object_repr": "Gjermania thotë se Rusia qëndron pas \"sulmit hibrid\" në aeroportin e Lajpcigut",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 15,
-    "fields": {
-        "action_time": "2026-09-02T20:55:39.386Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "6",
-        "object_repr": "Zelensky paralajmëron kompanitë ajrore: Qielli rus po bëhet i rrezikshëm",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 16,
-    "fields": {
-        "action_time": "2026-09-04T12:00:53.866Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "7",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 17,
-    "fields": {
-        "action_time": "2026-09-04T12:04:47.487Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "7",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"YouTube Video ID\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 18,
-    "fields": {
-        "action_time": "2026-09-04T12:06:21.227Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "7",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 19,
-    "fields": {
-        "action_time": "2026-09-04T12:12:45.748Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "video"
-        ],
-        "object_id": "1",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 20,
-    "fields": {
-        "action_time": "2026-09-04T12:13:13.306Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "video"
-        ],
-        "object_id": "1",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"YouTube Video ID ose Link\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 21,
-    "fields": {
-        "action_time": "2026-09-04T12:13:36.288Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "video"
-        ],
-        "object_id": "1",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"YouTube Video ID ose Link\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 22,
-    "fields": {
-        "action_time": "2026-09-04T12:38:54.953Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "video"
-        ],
-        "object_id": "1",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"YouTube Video ID ose Link\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 23,
-    "fields": {
-        "action_time": "2026-09-04T12:50:54.723Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "video"
-        ],
-        "object_id": "1",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"YouTube Video ID ose Link\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 24,
-    "fields": {
-        "action_time": "2026-09-04T12:55:46.059Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "video"
-        ],
-        "object_id": "1",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
-        "action_flag": 2,
-        "change_message": "[]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 25,
-    "fields": {
-        "action_time": "2026-09-04T12:56:58.211Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "video"
-        ],
-        "object_id": "1",
-        "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"YouTube Video ID ose Link\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 26,
-    "fields": {
-        "action_time": "2026-09-05T12:10:45.537Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "8",
-        "object_repr": "Digjen disa shtëpi në Himarë, situata me zjarre drejt përmirësimit",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 27,
-    "fields": {
-        "action_time": "2026-09-05T13:19:06.078Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "reklama"
-        ],
-        "object_id": "1",
-        "object_repr": "Fibank Albania",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 28,
-    "fields": {
-        "action_time": "2026-09-05T20:29:45.346Z",
-        "user": [
-            "Renatoo"
-        ],
-        "content_type": [
-            "lajmet",
-            "artikull"
-        ],
-        "object_id": "9",
-        "object_repr": "Sali Berisha kalon oqeanin/ Kreu i PD mbërrin në SHBA, pritet nga shqiptarët në aeroport",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
     }
 }
 ]
