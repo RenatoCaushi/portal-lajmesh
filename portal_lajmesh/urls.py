@@ -18,13 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.static import serve
-from django.urls import re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('lajmet.urls')),
-    
-    # Detyron shërbimin e dosjes media në Render pa parashtesa plus
-    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+]
+
+# Shërben skedarët e medias pavarësisht nëse DEBUG është True apo False
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ]
