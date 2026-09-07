@@ -111,12 +111,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# Detyrojmë collectstatic të mbledhë fotot nga dosja media
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'media'),
 ]
 
-# Përdorim klasën standarde të WhiteNoise që nuk dështon kurrë në build
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
