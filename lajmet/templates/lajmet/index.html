@@ -86,9 +86,15 @@
         </div>
     {% endif %}
 
-    <!-- LISTA E LAJMEVE TË TJERA -->
-    <h2 class="mb-4 border-bottom pb-2">Lajmet e Fundit</h2>
-    
+        <!-- LISTA E LAJMEVE TË TJERA -->
+        <h2 class="mb-4 border-bottom pb-2">
+            {% if request.GET.kategoria %}
+                Lajmet sipas Kategorisë
+            {% else %}
+                Lajmet e Fundit
+            {% endif %}
+        </h2>
+            
     <div class="row">
         {% for artikull in lajmet %}
             <div class="col-md-4 mb-4">

@@ -35,10 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',  
     'lajmet',
 ]
 
@@ -110,18 +109,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static & Media Files (CSS, JS, Images)
+# Static Files (CSS, JS)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Detyrojmë collectstatic të mbledhë fotot nga dosja media
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'media'),
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-
-MEDIA_URL = '/static/'
+# Media Files (Cloudinary)
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Konfigurimi i Cloudinary

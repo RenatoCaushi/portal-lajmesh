@@ -6,16 +6,6 @@ from .models import Artikull, Kategoria, Koment, Video, Reklama
 def faqja_kryesore(request):
     lajmet_list = Artikull.objects.all().order_by('-data_publikimit')
     
-    # 3 Lajmet më të fundit fikse për Slider-in
-    slider_lajmet = lajmet_list[:3]
-    
-    kategorite = Kategoria.objects.all()
-
-    # Merr videot nga bazë e të dhënave (p.sh. 4 më të fundit)
-    videot = Video.objects.all()[:4]
-
-    reklama = Reklama.objects.filter(is_active=True).last()
-
     # Kërkimi me fjalë kyçe
     kerko = request.GET.get('kerko')
     if kerko:
@@ -28,7 +18,14 @@ def faqja_kryesore(request):
     if kategoria_id:
         lajmet_list = lajmet_list.filter(kategoria_id=kategoria_id)
 
-    # Faqëzimi (Pagination) - 6 lajme për faqe
+    # NËSE është zgjedhur kategori, mos shfaq slider të pavarur që përzien lajmet
+    slider_lajmet = lajmet_list[:3] if not kategoria_id else []
+
+    kategorite = Kategoria.objects.all()
+    videot = Video.objects.all()[:4]
+    reklama = Reklama.objects.filter(is_active=True).last()
+
+    # Faqëzimi (Pagination)
     paginator = Paginator(lajmet_list, 6) 
     page_number = request.GET.get('page')
     lajmet = paginator.get_page(page_number)
@@ -39,6 +36,7 @@ def faqja_kryesore(request):
         'kategorite': kategorite,
         'videot': videot,
         'reklama': reklama,
+        'kategoria_zgjedhur': kategoria_id,
     }
     return render(request, 'lajmet/index.html', context)
 
