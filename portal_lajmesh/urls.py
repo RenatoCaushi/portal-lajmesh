@@ -15,16 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from lajmet.views import faqja_kryesore, detajet_e_lajmit
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.static import serve
+from django.urls import re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', faqja_kryesore, name='faqja_kryesore'),
-    path('lajmi/<int:pk>/', detajet_e_lajmit, name='detajet_e_lajmit'),
+    path('', include('lajmet.urls')),
+    
+    # Detyron shërbimin e dosjes media në Render pa parashtesa plus
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 ]
-
-# Lejo shërbimin e skedarëve media edhe në prodhim (Render)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
