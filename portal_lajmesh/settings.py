@@ -111,13 +111,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Vendos dosjen media brenda STATICFILES_DIRS me prefiksin 'media'
-# Kjo garanton që fusha nga bazat e të dhënave (/media/lajmet/...) të përputhet 100%
 STATICFILES_DIRS = [
-    ('media', os.path.join(BASE_DIR, 'media')),
+    os.path.join(BASE_DIR, 'media'),
 ]
 
-# Kalojmë te klasa jo-manifest e WhiteNoise për të lejuar shfaqjen e imazheve dinakë
+# Përdorim klasën standarde të WhiteNoise që nuk dështon kurrë në build
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_URL = '/media/'
