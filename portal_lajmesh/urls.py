@@ -26,5 +26,5 @@ urlpatterns = [
     path('lajmi/<int:pk>/', detajet_e_lajmit, name='detajet_e_lajmit'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Lejo shërbimin e skedarëve media edhe në prodhim (Render)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
