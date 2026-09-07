@@ -1,9 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.db.models import Q
+from django.db.models import Q, F
 from django.core.paginator import Paginator
 from .models import Artikull, Kategoria, Koment, Video, Reklama
 
 def faqja_kryesore(request):
+    # Plotëson automatikisht slug-un për çdo artikull që ka mbetur bosh në bazën e të dhënave
+    for art in Artikull.objects.filter(Q(slug__isnull=True) | Q(slug='')):
+        art.save()
+
     lajmet_list = Artikull.objects.all().order_by('-data_publikimit')
     
     # Kërkimi me fjalë kyçe
@@ -45,10 +49,10 @@ def detajet_e_lajmit(request, slug):
     # Kërkojmë artikullin sipas fushës slug
     artikull = get_object_or_404(Artikull, slug=slug)
     
-    # Inkremento numrin e shikimeve
-    artikull.shikime += 1
-    artikull.save(update_fields=['shikime'])
-    
+    # Inkremento numrin e shikimeve në mënyrë të sigurt pa bllokuar fushat e tjera
+    Artikull.objects.filter(pk=artikull.pk).update(shikime=F('shikime') + 1)
+    artikull.refresh_from_db()
+
     if request.method == 'POST':
         permbajtja = request.POST.get('permbajtja')
         if permbajtja:
