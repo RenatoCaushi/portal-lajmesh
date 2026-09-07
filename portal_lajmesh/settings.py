@@ -114,7 +114,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'media'),
+    os.path.join(BASE_DIR, 'static'),  # Zëvendësuar media me static
 ]
 
 # Media Files (Cloudinary)
@@ -128,22 +128,28 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': '**********'
 }
 
-# Nëse jemi lokalisht (DEBUG = True), përdorim skedarët lokalë; në Render (DEBUG = False), përdorim Cloudinary
+# Rregullimi për versoionet e reja të Django + django-cloudinary-storage
 if DEBUG:
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    
     STORAGES = {
         "default": {
-            "BACKEND": "django.core.files.storage.FileSystemStorage",
+            "BACKEND": DEFAULT_FILE_STORAGE,
         },
         "staticfiles": {
-            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+            "BACKEND": STATICFILES_STORAGE,
         },
     }
 else:
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    
     STORAGES = {
         "default": {
-            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+            "BACKEND": DEFAULT_FILE_STORAGE,
         },
         "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+            "BACKEND": STATICFILES_STORAGE,
         },
     }
