@@ -108,20 +108,15 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static & Media Files (CSS, JS, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Shto këtë rresht që WhiteNoise të përfshijë dosjen media në përmbajtjen statike
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'media'),
+]
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-# Email
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
