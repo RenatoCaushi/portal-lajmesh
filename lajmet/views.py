@@ -40,8 +40,10 @@ def faqja_kryesore(request):
     }
     return render(request, 'lajmet/index.html', context)
 
-def detajet_e_lajmit(request, pk):
-    artikull = get_object_or_404(Artikull, pk=pk)
+
+def detajet_e_lajmit(request, slug):
+    # Kërkojmë artikullin sipas fushës slug
+    artikull = get_object_or_404(Artikull, slug=slug)
     
     # Inkremento numrin e shikimeve
     artikull.shikime += 1
@@ -56,7 +58,8 @@ def detajet_e_lajmit(request, pk):
                 permbajtja=permbajtja,
                 is_approved=True
             )
-            return redirect('detajet_e_lajmit', pk=artikull.pk)
+            # Ridrejtojmë duke përdorur slug-un e artikullit
+            return redirect('detajet_e_lajmit', slug=artikull.slug)
 
     # Shfaq vetëm komentet e aprovuara
     komentet = artikull.komentet.filter(is_approved=True).order_by('-data_publikimit')
@@ -65,4 +68,5 @@ def detajet_e_lajmit(request, pk):
     return render(request, 'lajmet/detajet.html', {
         'artikull': artikull,
         'komentet': komentet,
+        'reklama': reklama,
     })

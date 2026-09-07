@@ -1,5 +1,6 @@
 import re
 from django.db import models
+from django.utils.text import slugify
 
 
 class Kategoria(models.Model):
@@ -14,6 +15,7 @@ class Kategoria(models.Model):
 
 class Artikull(models.Model):
     titulli = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     permbajtja = models.TextField()
     data_publikimit = models.DateTimeField(auto_now_add=True)
     kategoria = models.ForeignKey(Kategoria, on_delete=models.CASCADE)
@@ -39,6 +41,20 @@ class Artikull(models.Model):
 
     def __str__(self):
         return self.titulli
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.titulli)
+            # Nëse titulli përmban vetëm karaktere speciale/shkronja që nuk konvertohen direkt, sigurojmë një fallback
+            if not base_slug:
+                base_slug = "lajm"
+            slug = base_slug
+            count = 1
+            while Artikull.objects.filter(slug=slug).exclude(id=self.id).exists():
+                slug = f"{base_slug}-{count}"
+                count += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
 
     def permbajtja_me_embeds(self):
         """

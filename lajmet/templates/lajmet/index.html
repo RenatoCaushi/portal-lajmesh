@@ -29,7 +29,7 @@
                             </a>
                         {% endif %}
                         <h4 class="mb-0">
-                            <a href="{% url 'detajet_e_lajmit' artikull.pk %}" class="text-white text-decoration-none fw-bold">
+                            <a href="{% url 'detajet_e_lajmit' artikull.slug %}" class="text-white text-decoration-none fw-bold">
                                 {{ artikull.titulli }}
                             </a>
                         </h4>
@@ -86,21 +86,21 @@
         </div>
     {% endif %}
 
-        <!-- LISTA E LAJMEVE TË TJERA -->
-        <h2 class="mb-4 border-bottom pb-2">
-            {% if request.GET.kategoria %}
-                Lajmet sipas Kategorisë
-            {% else %}
-                Lajmet e Fundit
-            {% endif %}
-        </h2>
+    <!-- LISTA E LAJMEVE TË TJERA -->
+    <h2 class="mb-4 border-bottom pb-2">
+        {% if request.GET.kategoria %}
+            Lajmet sipas Kategorisë
+        {% else %}
+            Lajmet e Fundit
+        {% endif %}
+    </h2>
             
     <div class="row">
         {% for artikull in lajmet %}
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm border-0">
                     
-                    <a href="{% url 'detajet_e_lajmit' artikull.pk %}">
+                    <a href="{% url 'detajet_e_lajmit' artikull.slug %}">
                         {% if artikull.foto %}
                             <img src="{{ artikull.foto.url }}" class="card-img-top" alt="{{ artikull.titulli }}" style="height: 200px; object-fit: cover;">
                         {% else %}
@@ -118,7 +118,7 @@
                         {% endif %}
                         
                         <h5 class="card-title fw-bold">
-                            <a href="{% url 'detajet_e_lajmit' artikull.pk %}" class="text-decoration-none text-dark">
+                            <a href="{% url 'detajet_e_lajmit' artikull.slug %}" class="text-decoration-none text-dark">
                                 {{ artikull.titulli }}
                             </a>
                         </h5>
@@ -128,7 +128,7 @@
 
                     <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
                         <small class="text-muted"><i class="bi bi-clock me-1"></i>{{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small>
-                        <a href="{% url 'detajet_e_lajmit' artikull.pk %}" class="btn btn-sm btn-outline-primary">Lexo më shumë</a>
+                        <a href="{% url 'detajet_e_lajmit' artikull.slug %}" class="btn btn-sm btn-outline-primary">Lexo më shumë</a>
                     </div>
                 </div>
             </div>

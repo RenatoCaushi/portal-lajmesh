@@ -74,7 +74,7 @@
             <div class="card mb-4 shadow-sm border-0 bg-body-tertiary">
                 <div class="card-body p-4">
                     <h5 class="card-title mb-3">Lini një koment</h5>
-                    <form method="POST">
+                    <form method="POST" action="{% url 'detajet_e_lajmit' artikull.slug %}">
                         {% csrf_token %}
                         <div class="mb-3">
                             <label class="form-label fw-semibold">Komenti juaj</label>
