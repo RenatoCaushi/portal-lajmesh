@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
+    'django.contrib.staticfiles',
     'lajmet',
 ]
 
@@ -120,3 +123,20 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Konfigurimi i Cloudinary
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'oornuwp6',
+    'API_KEY': '975767264233752',
+    'API_SECRET': '**********'
+}
+
+# Detyrojmë Django të ruajë skedarët Media në Cloudinary
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
