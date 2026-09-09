@@ -133,19 +133,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-]
-
-
-# Media Files (Cloudinary)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# Konfigurimi i Cloudinary
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'oornuwp6',
-    'API_KEY': '975767264233752',
-    'API_SECRET': '**********'
-}
+] if os.path.exists(os.path.join(BASE_DIR, 'static')) else []
 
 # Parandalon dështimin e WhiteNoise nëse mungon ndonjë skedar statik
 WHITENOISE_MANIFEST_STRICT = False
