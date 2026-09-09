@@ -164,8 +164,8 @@ if DEBUG:
     }
 else:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    # Përdorim CompressedManifestStaticFilesStorage që nuk bllokon build-in
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    # Përdorim StaticFilesStorage standard që të mos dështojë kurrë nga skedarët e munguar
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
     
     STORAGES = {
         "default": {
