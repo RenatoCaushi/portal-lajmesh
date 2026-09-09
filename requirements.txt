@@ -21,6 +21,7 @@ propcache==0.5.2
 psycopg2-binary==2.9.12
 py-vapid==1.9.4
 pycparser==3.0
+python-dotenv==1.2.3
 pywebpush==2.5.0
 requests==2.34.2
 six==1.17.0
