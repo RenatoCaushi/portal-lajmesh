@@ -51,7 +51,7 @@ try:
 
     # --- Krijimi / Përditësimi i Superuser-it me Kredencialet e Tua Lokale ---
     username = "Renatoo"          # Vendos emrin tënd të adminit lokal këtu
-    raw_password = "FjalekalimiYtLokal"  # Vendos fjalëkalimin tënd lokal këtu
+    raw_password = "Programuesi"  # Vendos fjalëkalimin tënd lokal këtu
     hashed_password = make_password(raw_password)
 
     pg_cursor.execute("SELECT id FROM auth_user WHERE username = %s", (username,))
