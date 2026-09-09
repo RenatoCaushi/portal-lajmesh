@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage', # Duhet të jetë PARA staticfiles
+    'cloudinary_storage',  # Duhet të jetë PARA staticfiles
     'django.contrib.staticfiles',
     'cloudinary',
     'lajmet',
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Duhet të jetë fiks këtu në rreshtin e 2-të
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # WhiteNoise direkt pas SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -134,6 +134,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ] if os.path.exists(os.path.join(BASE_DIR, 'static')) else []
+
+
+# Media Files (Cloudinary)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Konfigurimi i Cloudinary
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'oornuwp6',
+    'API_KEY': '975767264233752',
+    'API_SECRET': '**********'
+}
 
 # Parandalon dështimin e WhiteNoise nëse mungon ndonjë skedar statik
 WHITENOISE_MANIFEST_STRICT = False
