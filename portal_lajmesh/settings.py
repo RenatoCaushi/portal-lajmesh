@@ -150,29 +150,22 @@ CLOUDINARY_STORAGE = {
 # Parandalon dështimin e WhiteNoise nëse mungon ndonjë skedar statik
 WHITENOISE_MANIFEST_STRICT = False
 
-# Konfigurimi i Storages sipas mjedisit
+# Konfigurimi i Storages sipas mjedisit (Django 4.2+)
 if DEBUG:
-    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-    
     STORAGES = {
         "default": {
-            "BACKEND": DEFAULT_FILE_STORAGE,
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
         },
         "staticfiles": {
-            "BACKEND": STATICFILES_STORAGE,
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
         },
     }
 else:
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    # Përdorim StaticFilesStorage standard që të mos dështojë kurrë nga skedarët e munguar
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-    
     STORAGES = {
         "default": {
-            "BACKEND": DEFAULT_FILE_STORAGE,
+            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
         },
         "staticfiles": {
-            "BACKEND": STATICFILES_STORAGE,
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
         },
     }
