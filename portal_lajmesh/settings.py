@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import urllib.parse
 import dotenv
+import dj_database_url  # U shtua importi i munguar
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',  # Statiket vendosen para cloudinary
+    'cloudinary_storage', # Duhet të jetë PARA staticfiles
+    'django.contrib.staticfiles',
     'cloudinary',
-    'cloudinary_storage',
     'lajmet',
 ]
 
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'portal_lajmesh.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'BACKEND': 'django.template.backends.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
