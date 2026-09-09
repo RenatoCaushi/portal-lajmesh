@@ -166,6 +166,6 @@ else:
             "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
         },
         "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",  # Ndryshuar këtu (pa Manifest)
+            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
         },
     }
