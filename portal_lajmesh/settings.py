@@ -135,7 +135,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ] if os.path.exists(os.path.join(BASE_DIR, 'static')) else []
 
-# Gjen skedarët e CSS/JS si nga dosja 'static' ashtu edhe nga 'admin' i Django-s
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -175,3 +174,6 @@ else:
             "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
         },
     }
+
+# Përputhshmëria me pakot e vjetra si cloudinary_storage
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
