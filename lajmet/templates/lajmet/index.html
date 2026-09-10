@@ -71,13 +71,11 @@
                 {% for video in videot %}
                     <div class="col-lg-10 mb-4">
                         <div class="card bg-secondary text-white border-0 shadow rounded overflow-hidden">
-                            <!-- VIDEO E MADHE YOUTUBE (Me origin dinamik për Render dhe Local) -->
                             <div class="ratio ratio-16x9">
                                 <iframe 
-                                    src="https://www.youtube.com/embed/{{ video.youtube_id }}?origin=https://{{ request.get_host }}" 
+                                    src="https://www.youtube.com/embed/{{ video.youtube_id }}" 
                                     title="{{ video.titulli }}" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                    referrerpolicy="no-referrer-when-downgrade"
                                     allowfullscreen>
                                 </iframe>
                             </div>
@@ -141,7 +139,7 @@
         {% endfor %}
     </div>
 
-    <!-- Navigimi i Faqeve (Pagination) -->
+    <!-- NAVIGIMI I FAQEVE (PAGINATION) -->
     {% if lajmet.has_other_pages %}
     <nav class="d-flex justify-content-center mt-4">
         <ul class="pagination">
