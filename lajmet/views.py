@@ -6,9 +6,12 @@ from django.core.paginator import Paginator
 from .models import Artikull, Kategoria, Koment, Video, Reklama
 
 def faqja_kryesore(request):
-    # Plotëson automatikisht slug-un për çdo artikull që ka mbetur bosh në bazën e të dhënave
-    for art in Artikull.objects.filter(Q(slug__isnull=True) | Q(slug='')):
-        art.save()
+    # Plotëson automatikisht slug-un për çdo artikull bosh
+    try:
+        for art in Artikull.objects.filter(Q(slug__isnull=True) | Q(slug='')):
+            art.save()
+    except Exception:
+        pass
 
     lajmet_list = Artikull.objects.all().order_by('-data_publikimit')
 
@@ -24,14 +27,17 @@ def faqja_kryesore(request):
     if kategoria_id:
         lajmet_list = lajmet_list.filter(kategoria_id=kategoria_id)
 
-    # NËSE është zgjedhur kategori, mos shfaq slider të pavarur
     slider_lajmet = lajmet_list[:3] if not kategoria_id else []
 
     kategorite = Kategoria.objects.all()
     videot = Video.objects.all()[:4]
-    reklama = Reklama.objects.filter(is_active=True).last()
+    
+    try:
+        reklama = Reklama.objects.filter(is_active=True).last()
+    except Exception:
+        reklama = None
 
-    # Marrja automatike e videos më të fundit nga YouTube RSS Feed
+    # Marrja e videos nga RSS
     yt_video_id = None
     try:
         feed_url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCgolqCIR2vtRk3L2X_abDTA"
@@ -39,7 +45,7 @@ def faqja_kryesore(request):
             feed_url, 
             headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
         )
-        with urllib.request.urlopen(req, timeout=3) as response:
+        with urllib.request.urlopen(req, timeout=2) as response:
             xml_data = response.read()
             root = ET.fromstring(xml_data)
             for elem in root.iter():
@@ -49,11 +55,14 @@ def faqja_kryesore(request):
     except Exception:
         yt_video_id = None
 
-    # Fallback te baza e të dhënave nëse RSS dështon
+    # Fallback i sigurt nga DB
     if not yt_video_id:
-        video_db = Video.objects.last()
-        if video_db:
-            yt_video_id = getattr(video_db, 'youtube_id', None)
+        try:
+            video_db = Video.objects.last()
+            if video_db:
+                yt_video_id = getattr(video_db, 'youtube_id', None) or getattr(video_db, 'video_id', None)
+        except Exception:
+            yt_video_id = None
 
     # Faqëzimi (Pagination)
     paginator = Paginator(lajmet_list, 6) 
@@ -75,8 +84,11 @@ def faqja_kryesore(request):
 def detajet_e_lajmit(request, slug):
     artikull = get_object_or_404(Artikull, slug=slug)
     
-    Artikull.objects.filter(pk=artikull.pk).update(shikime=F('shikime') + 1)
-    artikull.refresh_from_db()
+    try:
+        Artikull.objects.filter(pk=artikull.pk).update(shikime=F('shikime') + 1)
+        artikull.refresh_from_db()
+    except Exception:
+        pass
 
     if request.method == 'POST':
         permbajtja = request.POST.get('permbajtja')
@@ -90,7 +102,10 @@ def detajet_e_lajmit(request, slug):
             return redirect('detajet_e_lajmit', slug=artikull.slug)
 
     komentet = artikull.komentet.filter(is_approved=True).order_by('-data_publikimit')
-    reklama = Reklama.objects.filter(is_active=True).last()
+    try:
+        reklama = Reklama.objects.filter(is_active=True).last()
+    except Exception:
+        reklama = None
     
     return render(request, 'lajmet/detajet.html', {
         'artikull': artikull,
