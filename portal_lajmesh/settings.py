@@ -81,8 +81,9 @@ WSGI_APPLICATION = 'portal_lajmesh.wsgi.application'
 # Database
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
-if DATABASE_URL:
-    # Përdoret në serverin e Render (PostgreSQL)
+# Lidhja me PostgreSQL bëhet vetëm në Render (kur DEBUG = False)
+# Lokalisht (kur DEBUG = True) do të përdoret gjithmonë SQLite3
+if DATABASE_URL and not DEBUG:
     DATABASES = {
         'default': dj_database_url.config(
             default=DATABASE_URL,
@@ -91,7 +92,6 @@ if DATABASE_URL:
         )
     }
 else:
-    # Përdoret në kompjuterin tënd lokal (SQLite)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -144,7 +144,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'oornuwp6',
     'API_KEY': '975767264233752',
-    'API_SECRET': '**********'
+    'API_SECRET': 'iis2W8k6iKbS6Uvb_Fz6Qkk3bZ8'
 }
 
 # Parandalon dështimin e WhiteNoise nëse mungon ndonjë skedar statik
