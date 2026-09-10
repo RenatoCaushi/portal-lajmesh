@@ -24,7 +24,7 @@ def faqja_kryesore(request):
     if kategoria_id:
         lajmet_list = lajmet_list.filter(kategoria_id=kategoria_id)
 
-    # NËSE është zgjedhur kategori, mos shfaq slider të pavarur që përzien lajmet
+    # NËSE është zgjedhur kategori, mos shfaq slider të pavarur
     slider_lajmet = lajmet_list[:3] if not kategoria_id else []
 
     kategorite = Kategoria.objects.all()
@@ -37,15 +37,15 @@ def faqja_kryesore(request):
         feed_url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCgolqCIR2vtRk3L2X_abDTA"
         req = urllib.request.Request(
             feed_url, 
-            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
         )
-        xml_data = urllib.request.urlopen(req, timeout=5).read()
-
-        root = ET.fromstring(xml_data)
-        for elem in root.iter():
-            if elem.tag.endswith('videoId'):
-                yt_video_id = elem.text
-                break
+        with urllib.request.urlopen(req, timeout=3) as response:
+            xml_data = response.read()
+            root = ET.fromstring(xml_data)
+            for elem in root.iter():
+                if elem.tag.endswith('videoId'):
+                    yt_video_id = elem.text
+                    break
     except Exception:
         yt_video_id = None
 
@@ -53,7 +53,7 @@ def faqja_kryesore(request):
     if not yt_video_id:
         video_db = Video.objects.last()
         if video_db:
-            yt_video_id = video_db.youtube_id
+            yt_video_id = getattr(video_db, 'youtube_id', None)
 
     # Faqëzimi (Pagination)
     paginator = Paginator(lajmet_list, 6) 
