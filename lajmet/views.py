@@ -6,54 +6,53 @@ from django.core.paginator import Paginator
 from .models import Artikull, Kategoria, Koment, Video, Reklama
 
 def faqja_kryesore(request):
-    # Plotëson automatikisht slug-un për çdo artikull që ka mbetur bosh në bazën e të dhënave
     for art in Artikull.objects.filter(Q(slug__isnull=True) | Q(slug='')):
         art.save()
 
     lajmet_list = Artikull.objects.all().order_by('-data_publikimit')
     
-    # Kërkimi me fjalë kyçe
     kerko = request.GET.get('kerko')
     if kerko:
         lajmet_list = lajmet_list.filter(
             Q(titulli__icontains=kerko) | Q(permbajtja__icontains=kerko)
         )
 
-    # Filtrimi sipas kategorisë
     kategoria_id = request.GET.get('kategoria')
     if kategoria_id:
         lajmet_list = lajmet_list.filter(kategoria_id=kategoria_id)
 
-    # NËSE është zgjedhur kategori, mos shfaq slider të pavarur që përzien lajmet
     slider_lajmet = lajmet_list[:3] if not kategoria_id else []
 
     kategorite = Kategoria.objects.all()
     videot = Video.objects.all()[:4]
     reklama = Reklama.objects.filter(is_active=True).last()
 
-    # Marrja automatike e videos më të fundit nga YouTube RSS Feed
+    # RSS Feed Fetcher i përmirësuar
     yt_video_id = None
     try:
         feed_url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCgolqCIR2vtRk3L2X_abDTA"
-        req = urllib.request.Request(feed_url, headers={'User-Agent': 'Mozilla/5.0'})
+        req = urllib.request.Request(
+            feed_url, 
+            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+        )
         xml_data = urllib.request.urlopen(req, timeout=5).read()
 
         root = ET.fromstring(xml_data)
-        entry = root.find('{http://www.w3.org/2005/Atom}entry')
-        if entry is not None:
-            video_id_elem = entry.find('{http://www.youtube.com/xml/schemas/2015}videoId')
-            if video_id_elem is not None:
-                yt_video_id = video_id_elem.text
+        
+        # Kërkojmë tag-un yt:videoId pavarësisht namespace-it
+        for elem in root.iter():
+            if elem.tag.endswith('videoId'):
+                yt_video_id = elem.text
+                break
     except Exception:
         yt_video_id = None
 
-    # Nëse kanali nuk ka ende video në RSS, merr videon e fundit nga DB ose përdor një ID fikse
+    # Fallback te baza e të dhënave nëse RSS dështon
     if not yt_video_id:
         video_db = Video.objects.last()
         if video_db:
             yt_video_id = video_db.youtube_id
 
-    # Faqëzimi (Pagination)
     paginator = Paginator(lajmet_list, 6) 
     page_number = request.GET.get('page')
     lajmet = paginator.get_page(page_number)
@@ -68,30 +67,3 @@ def faqja_kryesore(request):
         'yt_video_id': yt_video_id,
     }
     return render(request, 'lajmet/index.html', context)
-
-
-def detajet_e_lajmit(request, slug):
-    artikull = get_object_or_404(Artikull, slug=slug)
-    
-    Artikull.objects.filter(pk=artikull.pk).update(shikime=F('shikime') + 1)
-    artikull.refresh_from_db()
-
-    if request.method == 'POST':
-        permbajtja = request.POST.get('permbajtja')
-        if permbajtja:
-            Koment.objects.create(
-                artikulli=artikull,
-                emri="Anonim",
-                permbajtja=permbajtja,
-                is_approved=True
-            )
-            return redirect('detajet_e_lajmit', slug=artikull.slug)
-
-    komentet = artikull.komentet.filter(is_approved=True).order_by('-data_publikimit')
-    reklama = Reklama.objects.filter(is_active=True).last()
-    
-    return render(request, 'lajmet/detajet.html', {
-        'artikull': artikull,
-        'komentet': komentet,
-        'reklama': reklama,
-    })
