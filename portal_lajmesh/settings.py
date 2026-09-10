@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',  # Duhet të jetë PARA staticfiles
     'django.contrib.staticfiles',
     'cloudinary',
     'lajmet',
