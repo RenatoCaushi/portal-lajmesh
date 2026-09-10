@@ -171,9 +171,9 @@ else:
             "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
         },
         "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
         },
     }
 
-# Përputhshmëria me pakot e vjetra si cloudinary_storage
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Përputhshmëria me pakot që kërkojnë variablën e vjetër
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
