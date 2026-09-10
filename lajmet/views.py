@@ -1,3 +1,5 @@
+import xml.etree.ElementTree as ET
+import urllib.request
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q, F
 from django.core.paginator import Paginator
@@ -29,6 +31,22 @@ def faqja_kryesore(request):
     videot = Video.objects.all()[:4]
     reklama = Reklama.objects.filter(is_active=True).last()
 
+    # Marrja automatike e videos më të fundit nga YouTube RSS Feed
+    yt_video_id = None
+    try:
+        feed_url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCgolqCIR2vtRk3L2X_abDTA"
+        req = urllib.request.Request(feed_url, headers={'User-Agent': 'Mozilla/5.0'})
+        xml_data = urllib.request.urlopen(req, timeout=5).read()
+
+        root = ET.fromstring(xml_data)
+        entry = root.find('{http://www.w3.org/2005/Atom}entry')
+        if entry is not None:
+            video_id_elem = entry.find('{http://www.youtube.com/xml/schemas/2015}videoId')
+            if video_id_elem is not None:
+                yt_video_id = video_id_elem.text
+    except Exception:
+        yt_video_id = None
+
     # Faqëzimi (Pagination)
     paginator = Paginator(lajmet_list, 6) 
     page_number = request.GET.get('page')
@@ -41,6 +59,7 @@ def faqja_kryesore(request):
         'videot': videot,
         'reklama': reklama,
         'kategoria_zgjedhur': kategoria_id,
+        'yt_video_id': yt_video_id,
     }
     return render(request, 'lajmet/index.html', context)
 

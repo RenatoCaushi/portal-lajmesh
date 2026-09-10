@@ -60,30 +60,32 @@
         </div>
     {% endif %}
 
-    <!-- SEKSIONI I VIDEOVE YOUTUBE (Automatike nga Kanali) -->
-<div class="my-5 p-4 bg-dark text-white rounded shadow-lg">
-    <h2 class="mb-4 text-warning border-bottom border-warning pb-2 d-flex justify-content-between align-items-center">
-        <span><i class="bi bi-youtube me-2"></i>Videoja e Fundit</span>
-        <a href="https://www.youtube.com/channel/UCgolqCIR2vtRk3L2X_abDTA" target="_blank" class="btn btn-outline-warning btn-sm">
-            Abonohu në Kanal
-        </a>
-    </h2>
+    <!-- SEKSIONI I VIDEOVE YOUTUBE (Automatike nga Kanali via RSS) -->
+    {% if yt_video_id %}
+    <div class="my-5 p-4 bg-dark text-white rounded shadow-lg">
+        <h2 class="mb-4 text-warning border-bottom border-warning pb-2 d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-youtube me-2"></i>Videoja e Fundit</span>
+            <a href="https://www.youtube.com/channel/UCgolqCIR2vtRk3L2X_abDTA" target="_blank" class="btn btn-outline-warning btn-sm">
+                Abonohu në Kanal
+            </a>
+        </h2>
 
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <div class="card bg-secondary text-white border-0 shadow rounded overflow-hidden">
-                <div class="ratio ratio-16x9">
-                    <iframe 
-                        src="https://www.youtube.com/embed?listType=playlist&list=UUgolqCIR2vtRk3L2X_abDTA" 
-                        title="Videoja e fundit nga YouTube" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card bg-secondary text-white border-0 shadow rounded overflow-hidden">
+                    <div class="ratio ratio-16x9">
+                        <iframe 
+                            src="https://www.youtube.com/embed/{{ yt_video_id }}" 
+                            title="Videoja e fundit nga YouTube" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    {% endif %}
 
     <!-- LISTA E LAJMEVE TË TJERA -->
     <h2 class="mb-4 border-bottom pb-2">
