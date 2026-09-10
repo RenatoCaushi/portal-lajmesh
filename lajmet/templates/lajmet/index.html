@@ -53,12 +53,14 @@
     {% if reklama %}
         <div class="my-4 text-center">
             <a href="{{ reklama.linku }}" target="_blank" rel="noopener noreferrer">
-                <img src="{{ reklama.imazhi.url }}" alt="{{ reklama.titulli }}" class="img-fluid rounded shadow" style="max-height: 150px; width: 100%; object-fit: cover;">
+                {% if reklama.imazhi %}
+                    <img src="{{ reklama.imazhi.url }}" alt="{{ reklama.titulli }}" class="img-fluid rounded shadow" style="max-height: 150px; width: 100%; object-fit: cover;">
+                {% endif %}
             </a>
         </div>
     {% endif %}
 
-    <!-- SEKSIONI I VEÇANTË I VIDEOVE YOUTUBE (NGA MODELI VIDEO) -->
+    <!-- SEKSIONI I VEÇANTË I VIDEOVE YOUTUBE -->
     {% if videot %}
         <div class="my-5 p-4 bg-dark text-white rounded shadow-lg">
             <h2 class="mb-4 text-warning border-bottom border-warning pb-2">
@@ -69,10 +71,10 @@
                 {% for video in videot %}
                     <div class="col-lg-10 mb-4">
                         <div class="card bg-secondary text-white border-0 shadow rounded overflow-hidden">
-                            <!-- VIDEO E MADHE YOUTUBE -->
+                            <!-- VIDEO E MADHE YOUTUBE (Me origin dinamik për Render dhe Local) -->
                             <div class="ratio ratio-16x9">
                                 <iframe 
-                                    src="https://www.youtube.com/embed/{{ video.youtube_id }}?origin=http://127.0.0.1:8000" 
+                                    src="https://www.youtube.com/embed/{{ video.youtube_id }}?origin=https://{{ request.get_host }}" 
                                     title="{{ video.titulli }}" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                     referrerpolicy="no-referrer-when-downgrade"
