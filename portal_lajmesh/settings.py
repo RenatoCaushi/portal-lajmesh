@@ -13,13 +13,14 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Ngarko variablat e mjedisit nga skedari .env lokal
+# Ngarko variablat e mjedisit nga skedari .env lokal (nëse ekziston)
 dotenv.load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-r$7yl-hhc&3d*l@4k^k*i(g-h817(2_a!uk457=v%=d5mb-*b7')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# Vendoset True gjatë testimit ose False automatikisht nëse ekziston variabla RENDER
 DEBUG = os.environ.get('RENDER', '') == ''
 
 # Lejon Render dhe çdo host tjetër të hyjë në faqe
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'cloudinary',
     'lajmet',
 ]
@@ -77,12 +79,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'portal_lajmesh.wsgi.application'
 
 
-# Database
+# Database Configuration (Lidhet me PostgreSQL kur ekziston DATABASE_URL)
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
-# Lidhja me PostgreSQL bëhet vetëm në Render (kur DEBUG = False)
-# Lokalisht (kur DEBUG = True) do të përdoret gjithmonë SQLite3
-if DATABASE_URL and not DEBUG:
+if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.config(
             default=DATABASE_URL,
