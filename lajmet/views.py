@@ -47,6 +47,12 @@ def faqja_kryesore(request):
     except Exception:
         yt_video_id = None
 
+    # Nëse kanali nuk ka ende video në RSS, merr videon e fundit nga DB ose përdor një ID fikse
+    if not yt_video_id:
+        video_db = Video.objects.last()
+        if video_db:
+            yt_video_id = video_db.youtube_id
+
     # Faqëzimi (Pagination)
     paginator = Paginator(lajmet_list, 6) 
     page_number = request.GET.get('page')
@@ -65,10 +71,8 @@ def faqja_kryesore(request):
 
 
 def detajet_e_lajmit(request, slug):
-    # Kërkojmë artikullin sipas fushës slug
     artikull = get_object_or_404(Artikull, slug=slug)
     
-    # Inkremento numrin e shikimeve në mënyrë të sigurt pa bllokuar fushat e tjera
     Artikull.objects.filter(pk=artikull.pk).update(shikime=F('shikime') + 1)
     artikull.refresh_from_db()
 
@@ -81,10 +85,8 @@ def detajet_e_lajmit(request, slug):
                 permbajtja=permbajtja,
                 is_approved=True
             )
-            # Ridrejtojmë duke përdorur slug-un e artikullit
             return redirect('detajet_e_lajmit', slug=artikull.slug)
 
-    # Shfaq vetëm komentet e aprovuara
     komentet = artikull.komentet.filter(is_approved=True).order_by('-data_publikimit')
     reklama = Reklama.objects.filter(is_active=True).last()
     
