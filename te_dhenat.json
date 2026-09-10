@@ -3,7 +3,7 @@
   "model": "lajmet.kategoria",
   "pk": 1,
   "fields": {
-    "emri": "Politikë"
+    "emri": "PolitikÃ«"
   }
 },
 {
@@ -38,9 +38,9 @@
   "model": "lajmet.artikull",
   "pk": 1,
   "fields": {
-    "titulli": "Sali Berisha udhëton drejt SHBA-ve",
+    "titulli": "Sali Berisha udhÃ«ton drejt SHBA-ve",
     "slug": "sali-berisha-udheton-drejt-shba-ve",
-    "permbajtja": "Kreu i PD, Sali Berisha do të udhëtojë më 9 shtator në SHBA. Pas marrjes së vizës amerikane, ish kryeministri do të marrë pjesë në konventën e Partisë Republikane në Teksas.",
+    "permbajtja": "Kreu i PD, Sali Berisha do tÃ« udhÃ«tojÃ« mÃ« 9 shtator nÃ« SHBA. Pas marrjes sÃ« vizÃ«s amerikane, ish kryeministri do tÃ« marrÃ« pjesÃ« nÃ« konventÃ«n e PartisÃ« Republikane nÃ« Teksas.",
     "data_publikimit": "2026-09-01T13:27:31.407Z",
     "kategoria": 1,
     "foto": "lajmet/sali_berisha.jpeg",
@@ -52,9 +52,9 @@
   "model": "lajmet.artikull",
   "pk": 2,
   "fields": {
-    "titulli": "Protestuesit rrethojnë hyrjen kryesore të Kryeministrisë, përplasen me efektivët e Policisë",
+    "titulli": "Protestuesit rrethojnÃ« hyrjen kryesore tÃ« KryeministrisÃ«, pÃ«rplasen me efektivÃ«t e PolicisÃ«",
     "slug": "protestuesit-rrethojne-hyrjen-kryesore-te-kryeministrise-perplasen-me-efektivet-e-policise",
-    "permbajtja": "Në ditën e 94-ët të tubimit para Kryeministrisë, ka pasur tensione dhe përplasje mes protestuesve dhe forcave të Policisë.\r\n\r\nTensionet kanë nisur pasi protestuesit kaluan pas godinës së Kryeministrisë, për të bllokuar hyrjen kryesore, ku futet e del eskorta e kryeministrit Edi Rama dhe zyrtarëve të tjerë.",
+    "permbajtja": "NÃ« ditÃ«n e 94-Ã«t tÃ« tubimit para KryeministrisÃ«, ka pasur tensione dhe pÃ«rplasje mes protestuesve dhe forcave tÃ« PolicisÃ«.\r\n\r\nTensionet kanÃ« nisur pasi protestuesit kaluan pas godinÃ«s sÃ« KryeministrisÃ«, pÃ«r tÃ« bllokuar hyrjen kryesore, ku futet e del eskorta e kryeministrit Edi Rama dhe zyrtarÃ«ve tÃ« tjerÃ«.",
     "data_publikimit": "2026-09-01T19:19:44.961Z",
     "kategoria": 2,
     "foto": "lajmet/protesta.JPG",
@@ -66,9 +66,9 @@
   "model": "lajmet.artikull",
   "pk": 3,
   "fields": {
-    "titulli": "Trump paralajmëron: SHBA do ta godasë ashpër Iranin",
+    "titulli": "Trump paralajmÃ«ron: SHBA do ta godasÃ« ashpÃ«r Iranin",
     "slug": "trump-paralajmeron-shba-do-ta-godase-ashper-iranin",
-    "permbajtja": "Presidenti amerikan, Donald Trump, tha se forcat amerikane do ta godasin “ashpër” Iranin , pasi Korpusi i Gardës Revolucionare Islamike (IRGC) lëshoi raketa drejt dy bazave amerikane në Jordani, teksa sekretari i Thesarit, Scott Bessent, u zotua se do të shtojë presionin ekonomik ndaj Teheranit.\r\n\r\n“Do t’i godasim ashpër”, citohet t’i ketë thënë Trump një gazetari të Fox News më 31 gusht. “Do të ketë përgjigje”.\r\n\r\nTrump tha se mbrojtja ajrore amerikane ka penguar të gjitha raketat iraniane që mund të kishin shkaktuar dëme, pasi IRGC-ja pretendoi se ka lëshuar raketa balistike drejt bazave Mbreti Husein dhe Al Azrak në Jordani, duke shkaktuar “dëme të mëdha”.",
+    "permbajtja": "Presidenti amerikan, Donald Trump, tha se forcat amerikane do ta godasin Â“ashpÃ«rÂ” Iranin , pasi Korpusi i GardÃ«s Revolucionare Islamike (IRGC) lÃ«shoi raketa drejt dy bazave amerikane nÃ« Jordani, teksa sekretari i Thesarit, Scott Bessent, u zotua se do tÃ« shtojÃ« presionin ekonomik ndaj Teheranit.\r\n\r\nÂ“Do tÂ’i godasim ashpÃ«rÂ”, citohet tÂ’i ketÃ« thÃ«nÃ« Trump njÃ« gazetari tÃ« Fox News mÃ« 31 gusht. Â“Do tÃ« ketÃ« pÃ«rgjigjeÂ”.\r\n\r\nTrump tha se mbrojtja ajrore amerikane ka penguar tÃ« gjitha raketat iraniane qÃ« mund tÃ« kishin shkaktuar dÃ«me, pasi IRGC-ja pretendoi se ka lÃ«shuar raketa balistike drejt bazave Mbreti Husein dhe Al Azrak nÃ« Jordani, duke shkaktuar Â“dÃ«me tÃ« mÃ«dhaÂ”.",
     "data_publikimit": "2026-09-01T19:21:14.548Z",
     "kategoria": 4,
     "foto": "lajmet/trump.JPG",
@@ -80,9 +80,9 @@
   "model": "lajmet.artikull",
   "pk": 4,
   "fields": {
-    "titulli": "Trump: Nuk po përpiqem që Teherani të negociojë, Hormuzi është nën kontrollin e SHBA",
+    "titulli": "Trump: Nuk po pÃ«rpiqem qÃ« Teherani tÃ« negociojÃ«, Hormuzi Ã«shtÃ« nÃ«n kontrollin e SHBA",
     "slug": "trump-nuk-po-perpiqem-qe-teherani-te-negocioje-hormuzi-eshte-nen-kontrollin-e-shba",
-    "permbajtja": "Presidenti amerikan, Donald Trump deklaroi se nuk po përpiqet që ta ulë Iranin në tryezën e negociatave.\r\n\r\nPërmes një postimi në Truth Social, Trump u shpreh se Ngushtica e Hormuzit është nën kontrollin e SHBA dhe ekonomia e Iranit po fundoset.\r\n\r\n“Nuk po përpiqem ta detyroj Iranin të ulet në tryezën e negociatave. Nuk më intereson nëse ata nënshkruajnë një marrëveshje që nuk do të thotë asgjë për ta. Ne kemi kontroll pothuajse të plotë të Ngushticës së Hormuzit dhe ekonomia e tyre po shembet. Ata thjesht po presin të pashmangshmen. Kur do të ngrihet populli iranian dhe do të luftojë?”, tha ai.\r\n\r\nTeherani ka nisur sulme me raketa dhe dronë ndaj objektivave amerikane në Jordani, Kuvajt, Irak dhe Bahrein, pasi forcat amerikane rifilluan sulmet kundër Iranit të martën.\r\n\r\nShtetet e Bashkuara kanë sulmuar dy cisterna nafte të qeverisë iraniane në valën e fundit të sulmeve, raporton Axios, duke cituar burime që thonë se është hera e parë që ushtria amerikane ka shënjestruar cisternat e naftës të Teheranit në hakmarrje për sulmet iraniane në Ngushticën e Hormuzit.\r\n\r\nSulmi është pjesë e strategjisë “cisternë nafte pas cisterne” të miratuar nga Presidenti Donald Trump për të penguar sulmet ndaj Hormuzit. Një total prej 100 objektivash u goditën gjatë sulmeve.\r\n\r\nSipas Axios, Shtetet e Bashkuara kanë sulmuar dy cisterna nafte të qeverisë iraniane në valën e fundit të sulmeve, duke cituar burime që thonë se është hera e parë që ushtria amerikane ka shënjestruar cisternat e naftës të Teheranit në hakmarrje për sulmet iraniane në Ngushticën e Hormuzit. Një total prej 100 objektivash u goditën gjatë sulmeve.",
+    "permbajtja": "Presidenti amerikan, Donald Trump deklaroi se nuk po pÃ«rpiqet qÃ« ta ulÃ« Iranin nÃ« tryezÃ«n e negociatave.\r\n\r\nPÃ«rmes njÃ« postimi nÃ« Truth Social, Trump u shpreh se Ngushtica e Hormuzit Ã«shtÃ« nÃ«n kontrollin e SHBA dhe ekonomia e Iranit po fundoset.\r\n\r\nÂ“Nuk po pÃ«rpiqem ta detyroj Iranin tÃ« ulet nÃ« tryezÃ«n e negociatave. Nuk mÃ« intereson nÃ«se ata nÃ«nshkruajnÃ« njÃ« marrÃ«veshje qÃ« nuk do tÃ« thotÃ« asgjÃ« pÃ«r ta. Ne kemi kontroll pothuajse tÃ« plotÃ« tÃ« NgushticÃ«s sÃ« Hormuzit dhe ekonomia e tyre po shembet. Ata thjesht po presin tÃ« pashmangshmen. Kur do tÃ« ngrihet populli iranian dhe do tÃ« luftojÃ«?Â”, tha ai.\r\n\r\nTeherani ka nisur sulme me raketa dhe dronÃ« ndaj objektivave amerikane nÃ« Jordani, Kuvajt, Irak dhe Bahrein, pasi forcat amerikane rifilluan sulmet kundÃ«r Iranit tÃ« martÃ«n.\r\n\r\nShtetet e Bashkuara kanÃ« sulmuar dy cisterna nafte tÃ« qeverisÃ« iraniane nÃ« valÃ«n e fundit tÃ« sulmeve, raporton Axios, duke cituar burime qÃ« thonÃ« se Ã«shtÃ« hera e parÃ« qÃ« ushtria amerikane ka shÃ«njestruar cisternat e naftÃ«s tÃ« Teheranit nÃ« hakmarrje pÃ«r sulmet iraniane nÃ« NgushticÃ«n e Hormuzit.\r\n\r\nSulmi Ã«shtÃ« pjesÃ« e strategjisÃ« Â“cisternÃ« nafte pas cisterneÂ” tÃ« miratuar nga Presidenti Donald Trump pÃ«r tÃ« penguar sulmet ndaj Hormuzit. NjÃ« total prej 100 objektivash u goditÃ«n gjatÃ« sulmeve.\r\n\r\nSipas Axios, Shtetet e Bashkuara kanÃ« sulmuar dy cisterna nafte tÃ« qeverisÃ« iraniane nÃ« valÃ«n e fundit tÃ« sulmeve, duke cituar burime qÃ« thonÃ« se Ã«shtÃ« hera e parÃ« qÃ« ushtria amerikane ka shÃ«njestruar cisternat e naftÃ«s tÃ« Teheranit nÃ« hakmarrje pÃ«r sulmet iraniane nÃ« NgushticÃ«n e Hormuzit. NjÃ« total prej 100 objektivash u goditÃ«n gjatÃ« sulmeve.",
     "data_publikimit": "2026-09-02T20:20:38.935Z",
     "kategoria": 4,
     "foto": "lajmet/trumpi.JPG",
@@ -94,9 +94,9 @@
   "model": "lajmet.artikull",
   "pk": 5,
   "fields": {
-    "titulli": "Gjermania thotë se Rusia qëndron pas \"sulmit hibrid\" në aeroportin e Lajpcigut",
+    "titulli": "Gjermania thotÃ« se Rusia qÃ«ndron pas \"sulmit hibrid\" nÃ« aeroportin e Lajpcigut",
     "slug": "gjermania-thote-se-rusia-qendron-pas-sulmit-hibrid-ne-aeroportin-e-lajpcigut",
-    "permbajtja": "Gjermania e ka akuzuar Rusinë për kryerjen e asaj që ministri i Brendshëm i vendit e quajti “sulm hibrid”, që përfshinte një dron të mbushur me eksploziv, i cili shkaktoi ndërprerje të fluturimeve në aeroportin e Lajpcigut në fillim të gushtit. Berlini tha se incidenti ishte pjesë e një fushate operacionesh destabilizuese kundër Evropës.\r\n\r\nAutoritetet gjermane thanë se do ta mbyllnin Konsullatën Ruse në Bon dhe do të shkëpusin kontratën e qirasë për një qendër kulturore ruse në Berlin, si pasojë e përpjekjes për sulm me dron në aeroport.\r\n\r\nDeklarata e zyrtarëve të Qeverisë gjermane më 1 shtator u bë teksa autoritetet reaguan ndaj asaj që e quajtën sulm sabotues, që përfshinte disa pajisje shpërthyese të vendosura pranë një termocentrali me qymyr, rreth 100 kilometra në juglindje të Berlinit.",
+    "permbajtja": "Gjermania e ka akuzuar RusinÃ« pÃ«r kryerjen e asaj qÃ« ministri i BrendshÃ«m i vendit e quajti Â“sulm hibridÂ”, qÃ« pÃ«rfshinte njÃ« dron tÃ« mbushur me eksploziv, i cili shkaktoi ndÃ«rprerje tÃ« fluturimeve nÃ« aeroportin e Lajpcigut nÃ« fillim tÃ« gushtit. Berlini tha se incidenti ishte pjesÃ« e njÃ« fushate operacionesh destabilizuese kundÃ«r EvropÃ«s.\r\n\r\nAutoritetet gjermane thanÃ« se do ta mbyllnin KonsullatÃ«n Ruse nÃ« Bon dhe do tÃ« shkÃ«pusin kontratÃ«n e qirasÃ« pÃ«r njÃ« qendÃ«r kulturore ruse nÃ« Berlin, si pasojÃ« e pÃ«rpjekjes pÃ«r sulm me dron nÃ« aeroport.\r\n\r\nDeklarata e zyrtarÃ«ve tÃ« QeverisÃ« gjermane mÃ« 1 shtator u bÃ« teksa autoritetet reaguan ndaj asaj qÃ« e quajtÃ«n sulm sabotues, qÃ« pÃ«rfshinte disa pajisje shpÃ«rthyese tÃ« vendosura pranÃ« njÃ« termocentrali me qymyr, rreth 100 kilometra nÃ« juglindje tÃ« Berlinit.",
     "data_publikimit": "2026-09-02T20:47:02.517Z",
     "kategoria": 4,
     "foto": "lajmet/dthfr.JPG",
@@ -108,9 +108,9 @@
   "model": "lajmet.artikull",
   "pk": 6,
   "fields": {
-    "titulli": "Zelensky paralajmëron kompanitë ajrore: Qielli rus po bëhet i rrezikshëm",
+    "titulli": "Zelensky paralajmÃ«ron kompanitÃ« ajrore: Qielli rus po bÃ«het i rrezikshÃ«m",
     "slug": "zelensky-paralajmeron-kompanite-ajrore-qielli-rus-po-behet-i-rrezikshem",
-    "permbajtja": "Presidenti ukrainas Volodymyr Zelensky ka paralajmëruar kompanitë ajrore që vazhdojnë të përdorin hapësirën ajrore ruse, duke thënë se ajo po bëhet gjithnjë e më e rrezikshme për shkak të intensifikimit të sulmeve me dronë.\r\n\r\n“Qielli rus po bëhet plotësisht i rrezikshëm”, deklaroi Zelensky, duke theksuar se Ukraina nuk synon avionët civilë apo jetët e njerëzve të pafajshëm.\r\n\r\nSipas tij, sulmet me dronë në territorin rus do të vazhdojnë në një shkallë që kompanitë ajrore duhet ta marrin në konsideratë.\r\n\r\nPresidenti rus Vladimir Putin i cilësoi deklaratat si një “deklaratë të terrorizmit shtetëror” dhe tha se “me terroristët nuk negociohet”. Ai paralajmëroi gjithashtu se Rusia do të vazhdojë sulmet ndaj Ukrainës.\r\n\r\nSulmet ukrainase me dronë kanë shkaktuar në muajt e fundit ndërprerje të fluturimeve në disa aeroporte ruse, përfshirë ato të Moskës. Sipas rregullave ruse të mbrojtjes ajrore, fluturimet pezullohen kur zbulohet një dron në zonën përkatëse.\r\n\r\nShumica e kompanive ajrore perëndimore e shmangin hapësirën ajrore ruse që prej pushtimit të Ukrainës në vitin 2022, ndërsa kompani nga Kina, Turqia dhe vendet e Gjirit Persik vazhdojnë ta përdorin atë për të kursyer kohë dhe karburant.\r\n\r\nParalajmërimet vijnë në një kohë kur lufta mes Rusisë dhe Ukrainës po intensifikohet dhe sulmet po shtrihen gjithnjë e më thellë në territorin rus.",
+    "permbajtja": "Presidenti ukrainas Volodymyr Zelensky ka paralajmÃ«ruar kompanitÃ« ajrore qÃ« vazhdojnÃ« tÃ« pÃ«rdorin hapÃ«sirÃ«n ajrore ruse, duke thÃ«nÃ« se ajo po bÃ«het gjithnjÃ« e mÃ« e rrezikshme pÃ«r shkak tÃ« intensifikimit tÃ« sulmeve me dronÃ«.\r\n\r\nÂ“Qielli rus po bÃ«het plotÃ«sisht i rrezikshÃ«mÂ”, deklaroi Zelensky, duke theksuar se Ukraina nuk synon avionÃ«t civilÃ« apo jetÃ«t e njerÃ«zve tÃ« pafajshÃ«m.\r\n\r\nSipas tij, sulmet me dronÃ« nÃ« territorin rus do tÃ« vazhdojnÃ« nÃ« njÃ« shkallÃ« qÃ« kompanitÃ« ajrore duhet ta marrin nÃ« konsideratÃ«.\r\n\r\nPresidenti rus Vladimir Putin i cilÃ«soi deklaratat si njÃ« Â“deklaratÃ« tÃ« terrorizmit shtetÃ«rorÂ” dhe tha se Â“me terroristÃ«t nuk negociohetÂ”. Ai paralajmÃ«roi gjithashtu se Rusia do tÃ« vazhdojÃ« sulmet ndaj UkrainÃ«s.\r\n\r\nSulmet ukrainase me dronÃ« kanÃ« shkaktuar nÃ« muajt e fundit ndÃ«rprerje tÃ« fluturimeve nÃ« disa aeroporte ruse, pÃ«rfshirÃ« ato tÃ« MoskÃ«s. Sipas rregullave ruse tÃ« mbrojtjes ajrore, fluturimet pezullohen kur zbulohet njÃ« dron nÃ« zonÃ«n pÃ«rkatÃ«se.\r\n\r\nShumica e kompanive ajrore perÃ«ndimore e shmangin hapÃ«sirÃ«n ajrore ruse qÃ« prej pushtimit tÃ« UkrainÃ«s nÃ« vitin 2022, ndÃ«rsa kompani nga Kina, Turqia dhe vendet e Gjirit Persik vazhdojnÃ« ta pÃ«rdorin atÃ« pÃ«r tÃ« kursyer kohÃ« dhe karburant.\r\n\r\nParalajmÃ«rimet vijnÃ« nÃ« njÃ« kohÃ« kur lufta mes RusisÃ« dhe UkrainÃ«s po intensifikohet dhe sulmet po shtrihen gjithnjÃ« e mÃ« thellÃ« nÃ« territorin rus.",
     "data_publikimit": "2026-09-02T20:55:39.383Z",
     "kategoria": 4,
     "foto": "lajmet/zelensky.JPG",
@@ -122,9 +122,9 @@
   "model": "lajmet.artikull",
   "pk": 8,
   "fields": {
-    "titulli": "Digjen disa shtëpi në Himarë, situata me zjarre drejt përmirësimit",
+    "titulli": "Digjen disa shtÃ«pi nÃ« HimarÃ«, situata me zjarre drejt pÃ«rmirÃ«simit",
     "slug": "digjen-disa-shtepi-ne-himare-situata-me-zjarre-drejt-permiresimit",
-    "permbajtja": "Gjashtë banesa u dogjën dhe 36 persona u evakuuan për shkak të zjarrit që përfshiu Himarën më 4 gusht. Megjithatë, të shtunën, autoritetet thanë se situata me zjarre në këtë qytet në jug të Shqipërisë është përmirësuar dhe po mbahet nën kontroll.\r\n\r\nZjarri shpërtheu mbrëmjen e së premtes në lagjen ‘1 Maji’ të qytetit të Himarës. Për shkak të erës flakët zbritën nga kodra dhe u përhapën me shpejtësi.\r\n\r\nAgjencia Kombëtare e Mbrojtjes Civile thotë se për të përballuar situatën e vështirë gjatë natës u angazhuan rreth 300 forca operacionale, ku përfshihen zjarrfikës, strukturat e emergjencave, pushtetit vendor dhe policisë, si dhe 171 efektivë të Forcave të Armatosura të Shqipërisë.\r\n\r\nBanorë të Himarës thanë se zjarri përparoi shumë shpejt drejt banesave të tyre, në disa prej të cilave kishte edhe turistë të huaj.\r\n\r\n“Unë kam ambiente shërbimi, të gjithë turistët u evakuuan për sigurinë e tyre. I thamë të zbresin poshtë në qendër derisa të qetësohet gjendja. Presim të vijë energjia që të kthehemi sadopak në normalitet” tha për mediat lokale një banore.\r\n\r\n“Zjarri ka ulur intensitetin, situata është përmirësuar, rreziku për banesat është shmangur dhe puna për shuarjen vijon”, thekson Agjencia Kombëtare e Mbrojtjes Civile.\r\n\r\nMinistri i Mbrojtjes i Shqipërisë, Ermal Nufi e cilësoi ditën e djeshme, si një ndër më të vështirat të situatës së zjarreve gjatë gjithë sezonit veror. Problematike ka qenë situata edhe në fshatin Levan të Fierit, ku u rrezikuan disa banesa nga zjarri.",
+    "permbajtja": "GjashtÃ« banesa u dogjÃ«n dhe 36 persona u evakuuan pÃ«r shkak tÃ« zjarrit qÃ« pÃ«rfshiu HimarÃ«n mÃ« 4 gusht. MegjithatÃ«, tÃ« shtunÃ«n, autoritetet thanÃ« se situata me zjarre nÃ« kÃ«tÃ« qytet nÃ« jug tÃ« ShqipÃ«risÃ« Ã«shtÃ« pÃ«rmirÃ«suar dhe po mbahet nÃ«n kontroll.\r\n\r\nZjarri shpÃ«rtheu mbrÃ«mjen e sÃ« premtes nÃ« lagjen Â‘1 MajiÂ’ tÃ« qytetit tÃ« HimarÃ«s. PÃ«r shkak tÃ« erÃ«s flakÃ«t zbritÃ«n nga kodra dhe u pÃ«rhapÃ«n me shpejtÃ«si.\r\n\r\nAgjencia KombÃ«tare e Mbrojtjes Civile thotÃ« se pÃ«r tÃ« pÃ«rballuar situatÃ«n e vÃ«shtirÃ« gjatÃ« natÃ«s u angazhuan rreth 300 forca operacionale, ku pÃ«rfshihen zjarrfikÃ«s, strukturat e emergjencave, pushtetit vendor dhe policisÃ«, si dhe 171 efektivÃ« tÃ« Forcave tÃ« Armatosura tÃ« ShqipÃ«risÃ«.\r\n\r\nBanorÃ« tÃ« HimarÃ«s thanÃ« se zjarri pÃ«rparoi shumÃ« shpejt drejt banesave tÃ« tyre, nÃ« disa prej tÃ« cilave kishte edhe turistÃ« tÃ« huaj.\r\n\r\nÂ“UnÃ« kam ambiente shÃ«rbimi, tÃ« gjithÃ« turistÃ«t u evakuuan pÃ«r sigurinÃ« e tyre. I thamÃ« tÃ« zbresin poshtÃ« nÃ« qendÃ«r derisa tÃ« qetÃ«sohet gjendja. Presim tÃ« vijÃ« energjia qÃ« tÃ« kthehemi sadopak nÃ« normalitetÂ” tha pÃ«r mediat lokale njÃ« banore.\r\n\r\nÂ“Zjarri ka ulur intensitetin, situata Ã«shtÃ« pÃ«rmirÃ«suar, rreziku pÃ«r banesat Ã«shtÃ« shmangur dhe puna pÃ«r shuarjen vijonÂ”, thekson Agjencia KombÃ«tare e Mbrojtjes Civile.\r\n\r\nMinistri i Mbrojtjes i ShqipÃ«risÃ«, Ermal Nufi e cilÃ«soi ditÃ«n e djeshme, si njÃ« ndÃ«r mÃ« tÃ« vÃ«shtirat tÃ« situatÃ«s sÃ« zjarreve gjatÃ« gjithÃ« sezonit veror. Problematike ka qenÃ« situata edhe nÃ« fshatin Levan tÃ« Fierit, ku u rrezikuan disa banesa nga zjarri.",
     "data_publikimit": "2026-09-05T12:10:45.532Z",
     "kategoria": 2,
     "foto": "lajmet/Capture_aDl9mQD.JPG",
@@ -136,9 +136,9 @@
   "model": "lajmet.artikull",
   "pk": 9,
   "fields": {
-    "titulli": "Sali Berisha kalon oqeanin/ Kreu i PD mbërrin në SHBA, pritet nga shqiptarët në aeroport",
+    "titulli": "Sali Berisha kalon oqeanin/ Kreu i PD mbÃ«rrin nÃ« SHBA, pritet nga shqiptarÃ«t nÃ« aeroport",
     "slug": "sali-berisha-kalon-oqeanin-kreu-i-pd-mberrin-ne-shba-pritet-nga-shqiptaret-ne-aeroport",
-    "permbajtja": "Kryetari i Partisë Demokratike, Sali Berisha, ka mbërritur në Shtetet e Bashkuara të Amerikës, ku do të qëndrojë për rreth një javë, në kuadër të një turi të programuar me disa aktivitete dhe takime.\r\n\r\nLajmin e mbërritjes e ka bërë të ditur vetë Berisha përmes një postimi në rrjetet sociale, ku ka publikuar edhe pamje nga pritja që i është bërë nga shqiptarë në SHBA. Në video, kreu i PD-së shihet duke përshëndetur dhe biseduar me bashkatdhetarët që kishin dalë për ta takuar.\r\n\r\n“Përtej oqeanit, një pritje shqiptare, një moment mirënjohjeje”, shkruan Berisha në përshkrimin e videos.\r\n\r\n<iframe src=\"https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2785049151888714%2F&show_text=true&width=267&t=0\" width=\"267\" height=\"591\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\" allowFullScreen=\"true\"></iframe>\r\n\r\nGjatë qëndrimit në SHBA, Berisha pritet të marrë pjesë në disa aktivitete, ndërsa një prej eventeve kryesore të axhendës së tij është Konventa Kombëtare Republikane, e cila do të zhvillohet në Dallas më 9 dhe 10 shtator.\r\n\r\nNë axhendë janë parashikuar gjithashtu edhe takime me komunitetin shqiptar. Takimi i parë pritet të zhvillohet të dielën, më 6 shtator, në New York, ndërsa një tjetër është planifikuar më 8 shtator në Texas.\r\n\r\nVizita e Berishës në SHBA vjen pas një zhvillimi të rëndësishëm në raport me autoritetet amerikane. Në qershor të këtij viti, Departamenti Amerikan i Shtetit anuloi masat kufizuese ndaj tij, rreth pesë vite pasi Berishës dhe familjes së tij iu ndalua hyrja në territorin amerikan.",
+    "permbajtja": "Kryetari i PartisÃ« Demokratike, Sali Berisha, ka mbÃ«rritur nÃ« Shtetet e Bashkuara tÃ« AmerikÃ«s, ku do tÃ« qÃ«ndrojÃ« pÃ«r rreth njÃ« javÃ«, nÃ« kuadÃ«r tÃ« njÃ« turi tÃ« programuar me disa aktivitete dhe takime.\r\n\r\nLajmin e mbÃ«rritjes e ka bÃ«rÃ« tÃ« ditur vetÃ« Berisha pÃ«rmes njÃ« postimi nÃ« rrjetet sociale, ku ka publikuar edhe pamje nga pritja qÃ« i Ã«shtÃ« bÃ«rÃ« nga shqiptarÃ« nÃ« SHBA. NÃ« video, kreu i PD-sÃ« shihet duke pÃ«rshÃ«ndetur dhe biseduar me bashkatdhetarÃ«t qÃ« kishin dalÃ« pÃ«r ta takuar.\r\n\r\nÂ“PÃ«rtej oqeanit, njÃ« pritje shqiptare, njÃ« moment mirÃ«njohjejeÂ”, shkruan Berisha nÃ« pÃ«rshkrimin e videos.\r\n\r\n<iframe src=\"https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2785049151888714%2F&show_text=true&width=267&t=0\" width=\"267\" height=\"591\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\" allowFullScreen=\"true\"></iframe>\r\n\r\nGjatÃ« qÃ«ndrimit nÃ« SHBA, Berisha pritet tÃ« marrÃ« pjesÃ« nÃ« disa aktivitete, ndÃ«rsa njÃ« prej eventeve kryesore tÃ« axhendÃ«s sÃ« tij Ã«shtÃ« Konventa KombÃ«tare Republikane, e cila do tÃ« zhvillohet nÃ« Dallas mÃ« 9 dhe 10 shtator.\r\n\r\nNÃ« axhendÃ« janÃ« parashikuar gjithashtu edhe takime me komunitetin shqiptar. Takimi i parÃ« pritet tÃ« zhvillohet tÃ« dielÃ«n, mÃ« 6 shtator, nÃ« New York, ndÃ«rsa njÃ« tjetÃ«r Ã«shtÃ« planifikuar mÃ« 8 shtator nÃ« Texas.\r\n\r\nVizita e BerishÃ«s nÃ« SHBA vjen pas njÃ« zhvillimi tÃ« rÃ«ndÃ«sishÃ«m nÃ« raport me autoritetet amerikane. NÃ« qershor tÃ« kÃ«tij viti, Departamenti Amerikan i Shtetit anuloi masat kufizuese ndaj tij, rreth pesÃ« vite pasi BerishÃ«s dhe familjes sÃ« tij iu ndalua hyrja nÃ« territorin amerikan.",
     "data_publikimit": "2026-09-05T20:29:45.341Z",
     "kategoria": 1,
     "foto": "lajmet/saliu.JPG",
@@ -150,9 +150,9 @@
   "model": "lajmet.artikull",
   "pk": 10,
   "fields": {
-    "titulli": "Shefi i NATO-s: Vonesat në mbështetjen për Ukrainën kushtojnë jetë",
+    "titulli": "Shefi i NATO-s: Vonesat nÃ« mbÃ«shtetjen pÃ«r UkrainÃ«n kushtojnÃ« jetÃ«",
     "slug": "shefi-i-nato-s-vonesat-ne-mbeshtetjen-per-ukrainen-kushtojne-jete",
-    "permbajtja": "Sekretari i Përgjithshëm i NATO-s, Mark Rutte, ka mirëpritur zotimet e reja për mbështetjen e Ukrainës, duke u bërë thirrje vendeve aleate dhe partnere që të vazhdojnë të rrisin ndihmën për Kievin.\r\n\r\nRutte mori pjesë të martën, më 8 shtator, në takimin e Grupit të Kontaktit për Mbrojtjen e Ukrainës, të kryesuar nga Gjermania dhe Mbretëria e Bashkuar.\r\n\r\nAi mirëpriti zotimet e reja që synojnë ta ndihmojnë Ukrainën të mbrohet nga Rusia, përfshirë edhe nga sulmet ajrore.\r\n\r\n“Gjatë vitit të fundit, aleatët kanë ndarë mbi 10 miliardë dollarë për PURL dhe shitjet ushtarake të SHBA-së për Ukrainën. Kjo është thelbësore dhe duhet mirëpritur fuqishëm”, deklaroi Rutte, shkruan në deklaratë NATO.\r\n\r\nSipas tij, në këtë shumë përfshihen edhe 3.5 miliardë dollarë nga kredia e Bashkimit Evropian për mbështetjen e Ukrainës.\r\n\r\n“Kjo është një shenjë konkrete e bashkëpunimit BE-NATO në mbështetje të Ukrainës dhe një tjetër shembull se Evropa po bën më shumë”, tha ai.\r\n\r\nSekretari i Përgjithshëm i NATO-s u tha aleatëve dhe partnerëve se Ukraina duhet të mbështetet me “urgjencën më të madhe”, duke paralajmëruar se vonesat kushtojnë jetë njerëzish.\r\n\r\nRutte theksoi se iniciativa PURL e NATO-s, përmes së cilës pajisjet ushtarake amerikane financohen nga aleatët dhe partnerët e NATO-s dhe i dërgohen Ukrainës, vazhdon të sigurojë pajisje kritike.\r\n\r\n“Ky proces është i pandërprerë dhe absolutisht thelbësor për ta ndihmuar Ukrainën të mbrojë qytetet e saj dhe të mbajë vijën e frontit”, deklaroi Rutte.",
+    "permbajtja": "Sekretari i PÃ«rgjithshÃ«m i NATO-s, Mark Rutte, ka mirÃ«pritur zotimet e reja pÃ«r mbÃ«shtetjen e UkrainÃ«s, duke u bÃ«rÃ« thirrje vendeve aleate dhe partnere qÃ« tÃ« vazhdojnÃ« tÃ« rrisin ndihmÃ«n pÃ«r Kievin.\r\n\r\nRutte mori pjesÃ« tÃ« martÃ«n, mÃ« 8 shtator, nÃ« takimin e Grupit tÃ« Kontaktit pÃ«r Mbrojtjen e UkrainÃ«s, tÃ« kryesuar nga Gjermania dhe MbretÃ«ria e Bashkuar.\r\n\r\nAi mirÃ«priti zotimet e reja qÃ« synojnÃ« ta ndihmojnÃ« UkrainÃ«n tÃ« mbrohet nga Rusia, pÃ«rfshirÃ« edhe nga sulmet ajrore.\r\n\r\nÂ“GjatÃ« vitit tÃ« fundit, aleatÃ«t kanÃ« ndarÃ« mbi 10 miliardÃ« dollarÃ« pÃ«r PURL dhe shitjet ushtarake tÃ« SHBA-sÃ« pÃ«r UkrainÃ«n. Kjo Ã«shtÃ« thelbÃ«sore dhe duhet mirÃ«pritur fuqishÃ«mÂ”, deklaroi Rutte, shkruan nÃ« deklaratÃ« NATO.\r\n\r\nSipas tij, nÃ« kÃ«tÃ« shumÃ« pÃ«rfshihen edhe 3.5 miliardÃ« dollarÃ« nga kredia e Bashkimit Evropian pÃ«r mbÃ«shtetjen e UkrainÃ«s.\r\n\r\nÂ“Kjo Ã«shtÃ« njÃ« shenjÃ« konkrete e bashkÃ«punimit BE-NATO nÃ« mbÃ«shtetje tÃ« UkrainÃ«s dhe njÃ« tjetÃ«r shembull se Evropa po bÃ«n mÃ« shumÃ«Â”, tha ai.\r\n\r\nSekretari i PÃ«rgjithshÃ«m i NATO-s u tha aleatÃ«ve dhe partnerÃ«ve se Ukraina duhet tÃ« mbÃ«shtetet me Â“urgjencÃ«n mÃ« tÃ« madheÂ”, duke paralajmÃ«ruar se vonesat kushtojnÃ« jetÃ« njerÃ«zish.\r\n\r\nRutte theksoi se iniciativa PURL e NATO-s, pÃ«rmes sÃ« cilÃ«s pajisjet ushtarake amerikane financohen nga aleatÃ«t dhe partnerÃ«t e NATO-s dhe i dÃ«rgohen UkrainÃ«s, vazhdon tÃ« sigurojÃ« pajisje kritike.\r\n\r\nÂ“Ky proces Ã«shtÃ« i pandÃ«rprerÃ« dhe absolutisht thelbÃ«sor pÃ«r ta ndihmuar UkrainÃ«n tÃ« mbrojÃ« qytetet e saj dhe tÃ« mbajÃ« vijÃ«n e frontitÂ”, deklaroi Rutte.",
     "data_publikimit": "2026-09-09T18:31:11.077Z",
     "kategoria": 4,
     "foto": "lajmet/rutte.jpg",
@@ -164,9 +164,9 @@
   "model": "lajmet.artikull",
   "pk": 11,
   "fields": {
-    "titulli": "Albulena Haxhiu zgjidhet Kryetare e Kuvendit të Kosovës",
+    "titulli": "Albulena Haxhiu zgjidhet Kryetare e Kuvendit tÃ« KosovÃ«s",
     "slug": "albulena-haxhiu-zgjidhet-kryetare-e-kuvendit-te-kosoves",
-    "permbajtja": "Albulena Haxhiu është zgjedhur kryetare e Kuvendit e legjislaturës së njëmbëdhjetë.\r\n\r\nAjo mori 62 vota pro, 16 kundër, ndërsa 13 veta abstenuan.\r\n\r\nHaxhiu cila ushtron edhe postin e presidentit nga 5 prilli, do të vazhdojë edhe më tutje këtë detyrë deri në zgjedhjen e presidentit të ri.\r\n\r\nAlbulena Haxhiu ishte edhe kryetare e legjislaturës së dhjetë e cila u shpërnda më 1 korrik 2026.\r\n\r\nBërja e Kuvendit të ri i hap rrugë formimit të qeverisë së re dhe zgjedhjes së presidentit të ri.\r\n\r\nPartia fituese, LVV, i ka votat për Kuvendin dhe qeverinë e re, por jo edhe për presidentin e ri.\r\n\r\nZgjedhja e presidentit ka qenë në qendër të krizës politike këtë vit dhe mund të shkaktojë sërish zgjedhje të reja.",
+    "permbajtja": "Albulena Haxhiu Ã«shtÃ« zgjedhur kryetare e Kuvendit e legjislaturÃ«s sÃ« njÃ«mbÃ«dhjetÃ«.\r\n\r\nAjo mori 62 vota pro, 16 kundÃ«r, ndÃ«rsa 13 veta abstenuan.\r\n\r\nHaxhiu cila ushtron edhe postin e presidentit nga 5 prilli, do tÃ« vazhdojÃ« edhe mÃ« tutje kÃ«tÃ« detyrÃ« deri nÃ« zgjedhjen e presidentit tÃ« ri.\r\n\r\nAlbulena Haxhiu ishte edhe kryetare e legjislaturÃ«s sÃ« dhjetÃ« e cila u shpÃ«rnda mÃ« 1 korrik 2026.\r\n\r\nBÃ«rja e Kuvendit tÃ« ri i hap rrugÃ« formimit tÃ« qeverisÃ« sÃ« re dhe zgjedhjes sÃ« presidentit tÃ« ri.\r\n\r\nPartia fituese, LVV, i ka votat pÃ«r Kuvendin dhe qeverinÃ« e re, por jo edhe pÃ«r presidentin e ri.\r\n\r\nZgjedhja e presidentit ka qenÃ« nÃ« qendÃ«r tÃ« krizÃ«s politike kÃ«tÃ« vit dhe mund tÃ« shkaktojÃ« sÃ«rish zgjedhje tÃ« reja.",
     "data_publikimit": "2026-09-09T18:36:21.148Z",
     "kategoria": 3,
     "foto": "lajmet/albulena_haxhiu.jpg",
@@ -189,7 +189,7 @@
   "model": "lajmet.video",
   "pk": 1,
   "fields": {
-    "titulli": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
+    "titulli": "Sali Berisha udhÃ«ton drejt SHBA-ve: UdhÃ«tim i viteve pÃ«r mua, miqve do u them qÃ« unÃ« erdha",
     "youtube_id": "ufRy7OTX_lE",
     "data_publikimit": "2026-09-04T12:12:45.745Z"
   }
