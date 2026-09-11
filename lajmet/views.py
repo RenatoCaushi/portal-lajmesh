@@ -1,9 +1,14 @@
-import xml.etree.ElementTree as ET
+import json
 import urllib.request
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q, F
 from django.core.paginator import Paginator
 from .models import Artikull, Kategoria, Koment, Video, Reklama
+
+# Çelësi yt zyrtar i YouTube API v3
+YOUTUBE_API_KEY = 'AIzaSyBVJo36lphLUy9Dmv2EdISLpoLTvrfCcIw'
+YOUTUBE_CHANNEL_ID = 'UCgolqCIR2vtRk3L2X_abDTA'
+
 
 def faqja_kryesore(request):
     # Plotëson automatikisht slug-un për çdo artikull bosh
@@ -37,25 +42,31 @@ def faqja_kryesore(request):
     except Exception:
         reklama = None
 
-    # Marrja e videos nga RSS
+    # --- MARRJA E VIDEOS PËRMES YOUTUBE DATA API V3 ---
     yt_video_id = None
     try:
-        feed_url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCgolqCIR2vtRk3L2X_abDTA"
-        req = urllib.request.Request(
-            feed_url, 
-            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+        api_url = (
+            f"https://www.googleapis.com/youtube/v3/search"
+            f"?key={YOUTUBE_API_KEY}"
+            f"&channelId={YOUTUBE_CHANNEL_ID}"
+            f"&part=snippet,id"
+            f"&order=date"
+            f"&maxResults=1"
+            f"&type=video"
         )
-        with urllib.request.urlopen(req, timeout=2) as response:
-            xml_data = response.read()
-            root = ET.fromstring(xml_data)
-            for elem in root.iter():
-                if elem.tag.endswith('videoId'):
-                    yt_video_id = elem.text
-                    break
+        req = urllib.request.Request(
+            api_url, 
+            headers={'User-Agent': 'Mozilla/5.0'}
+        )
+        with urllib.request.urlopen(req, timeout=3) as response:
+            data = json.loads(response.read().decode('utf-8'))
+            items = data.get('items', [])
+            if items:
+                yt_video_id = items[0]['id']['videoId']
     except Exception:
         yt_video_id = None
 
-    # Fallback i sigurt nga DB
+    # Fallback i sigurt nga DB nëse API dështon ose mbarojnë kuotat
     if not yt_video_id:
         try:
             video_db = Video.objects.last()
