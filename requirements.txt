@@ -11,6 +11,8 @@ cryptography==50.0.1
 dj-database-url==3.1.2
 Django==6.1
 django-cloudinary-storage==0.3.0
+feedparser==6.0.14
+feedparser-sgmllib==2.1.0
 frozenlist==1.8.0
 gunicorn==26.2.0
 http_ece==1.2.1
