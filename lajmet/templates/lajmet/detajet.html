@@ -1,109 +1,86 @@
 {% extends "base.html" %}
 
+{% block meta_tags %}
+    <title>{{ artikull.titulli }} - Konfidenciale News</title>
+    <meta name="description" content="{{ artikull.permbajtja|truncatewords:25|striptags }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="KONFIDENCIALE NEWS">
+    <meta property="og:title" content="{{ artikull.titulli }}">
+    <meta property="og:description" content="{{ artikull.permbajtja|truncatewords:25|striptags }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    {% if artikull.foto %}
+        <meta property="og:image" content="{{ artikull.foto.url }}">
+        <meta property="og:image:secure_url" content="{{ artikull.foto.url }}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+    {% endif %}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ artikull.titulli }}">
+    <meta name="twitter:description" content="{{ artikull.permbajtja|truncatewords:25|striptags }}">
+    {% if artikull.foto %}
+        <meta name="twitter:image" content="{{ artikull.foto.url }}">
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-lg-8">
         
-        <!-- Butoni Mbrapsht dhe Kategoria -->
-        <div class="d-flex align-items-center gap-2 mb-3">
-            <a href="{% url 'faqja_kryesore' %}" class="btn btn-outline-secondary btn-sm">&larr; Kthehu te Kryefaqja</a>
+        <!-- TITULLI ME I LAJMIT -->
+        <h1 class="fw-bold mb-3 display-5">{{ artikull.titulli }}</h1>
+        
+        <!-- DATA DHE KATEGORIA -->
+        <div class="d-flex align-items-center gap-3 text-muted mb-4 border-bottom pb-3">
             {% if artikull.kategoria %}
                 <a href="{% url 'faqja_kryesore' %}?kategoria={{ artikull.kategoria.id }}" class="text-decoration-none">
                     <span class="badge bg-primary fs-6">{{ artikull.kategoria.emri }}</span>
                 </a>
             {% endif %}
+            <small><i class="bi bi-clock me-1"></i>Publikuar më: {{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small>
         </div>
 
-        <!-- Titulli i Lajmit -->
-        <h1 class="fw-bold mb-3">{{ artikull.titulli }}</h1>
-
-        <!-- Data e Publikimit -->
-        <div class="d-flex justify-content-between text-muted border-bottom pb-2 mb-4">
-            <small>Publikuar më: {{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small>
-        </div>
-
-        <!-- MEDIA KRYESORE (VIDEO YOUTUBE OSE FOTO) -->
-        {% if artikull.youtube_id %}
-            <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm mb-4">
-                <iframe 
-                    src="https://www.youtube.com/embed/{{ artikull.youtube_id }}" 
-                    title="{{ artikull.titulli }}" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        {% elif artikull.foto %}
+        <!-- FOTOJA KRYESORE E LAJMIT -->
+        {% if artikull.foto %}
             <div class="mb-4">
-                <img src="{{ artikull.foto.url }}" class="img-fluid rounded shadow-sm w-100" alt="{{ artikull.titulli }}">
+                <img src="{{ artikull.foto.url }}" alt="{{ artikull.titulli }}" class="img-fluid rounded shadow w-100" style="max-height: 480px; object-fit: cover;">
             </div>
         {% endif %}
 
-        <!-- Përmbajtja e Lajmit me Embeds (Facebook / Instagram) -->
-        <div class="lh-lg fs-5 mb-4 article-body">
-            {{ artikull.permbajtja_me_embeds|safe }}
+        <!-- PERMBAJTJA E LAJMIT -->
+        <div class="fs-5 lh-lg text-dark mb-5" style="white-space: pre-line;">
+            {{ artikull.permbajtja }}
         </div>
 
-        <!-- BLLOKU I SHPËRNDARJES SOCIALE -->
-        <div class="d-flex align-items-center flex-wrap gap-2 my-4 py-3 border-top border-bottom">
-            <span class="fw-bold me-2"><i class="bi bi-share-fill me-1"></i>Shpërndaje:</span>
-
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" 
-               target="_blank" class="btn btn-sm btn-primary">
-                <i class="bi bi-facebook"></i> Facebook
-            </a>
-
-            <!-- WhatsApp -->
-            <a href="https://api.whatsapp.com/send?text={{ artikull.titulli|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" 
-               target="_blank" class="btn btn-sm btn-success">
-                <i class="bi bi-whatsapp"></i> WhatsApp
-            </a>
-
-            <!-- X (Twitter) -->
-            <a href="https://twitter.com/intent/tweet?text={{ artikull.titulli|urlencode }}&url={{ request.build_absolute_uri|urlencode }}" 
-               target="_blank" class="btn btn-sm btn-dark">
-                <i class="bi bi-twitter-x"></i> X
-            </a>
-        </div>
-
-        <!-- SEKSIONI I KOMENTEVE -->
-        <div class="mt-4 mb-5">
-            <h3 class="mb-4 fw-bold">Komentet ({{ komentet.count|default:0 }})</h3>
-
-            <!-- Formular vetëm me fushën e komentit -->
-            <div class="card mb-4 shadow-sm border-0 bg-body-tertiary">
-                <div class="card-body p-4">
-                    <h5 class="card-title mb-3">Lini një koment</h5>
-                    <form method="POST" action="{% url 'detajet_e_lajmit' artikull.slug %}">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Komenti juaj</label>
-                            <textarea name="permbajtja" class="form-control" rows="3" placeholder="Shkruani komentin këtu..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary px-4">Dërgo Komentin</button>
-                    </form>
-                </div>
+        <!-- REKLAMË BANNER BRËNDA LAJMIT -->
+        {% if reklama %}
+            <div class="my-4 text-center">
+                <a href="{{ reklama.linku }}" target="_blank" rel="noopener noreferrer">
+                    {% if reklama.imazhi %}
+                        <img src="{{ reklama.imazhi.url }}" alt="{{ reklama.titulli }}" class="img-fluid rounded shadow" style="max-height: 150px; width: 100%; object-fit: cover;">
+                    {% endif %}
+                </a>
             </div>
+        {% endif %}
 
-            <!-- Lista e Komenteve -->
-            {% for koment in komentet %}
-                <div class="card mb-3 shadow-sm border-0">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <h6 class="fw-bold mb-0 text-primary">
-                                {% if koment.emri %}{{ koment.emri }}{% else %}Anonim{% endif %}
-                            </h6>
-                            <small class="text-muted">{{ koment.data_publikimit|date:"d/m/Y H:i" }}</small>
-                        </div>
-                        <p class="card-text mb-0">{{ koment.permbajtja }}</p>
-                    </div>
-                </div>
-            {% endfor %}
+        <!-- SHPËRNDARJA NË RRJETE SOCIALE -->
+        <div class="p-3 bg-light rounded d-flex align-items-center justify-content-between mb-5 border">
+            <span class="fw-bold">Shpërndaje këtë lajm:</span>
+            <div class="d-flex gap-2">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}" target="_blank" class="btn btn-primary btn-sm">
+                    <i class="bi bi-facebook me-1"></i> Facebook
+                </a>
+                <a href="https://api.whatsapp.com/send?text={{ artikull.titulli|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" target="_blank" class="btn btn-success btn-sm">
+                    <i class="bi bi-whatsapp me-1"></i> WhatsApp
+                </a>
+            </div>
         </div>
+
+        <a href="{% url 'faqja_kryesore' %}" class="btn btn-outline-secondary mb-4">&laquo; Kthehu te Kryefaqja</a>
 
     </div>
 </div>
-
-<!-- Scripts për ngarkimin e Embed-eve nga Instagram & Facebook -->
-<script async src="//www.instagram.com/embed.js"></script>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/sq_AL/sdk.js#xfbml=1&version=v18.0"></script>
 {% endblock %}
