@@ -19,35 +19,34 @@
 </head>
 <body class="bg-light d-flex flex-column min-vh-100">
 
-    <!-- NAVBAR I KUQ (BG-DANGER) -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-white fs-3" href="{% url 'faqja_kryesore' %}">KONFIDENCIALE NEWS</a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <!-- NAVBAR I KUQ (BG-DANGER) ME TEKSTIN E SAKTE TE LOGOS -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-white" href="{% url 'faqja_kryesore' %}">KONFIDENCIALE NEWS</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white active" href="{% url 'faqja_kryesore' %}">Kreu</a>
+                </li>
+                {% for kat in kategorite %}
                     <li class="nav-item">
-                        <a class="nav-link text-white active" href="{% url 'faqja_kryesore' %}">Kreu</a>
+                        <a class="nav-link text-white-50" href="{% url 'faqja_kryesore' %}?kategoria={{ kat.id }}">{{ kat.emri }}</a>
                     </li>
-                    {% for kat in kategorite %}
-                        <li class="nav-item">
-                            <a class="nav-link text-white-50" href="{% url 'faqja_kryesore' %}?kategoria={{ kat.id }}">{{ kat.emri }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
+                {% endfor %}
+            </ul>
 
-                <form class="d-flex" action="{% url 'faqja_kryesore' %}" method="GET">
-                    <input class="form-control me-2" type="search" name="kerko" placeholder="Kërko lajme..." value="{{ request.GET.kerko }}">
-                    <button class="btn btn-outline-light" type="submit">Kërko</button>
-                </form>
-            </div>
+            <form class="d-flex" action="{% url 'faqja_kryesore' %}" method="GET">
+                <input class="form-control me-2" type="search" name="kerko" placeholder="Kërko lajme..." value="{{ request.GET.kerko }}">
+                <button class="btn btn-outline-light" type="submit">Kërko</button>
+            </form>
         </div>
-    </nav>
-
+    </div>
+</nav>
     <!-- CONTENT -->
     <main class="container my-4 flex-grow-1">
         {% block content %}
