@@ -176,3 +176,6 @@ else:
 
 # Përputhshmëria me pakot që kërkojnë variablën e vjetër
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+# Zgjidhja për YouTube Embed Error 153: Lejon shfletuesin të dërgojë Referer Header te YouTube
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
