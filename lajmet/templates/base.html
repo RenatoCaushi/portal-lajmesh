@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Portali i Lajmeve{% endblock %}</title>
+    <title>{% block title %}KONFIDENCIALE NEWS{% endblock %}</title>
 
     <!-- Meta Tags për SEO & Rrjete Sociale -->
     {% block meta %}
-    <meta property="og:title" content="Portali i Lajmeve" />
+    <meta property="og:title" content="KONFIDENCIALE NEWS" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="Burimi juaj i besueshëm për lajmet më të fundit në kohë reale." />
     {% endblock %}
@@ -72,9 +72,9 @@
     </div>
 
     <!-- Menuja (Navbar) me Kërkim dhe Kategori Dinamike -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm mb-4">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="{% url 'faqja_kryesore' %}">KONFIDENCIALE NEWS</a>
+            <a class="navbar-brand fw-bold text-white text-uppercase" href="{% url 'faqja_kryesore' %}">KONFIDENCIALE NEWS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -83,11 +83,11 @@
                 <!-- Menytë e Kategorive Dinamike -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'faqja_kryesore' %}">Kreu</a>
+                        <a class="nav-link text-white fw-semibold" href="{% url 'faqja_kryesore' %}">Kreu</a>
                     </li>
                     {% for kat in kategorite %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'faqja_kryesore' %}?kategoria={{ kat.id }}">{{ kat.emri }}</a>
+                            <a class="nav-link text-white fw-semibold" href="{% url 'faqja_kryesore' %}?kategoria={{ kat.id }}">{{ kat.emri }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -112,7 +112,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <h5>Portali i Lajmeve</h5>
+                    <h5>KONFIDENCIALE NEWS</h5>
                     <p class="text-white-50">Burimi juaj i besueshëm për lajmet më të fundit në kohë reale.</p>
                 </div>
                 <div class="col-md-4 mb-3">
@@ -153,7 +153,7 @@
             </div>
             <hr class="bg-secondary">
             <div class="text-center text-white-50">
-                <small>&copy; {% now "Y" %} Portali i Lajmeve. Të gjitha të drejtat të rezervuara.</small>
+                <small>&copy; {% now "Y" %} KONFIDENCIALE NEWS. Të gjitha të drejtat të rezervuara.</small>
             </div>
         </div>
     </footer>
