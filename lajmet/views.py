@@ -48,6 +48,25 @@ def faqja_kryesore(request):
 
 def detajet_e_lajmit(request, slug):
     artikull = get_object_or_404(Artikull, slug=slug)
+    
+    # Rrit numrin e shikimeve
+    artikull.shikime += 1
+    artikull.save(update_fields=['shikime'])
+
+    # Trajtimi i dërgimit të formularit të komenteve
+    if request.method == 'POST':
+        emri = request.POST.get('emri', '').strip()
+        permbajtja = request.POST.get('permbajtja', '').strip()
+
+        if permbajtja:
+            Koment.objects.create(
+                artikulli=artikull,
+                emri=emri if emri else 'Anonim',
+                permbajtja=permbajtja,
+                is_approved=True  # Ruan komentin direkt si të miratuar
+            )
+            return redirect('detajet_e_lajmit', slug=artikull.slug)
+
     kategorite = Kategoria.objects.all()
     
     try:
