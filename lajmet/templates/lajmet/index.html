@@ -22,13 +22,14 @@
                         </div>
                     {% endif %}
                     
-                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3 mb-3">
+                    <!-- Hiqet d-none d-md-block dhe përshtaten hapësirat e madhësitë e shkronjave për celular -->
+                    <div class="carousel-caption bg-dark bg-opacity-75 rounded p-2 p-md-3 mb-2 mb-md-3">
                         {% if artikull.kategoria %}
                             <a href="{% url 'faqja_kryesore' %}?kategoria={{ artikull.kategoria.id }}" class="text-decoration-none">
-                                <span class="badge bg-primary mb-2">{{ artikull.kategoria.emri }}</span>
+                                <span class="badge bg-primary mb-1 mb-md-2 fs-6">{{ artikull.kategoria.emri }}</span>
                             </a>
                         {% endif %}
-                        <h4 class="mb-0">
+                        <h4 class="mb-0 fs-6 fs-md-4">
                             <a href="{% url 'detajet_e_lajmit' artikull.slug %}" class="text-white text-decoration-none fw-bold">
                                 {{ artikull.titulli }}
                             </a>
