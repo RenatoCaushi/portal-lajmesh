@@ -60,11 +60,11 @@
         </div>
     {% endif %}
 
-    <!-- SEKSIONI I VIDEOVE YOUTUBE -->
+    <!-- SEKSIONI I VIDEOVE YOUTUBE (PËRDITËSIM AUTOMATIK NGA KANALI) -->
     <div class="my-5 p-4 bg-dark text-white rounded shadow-lg">
         <h2 class="mb-4 text-warning border-bottom border-warning pb-2 d-flex justify-content-between align-items-center">
             <span><i class="bi bi-youtube me-2"></i>Videot e Fundit</span>
-            <a href="https://www.youtube.com/@Konfidenciale1" target="_blank" class="btn btn-outline-warning btn-sm">
+            <a href="https://www.youtube.com/@konfidenciale1" target="_blank" rel="noopener" class="btn btn-outline-warning btn-sm">
                 Abonohu në Kanal
             </a>
         </h2>
@@ -72,39 +72,25 @@
         <div class="row g-3 align-items-stretch">
             <!-- Videoja Kryesore (Majtas) -->
             <div class="col-lg-7 d-flex">
-                <div class="card bg-secondary border-0 shadow rounded overflow-hidden w-100 h-100 d-flex flex-column">
-                    {% if yt_video_1 %}
-                        <iframe 
-                            class="w-100 h-100 border-0 flex-grow-1" 
-                            style="min-height: 320px;" 
-                            src="https://www.youtube.com/embed/{{ yt_video_1 }}" 
-                            allowfullscreen>
-                        </iframe>
-                    {% else %}
-                        <div class="p-5 text-center text-white-50 my-auto">Shto një video te Admin Panel</div>
-                    {% endif %}
+                <div class="card bg-secondary border-0 shadow rounded overflow-hidden w-100 h-100 d-flex flex-column" id="yt-box-1">
+                    <div class="p-5 text-center text-white-50 my-auto">
+                        <div class="spinner-border text-warning me-2" role="status"></div>
+                        Po ngarkohet videoja e fundit...
+                    </div>
                 </div>
             </div>
 
             <!-- 2 Videot e vogla (Djathtas) -->
             <div class="col-lg-5 d-flex flex-column gap-3">
                 <div class="card bg-secondary border-0 shadow rounded overflow-hidden">
-                    <div class="ratio ratio-16x9">
-                        {% if yt_video_2 %}
-                            <iframe src="https://www.youtube.com/embed/{{ yt_video_2 }}" allowfullscreen></iframe>
-                        {% else %}
-                            <div class="p-4 text-center text-white-50 my-auto">Shto videon e dytë</div>
-                        {% endif %}
+                    <div class="ratio ratio-16x9" id="yt-box-2">
+                        <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet...</div>
                     </div>
                 </div>
 
                 <div class="card bg-secondary border-0 shadow rounded overflow-hidden">
-                    <div class="ratio ratio-16x9">
-                        {% if yt_video_3 %}
-                            <iframe src="https://www.youtube.com/embed/{{ yt_video_3 }}" allowfullscreen></iframe>
-                        {% else %}
-                            <div class="p-4 text-center text-white-50 my-auto">Shto videon e tretë</div>
-                        {% endif %}
+                    <div class="ratio ratio-16x9" id="yt-box-3">
+                        <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet...</div>
                     </div>
                 </div>
             </div>
@@ -195,5 +181,74 @@
         </ul>
     </nav>
     {% endif %}
+
+    <!-- JAVASCRIPT PËR TË MARRË AUTOMATIKISHT VIDEOT NGA @konfidenciale1 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Channel Handle i YouTube: @konfidenciale1
+            const channelUrl = "https://www.youtube.com/@konfidenciale1";
+            // Përdorim AllOrigins CORS Proxy për të lexuar XML/HTML të YouTube pa u bllokuar nga CORS
+            const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(channelUrl);
+
+            fetch(proxyUrl)
+                .then(response => {
+                    if (response.ok) return response.json();
+                    throw new Error('Rrjeti dështoi.');
+                })
+                .then(data => {
+                    const html = data.contents;
+                    // Kërko të gjitha ID-të e videove me regEx nga kodi burimor i faqes
+                    const matches = html.match(/"videoId":"([a-zA-Z0-9_-]{11})"/g);
+
+                    if (matches && matches.length > 0) {
+                        // Nxjerr vetëm ID-të unike
+                        const ids = [];
+                        matches.forEach(m => {
+                            const id = m.split(':"')[1].replace('"', '');
+                            if (!ids.includes(id)) {
+                                ids.push(id);
+                            }
+                        });
+
+                        // Shto video-n 1 (Kryesorja majtas)
+                        if (ids[0]) {
+                            document.getElementById('yt-box-1').innerHTML = `
+                                <iframe class="w-100 h-100 border-0 flex-grow-1" style="min-height: 320px;" 
+                                    src="https://www.youtube.com/embed/${ids[0]}" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen></iframe>`;
+                        }
+
+                        // Shto video-n 2 (Lart djathtas)
+                        if (ids[1]) {
+                            document.getElementById('yt-box-2').innerHTML = `
+                                <iframe src="https://www.youtube.com/embed/${ids[1]}" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen></iframe>`;
+                        }
+
+                        // Shto video-n 3 (Poshtë djathtas)
+                        if (ids[2]) {
+                            document.getElementById('yt-box-3').innerHTML = `
+                                <iframe src="https://www.youtube.com/embed/${ids[2]}" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen></iframe>`;
+                        }
+                    } else {
+                        showError("Nuk u gjetën video në kanal.");
+                    }
+                })
+                .catch(err => {
+                    console.error("Gabim gjatë ngarkimit të videove:", err);
+                    showError("Nuk u ngarkuan dot videot automatikisht.");
+                });
+
+            function showError(msg) {
+                document.getElementById('yt-box-1').innerHTML = `<div class="p-4 text-center text-white-50 my-auto">${msg}</div>`;
+                document.getElementById('yt-box-2').innerHTML = `<div class="p-4 text-center text-white-50 my-auto">${msg}</div>`;
+                document.getElementById('yt-box-3').innerHTML = `<div class="p-4 text-center text-white-50 my-auto">${msg}</div>`;
+            }
+        });
+    </script>
 
 {% endblock %}
