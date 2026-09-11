@@ -5,13 +5,12 @@ from django.db.models import Q, F
 from django.core.paginator import Paginator
 from .models import Artikull, Kategoria, Koment, Video, Reklama
 
-# Çelësi yt zyrtar i YouTube API v3
 YOUTUBE_API_KEY = 'AIzaSyBVJo36lphLUy9Dmv2EdISLpoLTvrfCcIw'
-YOUTUBE_CHANNEL_ID = 'UCgolqCIR2vtRk3L2X_abDTA'
+# Channel ID e saktë për @Konfidenciale1
+YOUTUBE_CHANNEL_ID = 'UCJz49xXlYx-e4qFvY_r0P7g'
 
 
 def faqja_kryesore(request):
-    # Plotëson automatikisht slug-un për çdo artikull bosh
     try:
         for art in Artikull.objects.filter(Q(slug__isnull=True) | Q(slug='')):
             art.save()
@@ -20,20 +19,17 @@ def faqja_kryesore(request):
 
     lajmet_list = Artikull.objects.all().order_by('-data_publikimit')
 
-    # Kërkimi me fjalë kyçe
     kerko = request.GET.get('kerko')
     if kerko:
         lajmet_list = lajmet_list.filter(
             Q(titulli__icontains=kerko) | Q(permbajtja__icontains=kerko)
         )
 
-    # Filtrimi sipas kategorisë
     kategoria_id = request.GET.get('kategoria')
     if kategoria_id:
         lajmet_list = lajmet_list.filter(kategoria_id=kategoria_id)
 
     slider_lajmet = lajmet_list[:3] if not kategoria_id else []
-
     kategorite = Kategoria.objects.all()
     videot = Video.objects.all()[:4]
     
@@ -42,7 +38,7 @@ def faqja_kryesore(request):
     except Exception:
         reklama = None
 
-    # --- MARRJA E 3 VIDEOVE MË TË REJA PËRMES YOUTUBE DATA API V3 ---
+    # --- MARRJA E VIDEOVE NGA YOUTUBE API ---
     yt_videos = []
     try:
         api_url = (
@@ -51,23 +47,23 @@ def faqja_kryesore(request):
             f"&channelId={YOUTUBE_CHANNEL_ID}"
             f"&part=snippet,id"
             f"&order=date"
-            f"&maxResults=3"
+            f"&maxResults=5"
             f"&type=video"
         )
         req = urllib.request.Request(
             api_url, 
             headers={'User-Agent': 'Mozilla/5.0'}
         )
-        with urllib.request.urlopen(req, timeout=3) as response:
+        with urllib.request.urlopen(req, timeout=5) as response:
             data = json.loads(response.read().decode('utf-8'))
-            items = data.get('items', [])
-            for item in items:
-                if 'id' in item and 'videoId' in item['id']:
-                    yt_videos.append(item['id']['videoId'])
-    except Exception:
-        yt_videos = []
+            for item in data.get('items', []):
+                vid = item.get('id', {}).get('videoId')
+                if vid:
+                    yt_videos.append(vid)
+    except Exception as e:
+        print(f"Gabim me YouTube API: {e}")
 
-    # Faqëzimi (Pagination)
+    # Paginator
     paginator = Paginator(lajmet_list, 6) 
     page_number = request.GET.get('page')
     lajmet = paginator.get_page(page_number)
@@ -79,42 +75,8 @@ def faqja_kryesore(request):
         'videot': videot,
         'reklama': reklama,
         'kategoria_zgjedhur': kategoria_id,
-        # Ndahen 3 ID-të e videove për template-in HTML
         'yt_video_1': yt_videos[0] if len(yt_videos) > 0 else None,
         'yt_video_2': yt_videos[1] if len(yt_videos) > 1 else None,
         'yt_video_3': yt_videos[2] if len(yt_videos) > 2 else None,
     }
     return render(request, 'lajmet/index.html', context)
-
-
-def detajet_e_lajmit(request, slug):
-    artikull = get_object_or_404(Artikull, slug=slug)
-    
-    try:
-        Artikull.objects.filter(pk=artikull.pk).update(shikime=F('shikime') + 1)
-        artikull.refresh_from_db()
-    except Exception:
-        pass
-
-    if request.method == 'POST':
-        permbajtja = request.POST.get('permbajtja')
-        if permbajtja:
-            Koment.objects.create(
-                artikulli=artikull,
-                emri="Anonim",
-                permbajtja=permbajtja,
-                is_approved=True
-            )
-            return redirect('detajet_e_lajmit', slug=artikull.slug)
-
-    komentet = artikull.komentet.filter(is_approved=True).order_by('-data_publikimit')
-    try:
-        reklama = Reklama.objects.filter(is_active=True).last()
-    except Exception:
-        reklama = None
-    
-    return render(request, 'lajmet/detajet.html', {
-        'artikull': artikull,
-        'komentet': komentet,
-        'reklama': reklama,
-    })
