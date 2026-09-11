@@ -60,7 +60,7 @@
         </div>
     {% endif %}
 
-    <!-- SEKSIONI I VIDEOVE YOUTUBE (PËRDITËSIM AUTOMATIK NGA KANALI) -->
+    <!-- SEKSIONI I VIDEOVE YOUTUBE AUTOMATIKE -->
     <div class="my-5 p-4 bg-dark text-white rounded shadow-lg">
         <h2 class="mb-4 text-warning border-bottom border-warning pb-2 d-flex justify-content-between align-items-center">
             <span><i class="bi bi-youtube me-2"></i>Videot e Fundit</span>
@@ -73,7 +73,7 @@
             <!-- Videoja Kryesore (Majtas) -->
             <div class="col-lg-7 d-flex">
                 <div class="card bg-secondary border-0 shadow rounded overflow-hidden w-100 h-100 d-flex flex-column" id="yt-box-1">
-                    <div class="p-5 text-center text-white-50 my-auto">Po ngarkohen videot...</div>
+                    <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet videoja...</div>
                 </div>
             </div>
 
@@ -81,13 +81,13 @@
             <div class="col-lg-5 d-flex flex-column gap-3">
                 <div class="card bg-secondary border-0 shadow rounded overflow-hidden">
                     <div class="ratio ratio-16x9" id="yt-box-2">
-                        <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet...</div>
+                        <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet videoja...</div>
                     </div>
                 </div>
 
                 <div class="card bg-secondary border-0 shadow rounded overflow-hidden">
                     <div class="ratio ratio-16x9" id="yt-box-3">
-                        <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet...</div>
+                        <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet videoja...</div>
                     </div>
                 </div>
             </div>
@@ -179,28 +179,13 @@
     </nav>
     {% endif %}
 
-    <!-- JAVASCRIPT ME API KEY TE SAKTE -->
+    <!-- JAVASCRIPT PER YOUTUBE AUTOMATIK -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const API_KEY = "AIzaSyBVJo36lphLUy9Dmv2EdlSLpoLTvrfCclw";
-            const channelHandle = "konfidenciale1"; 
+            const uploadsPlaylistId = "UUJz49xXlYx-e4qFvY_r0P7g"; 
 
-            const url = `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=${channelHandle}&key=${API_KEY}`;
-
-            fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                    if (data.items && data.items.length > 0) {
-                        const uploadsPlaylistId = data.items[0].contentDetails.relatedPlaylists.uploads;
-                        fetchLatestVideos(uploadsPlaylistId);
-                    } else {
-                        showError("Nuk u gjet kanali me kete handle.");
-                    }
-                })
-                .catch(err => {
-                    console.error("Gabim te API:", err);
-                    showError("Gabim ne lidhje.");
-                });
+            fetchLatestVideos(uploadsPlaylistId);
 
             function fetchLatestVideos(playlistId) {
                 const playlistUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=3&key=${API_KEY}`;
