@@ -4,7 +4,6 @@
     <title>{{ artikull.titulli }} - Konfidenciale News</title>
     <meta name="description" content="{{ artikull.permbajtja|truncatewords:25|striptags }}">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="KONFIDENCIALE NEWS">
     <meta property="og:title" content="{{ artikull.titulli }}">
@@ -17,7 +16,6 @@
         <meta property="og:image:height" content="630">
     {% endif %}
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ artikull.titulli }}">
     <meta name="twitter:description" content="{{ artikull.permbajtja|truncatewords:25|striptags }}">
@@ -27,60 +25,20 @@
 {% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-lg-8">
-        
-        <!-- TITULLI ME I LAJMIT -->
-        <h1 class="fw-bold mb-3 display-5">{{ artikull.titulli }}</h1>
-        
-        <!-- DATA DHE KATEGORIA -->
-        <div class="d-flex align-items-center gap-3 text-muted mb-4 border-bottom pb-3">
-            {% if artikull.kategoria %}
-                <a href="{% url 'faqja_kryesore' %}?kategoria={{ artikull.kategoria.id }}" class="text-decoration-none">
-                    <span class="badge bg-primary fs-6">{{ artikull.kategoria.emri }}</span>
-                </a>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2>{{ artikull.titulli }}</h2>
+            <p class="text-muted"><small>Publikuar më: {{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small></p>
+            
+            {% if artikull.foto %}
+                <img src="{{ artikull.foto.url }}" class="img-fluid rounded mb-3" alt="{{ artikull.titulli }}">
             {% endif %}
-            <small><i class="bi bi-clock me-1"></i>Publikuar më: {{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small>
+            
+            <p class="mt-3">{{ artikull.permbajtja|linebreaks }}</p>
+            
+            <a href="{% url 'faqja_kryesore' %}" class="btn btn-secondary mt-3">Kthehu te kryefaqja</a>
         </div>
-
-        <!-- FOTOJA KRYESORE E LAJMIT -->
-        {% if artikull.foto %}
-            <div class="mb-4">
-                <img src="{{ artikull.foto.url }}" alt="{{ artikull.titulli }}" class="img-fluid rounded shadow w-100" style="max-height: 480px; object-fit: cover;">
-            </div>
-        {% endif %}
-
-        <!-- PERMBAJTJA E LAJMIT -->
-        <div class="fs-5 lh-lg text-dark mb-5" style="white-space: pre-line;">
-            {{ artikull.permbajtja }}
-        </div>
-
-        <!-- REKLAMË BANNER BRËNDA LAJMIT -->
-        {% if reklama %}
-            <div class="my-4 text-center">
-                <a href="{{ reklama.linku }}" target="_blank" rel="noopener noreferrer">
-                    {% if reklama.imazhi %}
-                        <img src="{{ reklama.imazhi.url }}" alt="{{ reklama.titulli }}" class="img-fluid rounded shadow" style="max-height: 150px; width: 100%; object-fit: cover;">
-                    {% endif %}
-                </a>
-            </div>
-        {% endif %}
-
-        <!-- SHPËRNDARJA NË RRJETE SOCIALE -->
-        <div class="p-3 bg-light rounded d-flex align-items-center justify-content-between mb-5 border">
-            <span class="fw-bold">Shpërndaje këtë lajm:</span>
-            <div class="d-flex gap-2">
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}" target="_blank" class="btn btn-primary btn-sm">
-                    <i class="bi bi-facebook me-1"></i> Facebook
-                </a>
-                <a href="https://api.whatsapp.com/send?text={{ artikull.titulli|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" target="_blank" class="btn btn-success btn-sm">
-                    <i class="bi bi-whatsapp me-1"></i> WhatsApp
-                </a>
-            </div>
-        </div>
-
-        <a href="{% url 'faqja_kryesore' %}" class="btn btn-outline-secondary mb-4">&laquo; Kthehu te Kryefaqja</a>
-
     </div>
 </div>
 {% endblock %}
