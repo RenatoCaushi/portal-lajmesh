@@ -5,10 +5,9 @@ from django.db.models import Q, F
 from django.core.paginator import Paginator
 from .models import Artikull, Kategoria, Koment, Video, Reklama
 
-# Çelësi yt zyrtar i YouTube API v3
 YOUTUBE_API_KEY = 'AIzaSyBVJo36lphLUy9Dmv2EdISLpoLTvrfCcIw'
-# Channel ID e saktë për @Konfidenciale1
-YOUTUBE_CHANNEL_ID = 'UCJz49xXlYx-e4qFvY_r0P7g'
+# Për çdo kanal UC..., playlist-a e videove të ngarkuara shkronjën C e ka U (d.m.th. UU...)
+YOUTUBE_UPLOADS_PLAYLIST_ID = 'UUJz49xXlYx-e4qFvY_r0P7g'
 
 
 def faqja_kryesore(request):
@@ -39,17 +38,15 @@ def faqja_kryesore(request):
     except Exception:
         reklama = None
 
-    # --- MARRJA E VIDEOVE NGA YOUTUBE API ---
+    # --- MARRJA E VIDEOVE ME PLAYLISTITEMS (METODA MË E SIGURT) ---
     yt_videos = []
     try:
         api_url = (
-            f"https://www.googleapis.com/youtube/v3/search"
+            f"https://www.googleapis.com/youtube/v3/playlistItems"
             f"?key={YOUTUBE_API_KEY}"
-            f"&channelId={YOUTUBE_CHANNEL_ID}"
-            f"&part=snippet,id"
-            f"&order=date"
+            f"&playlistId={YOUTUBE_UPLOADS_PLAYLIST_ID}"
+            f"&part=snippet"
             f"&maxResults=5"
-            f"&type=video"
         )
         req = urllib.request.Request(
             api_url, 
@@ -58,7 +55,7 @@ def faqja_kryesore(request):
         with urllib.request.urlopen(req, timeout=5) as response:
             data = json.loads(response.read().decode('utf-8'))
             for item in data.get('items', []):
-                vid = item.get('id', {}).get('videoId')
+                vid = item.get('snippet', {}).get('resourceId', {}).get('videoId')
                 if vid:
                     yt_videos.append(vid)
     except Exception as e:
