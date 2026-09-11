@@ -42,8 +42,8 @@ def faqja_kryesore(request):
     except Exception:
         reklama = None
 
-    # --- MARRJA E VIDEOS PËRMES YOUTUBE DATA API V3 ---
-    yt_video_id = None
+    # --- MARRJA E 3 VIDEOVE MË TË REJA PËRMES YOUTUBE DATA API V3 ---
+    yt_videos = []
     try:
         api_url = (
             f"https://www.googleapis.com/youtube/v3/search"
@@ -51,7 +51,7 @@ def faqja_kryesore(request):
             f"&channelId={YOUTUBE_CHANNEL_ID}"
             f"&part=snippet,id"
             f"&order=date"
-            f"&maxResults=1"
+            f"&maxResults=3"
             f"&type=video"
         )
         req = urllib.request.Request(
@@ -61,19 +61,11 @@ def faqja_kryesore(request):
         with urllib.request.urlopen(req, timeout=3) as response:
             data = json.loads(response.read().decode('utf-8'))
             items = data.get('items', [])
-            if items:
-                yt_video_id = items[0]['id']['videoId']
+            for item in items:
+                if 'id' in item and 'videoId' in item['id']:
+                    yt_videos.append(item['id']['videoId'])
     except Exception:
-        yt_video_id = None
-
-    # Fallback i sigurt nga DB nëse API dështon ose mbarojnë kuotat
-    if not yt_video_id:
-        try:
-            video_db = Video.objects.last()
-            if video_db:
-                yt_video_id = getattr(video_db, 'youtube_id', None) or getattr(video_db, 'video_id', None)
-        except Exception:
-            yt_video_id = None
+        yt_videos = []
 
     # Faqëzimi (Pagination)
     paginator = Paginator(lajmet_list, 6) 
@@ -87,7 +79,10 @@ def faqja_kryesore(request):
         'videot': videot,
         'reklama': reklama,
         'kategoria_zgjedhur': kategoria_id,
-        'yt_video_id': yt_video_id,
+        # Ndahen 3 ID-të e videove për template-in HTML
+        'yt_video_1': yt_videos[0] if len(yt_videos) > 0 else None,
+        'yt_video_2': yt_videos[1] if len(yt_videos) > 1 else None,
+        'yt_video_3': yt_videos[2] if len(yt_videos) > 2 else None,
     }
     return render(request, 'lajmet/index.html', context)
 
