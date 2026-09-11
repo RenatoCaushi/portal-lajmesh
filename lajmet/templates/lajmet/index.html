@@ -181,42 +181,41 @@
 
     <!-- JAVASCRIPT SHFAQJEN E VIDEOVE -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // ID-të reale nga kanali juaj @konfidenciale1
-            const video1_id = "KxZQDFELNVU"; // Edi Rama - Programi kombëtar i strehimit
-            const video2_id = "Ix0lO1v0Uk4"; // Sali Berisha - Sulmon Yuri Kim & Blinken
-            const video3_id = "ufRy7OTX_lE"; // Sali Berisha - Udhëtimi drejt SHBA
+    document.addEventListener("DOMContentLoaded", function() {
+        const video1_id = "KxZQDFELNVU"; 
+        const video2_id = "Ix0lO1v0Uk4"; 
+        const video3_id = "ufRy7OTX_lE"; 
 
-            const box1 = document.getElementById('yt-box-1');
-            if (box1) {
-                box1.innerHTML = `
-                    <iframe class="w-100 h-100 border-0 flex-grow-1" style="min-height: 320px;" 
-                        src="https://www.youtube.com/embed/${video1_id}" 
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>`;
-            }
+        const box1 = document.getElementById('yt-box-1');
+        if (box1) {
+            box1.innerHTML = `
+                <iframe class="w-100 h-100 border-0 flex-grow-1" style="min-height: 380px;" 
+                    src="https://www.youtube.com/embed/${video1_id}?playlist=${video1_id}&loop=0&autoplay=0" 
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen></iframe>`;
+        }
 
-            const box2 = document.getElementById('yt-box-2');
-            if (box2) {
-                box2.innerHTML = `
-                    <iframe class="w-100 h-100 border-0" 
-                        src="https://www.youtube.com/embed/${video2_id}" 
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>`;
-            }
+        const box2 = document.getElementById('yt-box-2');
+        if (box2) {
+            box2.innerHTML = `
+                <iframe class="w-100 h-100 border-0" 
+                    src="https://www.youtube.com/embed/${video2_id}?playlist=${video2_id}&loop=0&autoplay=0" 
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen></iframe>`;
+        }
 
-            const box3 = document.getElementById('yt-box-3');
-            if (box3) {
-                box3.innerHTML = `
-                    <iframe class="w-100 h-100 border-0" 
-                        src="https://www.youtube.com/embed/${video3_id}" 
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>`;
-            }
-        });
-    </script>
+        const box3 = document.getElementById('yt-box-3');
+        if (box3) {
+            box3.innerHTML = `
+                <iframe class="w-100 h-100 border-0" 
+                    src="https://www.youtube.com/embed/${video3_id}?playlist=${video3_id}&loop=0&autoplay=0" 
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen></iframe>`;
+        }
+    });
+</script>
 
 {% endblock %}
