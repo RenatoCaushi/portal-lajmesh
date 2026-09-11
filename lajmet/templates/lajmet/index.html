@@ -15,25 +15,25 @@
             {% for artikull in slider_lajmet %}
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
                     {% if artikull.foto %}
-                        <img src="{{ artikull.foto.url }}" class="d-block w-100" alt="{{ artikull.titulli }}" style="height: 400px; object-fit: cover;">
+                        <img src="{{ artikull.foto.url }}" class="d-block w-100" alt="{{ artikull.titulli }}" style="height: 420px; object-fit: cover;">
                     {% else %}
-                        <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 400px;">
+                        <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 420px;">
                             <span>Pa Imazh</span>
                         </div>
                     {% endif %}
                     
-                    <!-- Hiqet d-none d-md-block dhe përshtaten hapësirat e madhësitë e shkronjave për celular -->
-                    <div class="carousel-caption bg-dark bg-opacity-75 rounded p-2 p-md-3 mb-2 mb-md-3">
+                    <!-- Blloku i tekstit në slider me madhësi më të madhe -->
+                    <div class="carousel-caption bg-dark bg-opacity-75 rounded p-3 p-md-4 mb-2 mb-md-3">
                         {% if artikull.kategoria %}
                             <a href="{% url 'faqja_kryesore' %}?kategoria={{ artikull.kategoria.id }}" class="text-decoration-none">
-                                <span class="badge bg-primary mb-1 mb-md-2 fs-6">{{ artikull.kategoria.emri }}</span>
+                                <span class="badge bg-primary mb-2 fs-6 px-3 py-2">{{ artikull.kategoria.emri }}</span>
                             </a>
                         {% endif %}
-                        <h4 class="mb-0 fs-6 fs-md-4">
-                            <a href="{% url 'detajet_e_lajmit' artikull.slug %}" class="text-white text-decoration-none fw-bold">
+                        <h3 class="mb-0 fs-5 fs-md-2 fw-bold">
+                            <a href="{% url 'detajet_e_lajmit' artikull.slug %}" class="text-white text-decoration-none lh-base">
                                 {{ artikull.titulli }}
                             </a>
-                        </h4>
+                        </h3>
                     </div>
                 </div>
             {% endfor %}
