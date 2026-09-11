@@ -61,12 +61,19 @@
                 </div>
             </div>
 
-            <!-- SEKSIONI I KOMENTEVE TË FACEBOOK-UT -->
+            <!-- SEKSIONI I KOMENTEVE TË FACEBOOK-UT (ME IFRAME TË DIREKTË) -->
             <div class="p-3 bg-white rounded shadow-sm border my-4">
                 <h5 class="fw-bold mb-3">Lini komentin tuaj:</h5>
-                <div id="fb-root"></div>
-                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sq_AL/sdk.js#xfbml=1&version=v18.0"></script>
-                <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-width="100%" data-numposts="5"></div>
+                <iframe 
+                    src="https://www.facebook.com/plugins/comments.php?href={{ request.build_absolute_uri|urlencode }}&width=100%25&numposts=5" 
+                    width="100%" 
+                    height="500" 
+                    style="border:none; overflow:hidden;" 
+                    scrolling="no" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                </iframe>
             </div>
 
         </div>
