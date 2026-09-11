@@ -1,13 +1,12 @@
-import json
 import urllib.request
+import xml.etree.ElementTree as ET
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q, F
 from django.core.paginator import Paginator
 from .models import Artikull, Kategoria, Koment, Video, Reklama
 
-YOUTUBE_API_KEY = 'AIzaSyBVJo36lphLUy9Dmv2EdISLpoLTvrfCcIw'
-# Për çdo kanal UC..., playlist-a e videove të ngarkuara shkronjën C e ka U (d.m.th. UU...)
-YOUTUBE_UPLOADS_PLAYLIST_ID = 'UUJz49xXlYx-e4qFvY_r0P7g'
+# Channel ID e saktë për @Konfidenciale1
+YOUTUBE_CHANNEL_ID = 'UCJz49xXlYx-e4qFvY_r0P7g'
 
 
 def faqja_kryesore(request):
@@ -38,28 +37,29 @@ def faqja_kryesore(request):
     except Exception:
         reklama = None
 
-    # --- MARRJA E VIDEOVE ME PLAYLISTITEMS (METODA MË E SIGURT) ---
+    # --- MARRJA E VIDEOVE PËRMES YOUTUBE RSS FEED (PA API KEY / PA LIMITS) ---
     yt_videos = []
     try:
-        api_url = (
-            f"https://www.googleapis.com/youtube/v3/playlistItems"
-            f"?key={YOUTUBE_API_KEY}"
-            f"&playlistId={YOUTUBE_UPLOADS_PLAYLIST_ID}"
-            f"&part=snippet"
-            f"&maxResults=5"
-        )
+        rss_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={YOUTUBE_CHANNEL_ID}"
         req = urllib.request.Request(
-            api_url, 
+            rss_url, 
             headers={'User-Agent': 'Mozilla/5.0'}
         )
         with urllib.request.urlopen(req, timeout=5) as response:
-            data = json.loads(response.read().decode('utf-8'))
-            for item in data.get('items', []):
-                vid = item.get('snippet', {}).get('resourceId', {}).get('videoId')
-                if vid:
-                    yt_videos.append(vid)
+            xml_data = response.read()
+            root = ET.fromstring(xml_data)
+            
+            # Namespace për XML-në e YouTube
+            ns = {'atom': 'http://www.w3.org/2005/Atom', 'yt': 'http://www.youtube.com/xml/schemas/2015'}
+            
+            for entry in root.findall('atom:entry', ns):
+                video_id_elem = entry.find('yt:videoId', ns)
+                if video_id_elem is not None and video_id_elem.text:
+                    yt_videos.append(video_id_elem.text)
+                if len(yt_videos) >= 3:
+                    break
     except Exception as e:
-        print(f"Gabim me YouTube API: {e}")
+        print(f"Gabim me YouTube RSS: {e}")
 
     paginator = Paginator(lajmet_list, 6) 
     page_number = request.GET.get('page')
