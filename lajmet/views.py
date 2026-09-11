@@ -1,11 +1,7 @@
-import feedparser
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q, F
 from django.core.paginator import Paginator
 from .models import Artikull, Kategoria, Koment, Video, Reklama
-
-# Channel ID e saktë e kanalit tënd @Konfidenciale1
-YOUTUBE_CHANNEL_ID = 'UCJz49xXlYx-e4qFvY_r0P7g'
 
 
 def faqja_kryesore(request):
@@ -29,26 +25,14 @@ def faqja_kryesore(request):
 
     slider_lajmet = lajmet_list[:3] if not kategoria_id else []
     kategorite = Kategoria.objects.all()
-    videot = Video.objects.all()[:4]
     
+    # Merr 3 videot e fundit nga baza e të dhënave
+    videot_db = list(Video.objects.all().order_by('-id')[:3])
+
     try:
         reklama = Reklama.objects.filter(is_active=True).last()
     except Exception:
         reklama = None
-
-    # --- MARRJA AUTOMATIKE E VIDEOVE NGA YOUTUBE RSS FEED ---
-    yt_videos = []
-    try:
-        rss_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={YOUTUBE_CHANNEL_ID}"
-        feed = feedparser.parse(rss_url)
-        
-        for entry in feed.entries[:3]:
-            # feedparser e nxjerr automatikisht 'yt_videoid' nga XML
-            video_id = getattr(entry, 'yt_videoid', None)
-            if video_id:
-                yt_videos.append(video_id)
-    except Exception as e:
-        print(f"Gabim gjatë leximit të YouTube RSS: {e}")
 
     paginator = Paginator(lajmet_list, 6) 
     page_number = request.GET.get('page')
@@ -58,13 +42,11 @@ def faqja_kryesore(request):
         'lajmet': lajmet,
         'slider_lajmet': slider_lajmet,
         'kategorite': kategorite,
-        'videot': videot,
         'reklama': reklama,
         'kategoria_zgjedhur': kategoria_id,
-        # Merr automatikisht 3 videot e fundit nga lista
-        'yt_video_1': yt_videos[0] if len(yt_videos) > 0 else None,
-        'yt_video_2': yt_videos[1] if len(yt_videos) > 1 else None,
-        'yt_video_3': yt_videos[2] if len(yt_videos) > 2 else None,
+        'yt_video_1': videot_db[0].youtube_id if len(videot_db) > 0 else None,
+        'yt_video_2': videot_db[1].youtube_id if len(videot_db) > 1 else None,
+        'yt_video_3': videot_db[2].youtube_id if len(videot_db) > 2 else None,
     }
     return render(request, 'lajmet/index.html', context)
 

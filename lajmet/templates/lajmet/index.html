@@ -60,7 +60,7 @@
         </div>
     {% endif %}
 
-    <!-- SEKSIONI I VIDEOVE YOUTUBE (PËRDITËSIM AUTOMATIK NGA JS) -->
+    <!-- SEKSIONI I VIDEOVE YOUTUBE -->
     <div class="my-5 p-4 bg-dark text-white rounded shadow-lg">
         <h2 class="mb-4 text-warning border-bottom border-warning pb-2 d-flex justify-content-between align-items-center">
             <span><i class="bi bi-youtube me-2"></i>Videot e Fundit</span>
@@ -72,22 +72,39 @@
         <div class="row g-3 align-items-stretch">
             <!-- Videoja Kryesore (Majtas) -->
             <div class="col-lg-7 d-flex">
-                <div class="card bg-secondary border-0 shadow rounded overflow-hidden w-100 h-100 d-flex flex-column" id="yt-box-1">
-                    <div class="p-5 text-center text-white-50 my-auto">Po ngarkohet videoja...</div>
+                <div class="card bg-secondary border-0 shadow rounded overflow-hidden w-100 h-100 d-flex flex-column">
+                    {% if yt_video_1 %}
+                        <iframe 
+                            class="w-100 h-100 border-0 flex-grow-1" 
+                            style="min-height: 320px;" 
+                            src="https://www.youtube.com/embed/{{ yt_video_1 }}" 
+                            allowfullscreen>
+                        </iframe>
+                    {% else %}
+                        <div class="p-5 text-center text-white-50 my-auto">Shto një video te Admin Panel</div>
+                    {% endif %}
                 </div>
             </div>
 
             <!-- 2 Videot e vogla (Djathtas) -->
             <div class="col-lg-5 d-flex flex-column gap-3">
                 <div class="card bg-secondary border-0 shadow rounded overflow-hidden">
-                    <div class="ratio ratio-16x9" id="yt-box-2">
-                        <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet videoja...</div>
+                    <div class="ratio ratio-16x9">
+                        {% if yt_video_2 %}
+                            <iframe src="https://www.youtube.com/embed/{{ yt_video_2 }}" allowfullscreen></iframe>
+                        {% else %}
+                            <div class="p-4 text-center text-white-50 my-auto">Shto videon e dytë</div>
+                        {% endif %}
                     </div>
                 </div>
 
                 <div class="card bg-secondary border-0 shadow rounded overflow-hidden">
-                    <div class="ratio ratio-16x9" id="yt-box-3">
-                        <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet videoja...</div>
+                    <div class="ratio ratio-16x9">
+                        {% if yt_video_3 %}
+                            <iframe src="https://www.youtube.com/embed/{{ yt_video_3 }}" allowfullscreen></iframe>
+                        {% else %}
+                            <div class="p-4 text-center text-white-50 my-auto">Shto videon e tretë</div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -178,59 +195,5 @@
         </ul>
     </nav>
     {% endif %}
-
-    <!-- SCRIPT JAVASCRIPT PËR MARRJEN AUTOMATIKE TË VIDEOVE TË FUNDIT -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const channelID = "UCJz49xXlYx-e4qFvY_r0P7g";
-            const rssUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=${channelID}`;
-
-            fetch(rssUrl)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'ok' && data.items.length > 0) {
-                        const items = data.items;
-
-                        // Nxirr ID nga linku i YouTube
-                        function extractVideoId(link) {
-                            const match = link.match(/v=([^&]+)/);
-                            return match ? match[1] : null;
-                        }
-
-                        // Video 1 (Kryesore)
-                        if (items[0]) {
-                            const id1 = extractVideoId(items[0].link);
-                            if (id1) {
-                                document.getElementById('yt-box-1').innerHTML = `
-                                    <iframe class="w-100 h-100 border-0 flex-grow-1" style="min-height: 320px;" 
-                                        src="https://www.youtube.com/embed/${id1}" 
-                                        allowfullscreen></iframe>`;
-                            }
-                        }
-
-                        // Video 2
-                        if (items[1]) {
-                            const id2 = extractVideoId(items[1].link);
-                            if (id2) {
-                                document.getElementById('yt-box-2').innerHTML = `
-                                    <iframe src="https://www.youtube.com/embed/${id2}" allowfullscreen></iframe>`;
-                            }
-                        }
-
-                        // Video 3
-                        if (items[2]) {
-                            const id3 = extractVideoId(items[2].link);
-                            if (id3) {
-                                document.getElementById('yt-box-3').innerHTML = `
-                                    <iframe src="https://www.youtube.com/embed/${id3}" allowfullscreen></iframe>`;
-                            }
-                        }
-                    }
-                })
-                .catch(err => {
-                    console.error("Gabim në marrjen e videove:", err);
-                });
-        });
-    </script>
 
 {% endblock %}
