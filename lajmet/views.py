@@ -5,6 +5,7 @@ from django.db.models import Q, F
 from django.core.paginator import Paginator
 from .models import Artikull, Kategoria, Koment, Video, Reklama
 
+# Çelësi yt zyrtar i YouTube API v3
 YOUTUBE_API_KEY = 'AIzaSyBVJo36lphLUy9Dmv2EdISLpoLTvrfCcIw'
 # Channel ID e saktë për @Konfidenciale1
 YOUTUBE_CHANNEL_ID = 'UCJz49xXlYx-e4qFvY_r0P7g'
@@ -63,7 +64,6 @@ def faqja_kryesore(request):
     except Exception as e:
         print(f"Gabim me YouTube API: {e}")
 
-    # Paginator
     paginator = Paginator(lajmet_list, 6) 
     page_number = request.GET.get('page')
     lajmet = paginator.get_page(page_number)
@@ -80,3 +80,37 @@ def faqja_kryesore(request):
         'yt_video_3': yt_videos[2] if len(yt_videos) > 2 else None,
     }
     return render(request, 'lajmet/index.html', context)
+
+
+def detajet_e_lajmit(request, slug):
+    artikull = get_object_or_404(Artikull, slug=slug)
+    
+    try:
+        Artikull.objects.filter(pk=artikull.pk).update(shikime=F('shikime') + 1)
+        artikull.refresh_from_db()
+    except Exception:
+        pass
+
+    if request.method == 'POST':
+        permbajtja = request.POST.get('permbajtja')
+        if permbajtja:
+            Koment.objects.create(
+                artikulli=artikull,
+                emri="Anonim",
+                permbajtja=permbajtja,
+                is_approved=True
+            )
+            return redirect('detajet_e_lajmit', slug=artikull.slug)
+
+    komentet = artikull.komentet.filter(is_approved=True).order_by('-data_publikimit')
+    
+    try:
+        reklama = Reklama.objects.filter(is_active=True).last()
+    except Exception:
+        reklama = None
+    
+    return render(request, 'lajmet/detajet.html', {
+        'artikull': artikull,
+        'komentet': komentet,
+        'reklama': reklama,
+    })
