@@ -60,7 +60,7 @@
         </div>
     {% endif %}
 
-    <!-- SEKSIONI I VIDEOVE YOUTUBE (PULL NGA PLAYLIST E KANALIT) -->
+    <!-- SEKSIONI I VIDEOVE YOUTUBE -->
     <div class="my-5 p-4 bg-dark text-white rounded shadow-lg">
         <h2 class="mb-4 text-warning border-bottom border-warning pb-2 d-flex justify-content-between align-items-center">
             <span><i class="bi bi-youtube me-2"></i>Videot e Fundit</span>
@@ -69,16 +69,55 @@
             </a>
         </h2>
 
-        <div class="row">
-            <div class="col-12">
-                <div class="ratio ratio-16x9 rounded overflow-hidden shadow">
-                    <!-- Embedded Playlist direkte e kanalit UCJz49xXlYx-e4qFvY_r0P7g -->
-                    <iframe 
-                        src="https://www.youtube.com/embed/videoseries?list=UUJz49xXlYx-e4qFvY_r0P7g" 
-                        title="Videot e Fundit të Konfidenciale" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
+        <div class="row g-3 align-items-stretch">
+            <!-- VIDEOJA KRYESORE E MADHE (MAJTAS) -->
+            <div class="col-lg-7 d-flex">
+                <div class="card bg-secondary border-0 shadow rounded overflow-hidden w-100 h-100 d-flex flex-column">
+                    {% if yt_video_1 %}
+                        <iframe 
+                            class="w-100 h-100 border-0 flex-grow-1"
+                            style="min-height: 320px;"
+                            src="https://www.youtube.com/embed/{{ yt_video_1 }}" 
+                            title="Videoja Kryesore YouTube" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    {% else %}
+                        <div class="p-5 text-center text-white-50">Nuk u gjet asnjë video.</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- 2 VIDEOT MË TË VOGLA (DJATHTAS) -->
+            <div class="col-lg-5 d-flex flex-column gap-3">
+                <!-- Video e vogël 1 -->
+                <div class="card bg-secondary border-0 shadow rounded overflow-hidden">
+                    <div class="ratio ratio-16x9">
+                        {% if yt_video_2 %}
+                            <iframe 
+                                src="https://www.youtube.com/embed/{{ yt_video_2 }}" 
+                                title="Video 2" 
+                                allowfullscreen>
+                            </iframe>
+                        {% else %}
+                            <div class="p-4 text-center text-white-50">Nuk ka video dytë.</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Video e vogël 2 -->
+                <div class="card bg-secondary border-0 shadow rounded overflow-hidden">
+                    <div class="ratio ratio-16x9">
+                        {% if yt_video_3 %}
+                            <iframe 
+                                src="https://www.youtube.com/embed/{{ yt_video_3 }}" 
+                                title="Video 3" 
+                                allowfullscreen>
+                            </iframe>
+                        {% else %}
+                            <div class="p-4 text-center text-white-50">Nuk ka video tretë.</div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
