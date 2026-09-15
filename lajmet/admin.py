@@ -12,6 +12,7 @@ class ArtikullAdmin(admin.ModelAdmin):
     list_filter = ('kategoria', 'data_publikimit')
     search_fields = ('titulli', 'permbajtja')
     readonly_fields = ('shikime',)
+    ordering = ('-data_publikimit',)  # <-- SHTO KËTË RRESHT
 
 @admin.register(Koment)
 class KomentAdmin(admin.ModelAdmin):
@@ -26,7 +27,7 @@ class VideoAdmin(admin.ModelAdmin):
 
 @admin.register(Reklama)
 class ReklamaAdmin(admin.ModelAdmin):
-  list_display = ('titulli', 'is_active', 'data_krijimit')
-  list_filter = ('is_active', 'data_krijimit')
-  search_fields = ('titulli',)
-  list_editable = ('is_active',)
+    list_display = ('titulli', 'is_active', 'data_krijimit')
+    list_filter = ('is_active', 'data_krijimit')
+    search_fields = ('titulli',)
+    list_editable = ('is_active',)
