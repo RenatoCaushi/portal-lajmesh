@@ -1,0 +1,960 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$b88Ooub92iAeyVSGoKVurD$aW5eHziFUxHj7D+Q1yJZyszl5f/Gm56sGMpOXYWZv3w=",
+    "last_login": "2026-09-16T18:22:11.224Z",
+    "is_superuser": true,
+    "username": "Renatoo",
+    "first_name": "",
+    "last_name": "",
+    "email": "ren.caushi22@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-09-09T19:07:03.426Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "6auc6ox6hrkgypkoenumozfwf3xuwy5b",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAYKASX7j0DGYZBqgaS0q6Md9cmXej2v_f-S0Tc1hq3wUucszgLLU6_W0J6cNtBvmO7dUm9rcuc5K7Igw557Zmfl8P9O6g46rd2BnxWEIKymjwUIKOtBko6OMsGgyvGEILGws4DMWRlcZoMFe-pBPH-ALiUN2Y:1x4QID:oGRvEN_stPcnWxM-v3o-TlSoPvu0btjzTXTxol4sg7I",
+    "expire_date": "2026-09-23T21:57:21.907Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "6vrjlwpcipusltqhfirqyd7l43tmwptw",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAYKASX7j0DGYZBqgaS0q6Md9cmXej2v_f-S0Tc1hq3wUucszgLLU6_W0J6cNtBvmO7dUm9rcuc5K7Igw557Zmfl8P9O6g46rd2BnxWEIKymjwUIKOtBko6OMsGgyvGEILGws4DMWRlcZoMFe-pBPH-ALiUN2Y:1x6TCN:7ZoVVJR3obOGOq0f6qjWrR59VngqcJknIYPEAakz9bI",
+    "expire_date": "2026-09-29T13:27:47.794Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "nps5y81qw3rmdcjkiiqvjyun0vq3qy19",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAYKASX7j0DGYZBqgaS0q6Md9cmXej2v_f-S0Tc1hq3wUucszgLLU6_W0J6cNtBvmO7dUm9rcuc5K7Igw557Zmfl8P9O6g46rd2BnxWEIKymjwUIKOtBko6OMsGgyvGEILGws4DMWRlcZoMFe-pBPH-ALiUN2Y:1x66w9:9S41oVscOxGnt-T0F9mMjiWUoxgVoozpMJVkZ7b5Et8",
+    "expire_date": "2026-09-28T13:41:33.936Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "r3jlh28dxq1gt63l6t63r45y8yx73j40",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAYKASX7j0DGYZBqgaS0q6Md9cmXej2v_f-S0Tc1hq3wUucszgLLU6_W0J6cNtBvmO7dUm9rcuc5K7Igw557Zmfl8P9O6g46rd2BnxWEIKymjwUIKOtBko6OMsGgyvGEILGws4DMWRlcZoMFe-pBPH-ALiUN2Y:1x4mB3:G2mpzA6woUgWCDXT6Xdgl0JQNchnMtqAsNHnU02hWs4",
+    "expire_date": "2026-09-24T21:19:25.259Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "yln2u23bzm5rc0soetf0va899yqmoccx",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAYKASX7j0DGYZBqgaS0q6Md9cmXej2v_f-S0Tc1hq3wUucszgLLU6_W0J6cNtBvmO7dUm9rcuc5K7Igw557Zmfl8P9O6g46rd2BnxWEIKymjwUIKOtBko6OMsGgyvGEILGws4DMWRlcZoMFe-pBPH-ALiUN2Y:1x51Lp:EjeEQP5KbYuhSKiySh63KEiAWMlFf-JYCo_TIEwRKaY",
+    "expire_date": "2026-09-25T13:31:33.940Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ywjis267fty5q9134kk1fof7l54xqks0",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAYKASX7j0DGYZBqgaS0q6Md9cmXej2v_f-S0Tc1hq3wUucszgLLU6_W0J6cNtBvmO7dUm9rcuc5K7Igw557Zmfl8P9O6g46rd2BnxWEIKymjwUIKOtBko6OMsGgyvGEILGws4DMWRlcZoMFe-pBPH-ALiUN2Y:1x5K7S:jW0BskfMh3ZF4UboN4PTg_2RYBEb2x4SB5TQCWnSptw",
+    "expire_date": "2026-09-26T09:33:58.940Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zcvhctuwxvhxf7q2dsupfcgcqlkytvt2",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAYKASX7j0DGYZBqgaS0q6Md9cmXej2v_f-S0Tc1hq3wUucszgLLU6_W0J6cNtBvmO7dUm9rcuc5K7Igw557Zmfl8P9O6g46rd2BnxWEIKymjwUIKOtBko6OMsGgyvGEILGws4DMWRlcZoMFe-pBPH-ALiUN2Y:1x6YLP:ElaGxr9oUvH-gigI6kTDD8VNHh_iAdOVsToOmeTVsAI",
+    "expire_date": "2026-09-29T18:57:27.506Z"
+  }
+},
+{
+  "model": "lajmet.kategoria",
+  "pk": 1,
+  "fields": {
+    "emri": "Politikë"
+  }
+},
+{
+  "model": "lajmet.kategoria",
+  "pk": 2,
+  "fields": {
+    "emri": "Aktualitet"
+  }
+},
+{
+  "model": "lajmet.kategoria",
+  "pk": 3,
+  "fields": {
+    "emri": "Rajon"
+  }
+},
+{
+  "model": "lajmet.kategoria",
+  "pk": 4,
+  "fields": {
+    "emri": "Bota"
+  }
+},
+{
+  "model": "lajmet.kategoria",
+  "pk": 5,
+  "fields": {
+    "emri": "Sport"
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 1,
+  "fields": {
+    "titulli": "Sali Berisha udhëton drejt SHBA-ve",
+    "slug": "sali-berisha-udheton-drejt-shba-ve",
+    "permbajtja": "Kreu i PD, Sali Berisha do të udhëtojë më 9 shtator në SHBA. Pas marrjes së vizës amerikane, ish kryeministri do të marrë pjesë në konventën e Partisë Republikane në Teksas.",
+    "data_publikimit": "2026-09-01T13:27:31.407Z",
+    "kategoria": 1,
+    "foto": "media/lajmet/sali_berisha_s2ssug",
+    "shikime": 2,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 2,
+  "fields": {
+    "titulli": "Protestuesit rrethojnë hyrjen kryesore të Kryeministrisë, përplasen me efektivët e Policisë",
+    "slug": "protestuesit-rrethojne-hyrjen-kryesore-te-kryeministrise-perplasen-me-efektivet-e-policise",
+    "permbajtja": "Në ditën e 94-ët të tubimit para Kryeministrisë, ka pasur tensione dhe përplasje mes protestuesve dhe forcave të Policisë.\r\n\r\nTensionet kanë nisur pasi protestuesit kaluan pas godinës së Kryeministrisë, për të bllokuar hyrjen kryesore, ku futet e del eskorta e kryeministrit Edi Rama dhe zyrtarëve të tjerë.",
+    "data_publikimit": "2026-09-01T19:19:44.961Z",
+    "kategoria": 2,
+    "foto": "media/lajmet/protesta_dx1o2e",
+    "shikime": 2,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 3,
+  "fields": {
+    "titulli": "Trump paralajmëron: SHBA do ta godasë ashpër Iranin",
+    "slug": "trump-paralajmeron-shba-do-ta-godase-ashper-iranin",
+    "permbajtja": "Presidenti amerikan, Donald Trump, tha se forcat amerikane do ta godasin ëashpërë Iranin , pasi Korpusi i Gardës Revolucionare Islamike (IRGC) lëshoi raketa drejt dy bazave amerikane në Jordani, teksa sekretari i Thesarit, Scott Bessent, u zotua se do të shtojë presionin ekonomik ndaj Teheranit.\r\n\r\nëDo tëi godasim ashpërë, citohet tëi ketë thënë Trump një gazetari të Fox News më 31 gusht. ëDo të ketë përgjigjeë.\r\n\r\nTrump tha se mbrojtja ajrore amerikane ka penguar të gjitha raketat iraniane që mund të kishin shkaktuar dëme, pasi IRGC-ja pretendoi se ka lëshuar raketa balistike drejt bazave Mbreti Husein dhe Al Azrak në Jordani, duke shkaktuar ëdëme të mëdhaë.",
+    "data_publikimit": "2026-09-01T19:21:14.548Z",
+    "kategoria": 4,
+    "foto": "media/lajmet/trump_gcr4nr",
+    "shikime": 0,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 4,
+  "fields": {
+    "titulli": "Trump: Nuk po përpiqem që Teherani të negociojë, Hormuzi është nën kontrollin e SHBA",
+    "slug": "trump-nuk-po-perpiqem-qe-teherani-te-negocioje-hormuzi-eshte-nen-kontrollin-e-shba",
+    "permbajtja": "Presidenti amerikan, Donald Trump deklaroi se nuk po përpiqet që ta ulë Iranin në tryezën e negociatave.\r\n\r\nPërmes një postimi në Truth Social, Trump u shpreh se Ngushtica e Hormuzit është nën kontrollin e SHBA dhe ekonomia e Iranit po fundoset.\r\n\r\nëNuk po përpiqem ta detyroj Iranin të ulet në tryezën e negociatave. Nuk më intereson nëse ata nënshkruajnë një marrëveshje që nuk do të thotë asgjë për ta. Ne kemi kontroll pothuajse të plotë të Ngushticës së Hormuzit dhe ekonomia e tyre po shembet. Ata thjesht po presin të pashmangshmen. Kur do të ngrihet populli iranian dhe do të luftojë?ë, tha ai.\r\n\r\nTeherani ka nisur sulme me raketa dhe dronë ndaj objektivave amerikane në Jordani, Kuvajt, Irak dhe Bahrein, pasi forcat amerikane rifilluan sulmet kundër Iranit të martën.\r\n\r\nShtetet e Bashkuara kanë sulmuar dy cisterna nafte të qeverisë iraniane në valën e fundit të sulmeve, raporton Axios, duke cituar burime që thonë se është hera e parë që ushtria amerikane ka shënjestruar cisternat e naftës të Teheranit në hakmarrje për sulmet iraniane në Ngushticën e Hormuzit.\r\n\r\nSulmi është pjesë e strategjisë ëcisternë nafte pas cisterneë të miratuar nga Presidenti Donald Trump për të penguar sulmet ndaj Hormuzit. Një total prej 100 objektivash u goditën gjatë sulmeve.\r\n\r\nSipas Axios, Shtetet e Bashkuara kanë sulmuar dy cisterna nafte të qeverisë iraniane në valën e fundit të sulmeve, duke cituar burime që thonë se është hera e parë që ushtria amerikane ka shënjestruar cisternat e naftës të Teheranit në hakmarrje për sulmet iraniane në Ngushticën e Hormuzit. Një total prej 100 objektivash u goditën gjatë sulmeve.",
+    "data_publikimit": "2026-09-02T20:20:38.935Z",
+    "kategoria": 4,
+    "foto": "media/lajmet/trumpi_shaf1c",
+    "shikime": 0,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 5,
+  "fields": {
+    "titulli": "Gjermania thotë se Rusia qëndron pas \"sulmit hibrid\" në aeroportin e Lajpcigut",
+    "slug": "gjermania-thote-se-rusia-qendron-pas-sulmit-hibrid-ne-aeroportin-e-lajpcigut",
+    "permbajtja": "Gjermania e ka akuzuar Rusinë për kryerjen e asaj që ministri i Brendshëm i vendit e quajti ësulm hibridë, që përfshinte një dron të mbushur me eksploziv, i cili shkaktoi ndërprerje të fluturimeve në aeroportin e Lajpcigut në fillim të gushtit. Berlini tha se incidenti ishte pjesë e një fushate operacionesh destabilizuese kundër Evropës.\r\n\r\nAutoritetet gjermane thanë se do ta mbyllnin Konsullatën Ruse në Bon dhe do të shkëpusin kontratën e qirasë për një qendër kulturore ruse në Berlin, si pasojë e përpjekjes për sulm me dron në aeroport.\r\n\r\nDeklarata e zyrtarëve të Qeverisë gjermane më 1 shtator u bë teksa autoritetet reaguan ndaj asaj që e quajtën sulm sabotues, që përfshinte disa pajisje shpërthyese të vendosura pranë një termocentrali me qymyr, rreth 100 kilometra në juglindje të Berlinit.",
+    "data_publikimit": "2026-09-02T20:47:02.517Z",
+    "kategoria": 4,
+    "foto": "media/lajmet/dthfr_mfnbup",
+    "shikime": 0,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 6,
+  "fields": {
+    "titulli": "Zelensky paralajmëron kompanitë ajrore: Qielli rus po bëhet i rrezikshëm",
+    "slug": "zelensky-paralajmeron-kompanite-ajrore-qielli-rus-po-behet-i-rrezikshem",
+    "permbajtja": "Presidenti ukrainas Volodymyr Zelensky ka paralajmëruar kompanitë ajrore që vazhdojnë të përdorin hapësirën ajrore ruse, duke thënë se ajo po bëhet gjithnjë e më e rrezikshme për shkak të intensifikimit të sulmeve me dronë.\r\n\r\nëQielli rus po bëhet plotësisht i rrezikshëmë, deklaroi Zelensky, duke theksuar se Ukraina nuk synon avionët civilë apo jetët e njerëzve të pafajshëm.\r\n\r\nSipas tij, sulmet me dronë në territorin rus do të vazhdojnë në një shkallë që kompanitë ajrore duhet ta marrin në konsideratë.\r\n\r\nPresidenti rus Vladimir Putin i cilësoi deklaratat si një ëdeklaratë të terrorizmit shtetërorë dhe tha se ëme terroristët nuk negociohetë. Ai paralajmëroi gjithashtu se Rusia do të vazhdojë sulmet ndaj Ukrainës.\r\n\r\nSulmet ukrainase me dronë kanë shkaktuar në muajt e fundit ndërprerje të fluturimeve në disa aeroporte ruse, përfshirë ato të Moskës. Sipas rregullave ruse të mbrojtjes ajrore, fluturimet pezullohen kur zbulohet një dron në zonën përkatëse.\r\n\r\nShumica e kompanive ajrore perëndimore e shmangin hapësirën ajrore ruse që prej pushtimit të Ukrainës në vitin 2022, ndërsa kompani nga Kina, Turqia dhe vendet e Gjirit Persik vazhdojnë ta përdorin atë për të kursyer kohë dhe karburant.\r\n\r\nParalajmërimet vijnë në një kohë kur lufta mes Rusisë dhe Ukrainës po intensifikohet dhe sulmet po shtrihen gjithnjë e më thellë në territorin rus.",
+    "data_publikimit": "2026-09-02T20:55:39.383Z",
+    "kategoria": 4,
+    "foto": "media/lajmet/zelensky_das541",
+    "shikime": 12,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 7,
+  "fields": {
+    "titulli": "BE: I takon Kushtetueses ta gjykojë formimin e Qeverisë dhe të Kuvendit",
+    "slug": "be-i-takon-kushtetueses-ta-gjykoje-formimin-e-qeverise-dhe-te-kuvendit",
+    "permbajtja": "Bashkimi Evropian (BE) tha se është në dijeni të votimit të së dielës, me ërast u bë konstituimi i Kuvendit të Kosovës dhe formimi i Qeverisë së re, por shtoi se i takon gjykatës më të lartë në vend që të japë vlerësimin rreth kushtetutshmërisë së themelimit të këtyre institucioneve.\r\nëJemi në dijeni të votimeve të së dielës, si dhe vendimeve për konstituimin e Kuvendit dhe formimin e Qeverisë. Gjithashtu, jemi në dijeni edhe për kërkesën e paraqitur në Gjykatën Kushtetuese lidhur me kushtetutshmërinë e këtyre vendimeve. I takon Gjykatës Kushtetuese të shprehet për kërkesën e paraqiturë, tha një zëdhënës i Komisionit Evropian për Radion Evropa e Lirë.\r\nZëdhënësi theksoi po ashtu se Kosovës i duhen institucione ëplotësisht të konsoliduara për të ëuar përpara reformat dhe për të avancuar në rrugën e integrimit në BE, përfshirë edhe në kuadër të Planit të Rritjes për Ballkanin Perëndimorë.\r\nNë seancën konstituive të mbajtur të dielën, më 13 shtator, u zgjodhën nënkryetarët e Kuvendit nga radhët e Lidhjes Demokratike të Kosovës, nga komuniteti serb dhe pakicat joserbe, teksa kryetarja Albulena Haxhiu e shpalli të konstituuar organin ligjvënës pa zgjedhjen e nënkryetarit nga radhët e Partisë Demokratike të Kosovës ë fuqisë së dytë politike në vend.\r\nPak orë më vonë, u mbajt një seancë e jashtëzakonshme ku u votua Qeveria e re e Kosovës e udhëhequr nga Albin Kurti. Kjo seancë u bojkotua nga PDK-ja, LDK-ja dhe Aleanca, ndërkaq në të morën pjesë vetëm deputetët e Lëvizjes Vetëvendosje të Kurtit dhe të komuniteteve joshumicë.",
+    "data_publikimit": "2026-09-14T16:34:37.372Z",
+    "kategoria": 3,
+    "foto": "media/lajmet/eu-kosovo_zb0lum",
+    "shikime": 1,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 8,
+  "fields": {
+    "titulli": "Digjen disa shtëpi në Himarë, situata me zjarre drejt përmirësimit",
+    "slug": "digjen-disa-shtepi-ne-himare-situata-me-zjarre-drejt-permiresimit",
+    "permbajtja": "Gjashtë banesa u dogjën dhe 36 persona u evakuuan për shkak të zjarrit që përfshiu Himarën më 4 gusht. Megjithatë, të shtunën, autoritetet thanë se situata me zjarre në këtë qytet në jug të Shqipërisë është përmirësuar dhe po mbahet nën kontroll.\r\n\r\nZjarri shpërtheu mbrëmjen e së premtes në lagjen ë1 Majië të qytetit të Himarës. Për shkak të erës flakët zbritën nga kodra dhe u përhapën me shpejtësi.\r\n\r\nAgjencia Kombëtare e Mbrojtjes Civile thotë se për të përballuar situatën e vështirë gjatë natës u angazhuan rreth 300 forca operacionale, ku përfshihen zjarrfikës, strukturat e emergjencave, pushtetit vendor dhe policisë, si dhe 171 efektivë të Forcave të Armatosura të Shqipërisë.\r\n\r\nBanorë të Himarës thanë se zjarri përparoi shumë shpejt drejt banesave të tyre, në disa prej të cilave kishte edhe turistë të huaj.\r\n\r\nëUnë kam ambiente shërbimi, të gjithë turistët u evakuuan për sigurinë e tyre. I thamë të zbresin poshtë në qendër derisa të qetësohet gjendja. Presim të vijë energjia që të kthehemi sadopak në normalitetë tha për mediat lokale një banore.\r\n\r\nëZjarri ka ulur intensitetin, situata është përmirësuar, rreziku për banesat është shmangur dhe puna për shuarjen vijonë, thekson Agjencia Kombëtare e Mbrojtjes Civile.\r\n\r\nMinistri i Mbrojtjes i Shqipërisë, Ermal Nufi e cilësoi ditën e djeshme, si një ndër më të vështirat të situatës së zjarreve gjatë gjithë sezonit veror. Problematike ka qenë situata edhe në fshatin Levan të Fierit, ku u rrezikuan disa banesa nga zjarri.",
+    "data_publikimit": "2026-09-05T12:10:45.532Z",
+    "kategoria": 2,
+    "foto": "media/lajmet/Capture_aDl9mQD_z5mhlt",
+    "shikime": 2,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 9,
+  "fields": {
+    "titulli": "Sali Berisha kalon oqeanin/ Kreu i PD mbërrin në SHBA, pritet nga shqiptarët në aeroport",
+    "slug": "sali-berisha-kalon-oqeanin-kreu-i-pd-mberrin-ne-shba-pritet-nga-shqiptaret-ne-aeroport",
+    "permbajtja": "Kryetari i Partisë Demokratike, Sali Berisha, ka mbërritur në Shtetet e Bashkuara të Amerikës, ku do të qëndrojë për rreth një javë, në kuadër të një turi të programuar me disa aktivitete dhe takime.\r\n\r\nLajmin e mbërritjes e ka bërë të ditur vetë Berisha përmes një postimi në rrjetet sociale, ku ka publikuar edhe pamje nga pritja që i është bërë nga shqiptarë në SHBA. Në video, kreu i PD-së shihet duke përshëndetur dhe biseduar me bashkatdhetarët që kishin dalë për ta takuar.\r\n\r\nëPërtej oqeanit, një pritje shqiptare, një moment mirënjohjejeë, shkruan Berisha në përshkrimin e videos.\r\n\r\n<iframe src=\"https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2785049151888714%2F&show_text=true&width=267&t=0\" width=\"267\" height=\"591\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\" allowFullScreen=\"true\"></iframe>\r\n\r\nGjatë qëndrimit në SHBA, Berisha pritet të marrë pjesë në disa aktivitete, ndërsa një prej eventeve kryesore të axhendës së tij është Konventa Kombëtare Republikane, e cila do të zhvillohet në Dallas më 9 dhe 10 shtator.\r\n\r\nNë axhendë janë parashikuar gjithashtu edhe takime me komunitetin shqiptar. Takimi i parë pritet të zhvillohet të dielën, më 6 shtator, në New York, ndërsa një tjetër është planifikuar më 8 shtator në Texas.\r\n\r\nVizita e Berishës në SHBA vjen pas një zhvillimi të rëndësishëm në raport me autoritetet amerikane. Në qershor të këtij viti, Departamenti Amerikan i Shtetit anuloi masat kufizuese ndaj tij, rreth pesë vite pasi Berishës dhe familjes së tij iu ndalua hyrja në territorin amerikan.",
+    "data_publikimit": "2026-09-05T20:29:45.341Z",
+    "kategoria": 1,
+    "foto": "media/lajmet/saliu_qzazlu",
+    "shikime": 61,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 10,
+  "fields": {
+    "titulli": "Shefi i NATO-s: Vonesat në mbështetjen për Ukrainën kushtojnë jetë",
+    "slug": "shefi-i-nato-s-vonesat-ne-mbeshtetjen-per-ukrainen-kushtojne-jete",
+    "permbajtja": "Sekretari i Përgjithshëm i NATO-s, Mark Rutte, ka mirëpritur zotimet e reja për mbështetjen e Ukrainës, duke u bërë thirrje vendeve aleate dhe partnere që të vazhdojnë të rrisin ndihmën për Kievin.\r\n\r\nRutte mori pjesë të martën, më 8 shtator, në takimin e Grupit të Kontaktit për Mbrojtjen e Ukrainës, të kryesuar nga Gjermania dhe Mbretëria e Bashkuar.\r\n\r\nAi mirëpriti zotimet e reja që synojnë ta ndihmojnë Ukrainën të mbrohet nga Rusia, përfshirë edhe nga sulmet ajrore.\r\n\r\nëGjatë vitit të fundit, aleatët kanë ndarë mbi 10 miliardë dollarë për PURL dhe shitjet ushtarake të SHBA-së për Ukrainën. Kjo është thelbësore dhe duhet mirëpritur fuqishëmë, deklaroi Rutte, shkruan në deklaratë NATO.\r\n\r\nSipas tij, në këtë shumë përfshihen edhe 3.5 miliardë dollarë nga kredia e Bashkimit Evropian për mbështetjen e Ukrainës.\r\n\r\nëKjo është një shenjë konkrete e bashkëpunimit BE-NATO në mbështetje të Ukrainës dhe një tjetër shembull se Evropa po bën më shumë, tha ai.\r\n\r\nSekretari i Përgjithshëm i NATO-s u tha aleatëve dhe partnerëve se Ukraina duhet të mbështetet me ëurgjencën më të madheë, duke paralajmëruar se vonesat kushtojnë jetë njerëzish.\r\n\r\nRutte theksoi se iniciativa PURL e NATO-s, përmes së cilës pajisjet ushtarake amerikane financohen nga aleatët dhe partnerët e NATO-s dhe i dërgohen Ukrainës, vazhdon të sigurojë pajisje kritike.\r\n\r\nëKy proces është i pandërprerë dhe absolutisht thelbësor për ta ndihmuar Ukrainën të mbrojë qytetet e saj dhe të mbajë vijën e frontitë, deklaroi Rutte.",
+    "data_publikimit": "2026-09-09T18:31:11.077Z",
+    "kategoria": 4,
+    "foto": "media/lajmet/rutte_nmnm3p",
+    "shikime": 4,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 11,
+  "fields": {
+    "titulli": "Albulena Haxhiu zgjidhet Kryetare e Kuvendit të Kosovës",
+    "slug": "albulena-haxhiu-zgjidhet-kryetare-e-kuvendit-te-kosoves",
+    "permbajtja": "Albulena Haxhiu është zgjedhur kryetare e Kuvendit e legjislaturës së njëmbëdhjetë.\r\n\r\nAjo mori 62 vota pro, 16 kundër, ndërsa 13 veta abstenuan.\r\n\r\nHaxhiu cila ushtron edhe postin e presidentit nga 5 prilli, do të vazhdojë edhe më tutje këtë detyrë deri në zgjedhjen e presidentit të ri.\r\n\r\nAlbulena Haxhiu ishte edhe kryetare e legjislaturës së dhjetë e cila u shpërnda më 1 korrik 2026.\r\n\r\nBërja e Kuvendit të ri i hap rrugë formimit të qeverisë së re dhe zgjedhjes së presidentit të ri.\r\n\r\nPartia fituese, LVV, i ka votat për Kuvendin dhe qeverinë e re, por jo edhe për presidentin e ri.\r\n\r\nZgjedhja e presidentit ka qenë në qendër të krizës politike këtë vit dhe mund të shkaktojë sërish zgjedhje të reja.",
+    "data_publikimit": "2026-09-09T18:36:21.148Z",
+    "kategoria": 3,
+    "foto": "media/lajmet/albulena_haxhiu_r84sgw",
+    "shikime": 28,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 12,
+  "fields": {
+    "titulli": "Berisha: Nuk kam qenë kurrë non grata",
+    "slug": "berisha-nuk-kam-qene-kurre-non-grata",
+    "permbajtja": "Lideri i opozitës, Sali Berisha deklaroi në konferencë se nuk ka qenë  kurrë 'non grata'. dhe se ata që u morën me këtë ëështje kanë marrë ndëshkimin e merituar duke nisur  nga McGonigal te ish ambasadorja amerikane Yuri Kim dhe ish sekretari amerikan i shtetit Antony Blinken.\r\n\r\nAnisa Kadesha, RTSH: Zoti Berisha, krahas aspektit politik, si e përjetuat në aspektin personal vizitën në SHBA, e cila në fakt përkon fiks pesë vite pasi ju u përjashtuat nga grupi parlamentar pasi ishit sanksionuar nga SHBA, nga ish-lidershipi.\r\n\r\nSali Berisha: Natyrisht, thashë, e gjitha kjo në tërësi ishte rivendosje e një të drejte. Dhe e thashë dhe në fjalën time aty. Kjo e drejtë u rivendos së pari kur ata që u morën me këtë ëështje, morën me kohë ndëshkimin e merituar nga shteti i tyre.\r\n\r\nMcGonigal, vite burg. Yuri Kim, jashtë shërbimit diplomatik. Antony Blinken, i padëshiruar në vendin e tij. Edi Rama në rrokullisjen e tij të madhe. Lulzim Basha, Lulzim Brava është ndryrë me brava tani. \r\nKëto tani janë realitetet. \r\n\r\nJanë realitetet, por duhet të sqaroj me këtë rast një moment për gazetarët, që duhet të jenë korrekt me të vërtetën.\r\n\r\nSali Berisha nuk ka qenë kurrë 'non grata'. 'Non grata' është një akt që bazohet në Konventën e Vjenës. Mbi bazën e kësaj konvente, shtetet që kanë firmosur atë kanë të drejtë të mos pranojnë ose të përzënë diplomatë apo politikanë të caktuar si të padëshirueshëm. Të padëshirueshëm. Ndalimi i vizës sime nuk kishte asnjë lidhje me këtë konventë. \r\n\r\nCilido që merr përsipër të shkruajë të vërtetën duhet t'i referohet ligjit të Kongresit të Shteteve të Bashkuara 7003 C. Ligj i cili autorizon Sekretarin e Shtetit të shpallë 'ineligible', të papërzgjedhshëm... 'ineligible' është termi i ligjit, për të hyrë në Shtetet e Bashkuara, personat që ai gjykon po këto. \r\n\r\nVijmë në rastin tim. Pra, nuk ka qenë kurrë 'non grata', ka qenë ky ligj dhe ky neni i tij. \r\n\r\nDhe për t'i sqaruar përfundimisht ata që duan të dinë të vërtetën, me gjithë përpjekjet e bëra sepse nga ky ligj kalohet në dy akte të tjera, të cilat sanksionojnë llogaritë bankare, sanksionojnë pasuritë, ndalojnë bankat ndërkombëtare të kenë depozita nga ky person, ndalojnë shtetasit amerikanë të bashkëpunojnë me persona në biznes e të tjerë. \r\n\r\nPor kjo nuk u pranua, ndonëse është dërguar. është dërguar te thesari, dhe Thesari i Shteteve të Bashkuara, pas vetingut e ka mbrapsht duke deklaruar se në ligjin që ne zbatojmë nuk ka asgjë për filanin. \r\n\r\nKështu që unë mbeta thjesht njeriu me vizë të ndaluar. Atë, po në përputhje me ligjin dhe njëherë, se ligji ka përcaktuar si vepron sekretari, i ka modalitetet kur sekretari mund ta anulojë, dhe këtë e ka bërë\r\n\r\nSekretari Rubio për Sali Berishën, ka hequr ndalimin e vizës. Pra nuk ka asnjë sanksion tjetër, nuk ka qenë kurrë 'non grata'. Kjo është e vërteta.\r\n\r\n<iframe src=\"https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSaliBerisha%2Fvideos%2F1781585509650332%2F&show_text=true&width=560&t=0\" width=\"560\" height=\"429\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\" allowFullScreen=\"true\"></iframe>",
+    "data_publikimit": "2026-09-14T16:53:56.706Z",
+    "kategoria": 1,
+    "foto": "media/lajmet/sb_tbsr09",
+    "shikime": 3,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 13,
+  "fields": {
+    "titulli": "A do e lëshojë Rama, Ballukun? Berisha: Ka një tension real midis tyre",
+    "slug": "a-do-e-leshoje-rama-ballukun-berisha-ka-nje-tension-real-midis-tyre",
+    "permbajtja": "A do e lëshojë kryeministri Edi Rama, ish zv/kryeministren Belinda Balluku? Në konferencën për median nga selia e PD-së, lideri i demokratëve, Sali Berisha zbuloi se mes Ramës dhe Ballukut ka një tension real pas arrestimit të Ergys Agasit, pak javë më parë.\r\n\r\n'Ka mundësi që Edi Rama të shohë qartë tani se kabineti ekzistues nuk është në Rama-Balluku, por Balluku-Rama. Balluku-Rama\" deklaroi Berisha, duke iu përgjigjur pyetjes së gazetares së Syri Tv,  Marsi Korreshi.\r\n\r\nPjesë nga Konferenca\r\n\r\nMarsi Korreshi, SYRI TV: Zoti Berisha, dhe një pyetje të fundit. Ka zëra që qarkullojnë që SPAK do të dorëzojë në Kuvend fletë-arrestin e dytë për ish-zëvendëskryeministren Belinda Balluku. Ju keni informacion për këtë dhe a mendoni se do të shkojë Rama drejt lëshimit të saj? Faleminderit.\r\n\r\nSali Berisha: Tani këto ditë mësoj që ka një tension real midis Edi Ramës dhe Lubi Ballukut. \r\nDhe ky tension real është rezultat i arrestimit të Ergys Agasit, ku thuhet se dora e zezë e Lubisë është prapa atij arrestimi. \r\n\r\nNë këtë kuadër, ka mundësi që Edi Rama të shohë qartë tani se kabineti ekzistues nuk është në Rama-Balluku, por Balluku-Rama. Balluku-Rama. \r\n\r\nDhe unë po i ndjek me shumë interes dhe jo pa kënaqësi këto zhvillime në klanin e tyre mafioz.\r\n\r\n<iframe src=\"https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSaliBerisha%2Fvideos%2F1781585509650332%2F&show_text=true&width=560&t=0\" width=\"560\" height=\"429\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\" allowFullScreen=\"true\"></iframe>",
+    "data_publikimit": "2026-09-14T16:57:07.766Z",
+    "kategoria": 1,
+    "foto": "media/lajmet/berisha_lapwks",
+    "shikime": 19,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 14,
+  "fields": {
+    "titulli": "Haga njollos Kosovën! Dënohen ëlirimtarët, Thaëi, Krasniqi, Veseli, Selimi",
+    "slug": "haga-njollos-kosoven-denohen-clirimtaret-thaci-krasniqi-veseli-selimi",
+    "permbajtja": "Dhomat Speciale të Gjykatës së Kosovës kanë dënuar Hashim Thaëin, me 25 vjet burg, Jakup Krasniqin 25, Kadri Veseli 18 dhe Rexhep Selimin 13 vite burg.\r\n\r\nMegjithëse nuk u gjetën fajtor për krime lufte, ndëshkimet për grupin drejtues të UëK, janë shokuese pasi duket se për qëllim nuk kanë ndëshkim krimesh pas lufte, por njollosjen e luftës shekullore të një populli që luftoi kundër genocidit serb.",
+    "data_publikimit": "2026-09-16T18:32:44.465Z",
+    "kategoria": 3,
+    "foto": "media/lajmet/UCK-696x392_a2fhe4",
+    "shikime": 1,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 15,
+  "fields": {
+    "titulli": "Rama reagon pas aktgjykimit të Speciales: ëMarreë",
+    "slug": "rama-reagon-pas-aktgjykimit-te-speciales-marre",
+    "permbajtja": "Kryeministri i Shqipërisë, Edi Rama, ka reaguar pas shpalljes së aktgjykimit ndaj Hashim Thaëit, Kadri Veselit, Rexhep Selimit dhe Jakup Krasniqit.\r\n\r\nRama publikoi në rrjetet sociale një fotografi me vetëm një fjalë: ëMarreë, duke shprehur, sië duket, kundërshtimin e tij ndaj vendimit të Dhomave të Specializuara.\r\n\r\nReagimi i tij erdhi pak pasi trupi gjykues i shpalli katër ish-krerët e UëK-së penalisht përgjegjës për krime lufte dhe u shqiptoi dënime me burgim.\r\n\r\n<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fediramaal%2Fposts%2Fpfbid02zZBsTjTBRZ8gmVa7qbrrn1hoAvRyJU26XWNxA9xPmwaxiMuyNwHYKMh1dqRc1nz2l&show_text=true&width=500\" width=\"500\" height=\"409\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>",
+    "data_publikimit": "2026-09-16T18:34:33.888Z",
+    "kategoria": 3,
+    "foto": "media/lajmet/rama_v4oexu",
+    "shikime": 1,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 16,
+  "fields": {
+    "titulli": "Haradinaj bën thirrje për qetësi: Beteja për drejtësi të vazhdojë në shkallën e dytë",
+    "slug": "haradinaj-ben-thirrje-per-qetesi-beteja-per-drejtesi-te-vazhdoje-ne-shkallen-e-dyte",
+    "permbajtja": "Ish-kryeministri i Kosovës, Ramush Haradinaj, tani deputet i Aleancës, e ka cilësuar si ëtë papranueshëmë dhe ëtë padrejtë aktgjykimin dënues ndaj ish-krerëve të UëK-së, ndërsa ka bërë thirrje për qetësi dhe për vazhdimin e betejës ligjore në shkallën e dytë.\r\n\r\nëBeteja për drejtësi duhet të vazhdojë, duhet të fitohet në shkallën e dytë, tha Haradinaj përmes një video-mesazhi të shpërndarë në rrjetet social.\r\n\r\nAi u bëri thirrje qytetarëve që të mos dëmtojnë pronën dhe të mos rrezikojnë jetën e njerëzve si reagim ndaj aktgjykimit.\r\n\r\nëNëse e shkatërrojmë Kosovën, u ndihmojmë armiqve. Do tëi mundim armiqtë të bashkuarë, tha Haradinaj.\r\n\r\n<iframe src=\"https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1022155784190284%2F&show_text=0&width=267\" width=\"267\" height=\"476\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\" allowFullScreen=\"true\"></iframe>",
+    "data_publikimit": "2026-09-16T18:37:13.633Z",
+    "kategoria": 3,
+    "foto": "media/lajmet/haradinaj_c1fpoh",
+    "shikime": 1,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 17,
+  "fields": {
+    "titulli": "Haxhiu: Dënimet janë goditje e rëndë, fjala e fundit juridike nuk është thënë",
+    "slug": "haxhiu-denimet-jane-goditje-e-rende-fjala-e-fundit-juridike-nuk-eshte-thene",
+    "permbajtja": "Ushtruesja e detyrës së presidentit të Kosovës, Albulena Haxhiu, i ka cilësuar dënimet ndaj Hashim Thaëit, Kadri Veselit, Jakup Krasniqit dhe Rexhep Selimit si ëgoditje të rëndë për familjet e tyre dhe ëlajm thellësisht tronditësë për Kosovën.\r\n\r\nNë reagimin pas shpalljes së aktgjykimit, Haxhiu tha se procesi juridik nuk ka përfunduar dhe përmendi mundësinë e ankimit.\r\n\r\nëFjala e fundit juridike nuk është thënë. E drejta e ankimit është pjesë e procesit dhe duhet të ushtrohet plotësishtë, shkroi ajo në Facebook.\r\n\r\nHaxhiu tha se lufta e UëK-së ëishte ëlirimtareë dhe se, sipas saj, aktgjykimi nuk duhet të përdoret për të relativizuar krimet e kryera nga regjimi serb gjatë luftës në Kosovë.\r\n\r\nAjo bëri thirrje për qetësi dhe unitet pas shpalljes së dënimeve.\r\n\r\nëSot na duhet qetësi, dinjitet dhe bashkim. Dhimbja e kësaj dite nuk duhet të na ndajë, tha Haxhiu.",
+    "data_publikimit": "2026-09-16T18:38:05.891Z",
+    "kategoria": 3,
+    "foto": "media/lajmet/albulena_haxhiu_gpck72",
+    "shikime": 1,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 18,
+  "fields": {
+    "titulli": "Berisha: Vendimi për ish-drejtuesit e UëK-së i padrejtë! Asgjë s' mund të errësojë luftën ëlirimtare të Kosovës",
+    "slug": "berisha-vendimi-per-ish-drejtuesit-e-uck-se-i-padrejte-asgje-s-mund-te-erresoje-luften-clirimtare-te-kosoves",
+    "permbajtja": "Lideri i PD-së, Sali Berisha e quajti vendimin e Gjykatës Speciale për ish drejtuesit e UëK-së të padrejtë dhe të pamerituar.\r\n\r\nëAsgjë nuk mund të errësojë luftën ëlirimtare të popullit të Kosovësë theksoi Berisha para deputetëve në mbledhjen e grupit parlamentar të PD-së që po mbahet sot në selinë e PD-së.\r\n\r\nPjesë nga fjala e Berishës\r\n\r\nNatyrisht sot është një ditë jo e mirë për shqiptarët, për mbarë kombin, për familjet e ish-udhëheqësve politikë të Luftës ëlirimtare të Kosovës dhe të Kosovës, pasi gjykata e shkallës së parë në Hagë komunikoi vendime me të cilat në mënyrë absolute nuk arriti të substanciojë asgjë konkrete përveë deklaratave të përgjithshme që janë përsëritur me dhjetëra dhe qindra herë nga propaganda e Beogradit.\r\n\r\nDha dënime tërësisht të pamerituara në vend që të shpallte pafajësinë në sallë në emër të të drejtës ndaj ish-udhëheqësve politike të Luftës ëlirimtare dhe të Kosovës.\r\n\r\n\r\nMe këtë rast, sigurisht që festë bëhet në Serbi, në Beograd për këto dënime të padrejta. Por asgjë nuk mund të errësojë luftën ëlirimtare të popullit të Kosovës që ata udhëhoqën si faqen më të ndritur të luftërave të shqiptarëve për liri dhe dinjitet kombëtar pas luftërave të Skënderbeut.\r\n\r\nUshtria ëlirimtare e Kosovës bëri një luftë me të cilën së bashku, dhe në mbështetje të NATO-s, dhe kjo ishte aleate në tokë e NATO-s, ëliroi koloninë e fundit në Evropë, Kosovën nga pushtimi barbar serb.\r\n\r\nGjykata Speciale dënoi sot me nga 25 vjet burgim Hashim Thaëin e Jakup Krasniqin, me 18 vjet burgim Kadri Veselin dhe me 13 Rexhep Selimin. Ish-udhëheqësit e Ushtrisë ëlirimtare të Kosovës u dënuan për krime lufte, përfshirë ndalim të paligjshëm ose arbitrar, trajtim mizor, torturë dhe vrasje të paligjshme.",
+    "data_publikimit": "2026-09-16T18:41:30.713Z",
+    "kategoria": 3,
+    "foto": "media/lajmet/sb_lsecwp",
+    "shikime": 3,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.artikull",
+  "pk": 19,
+  "fields": {
+    "titulli": "Kurti: Aktgjykimi ndaj ish-krerëve të UëK-së është padrejtësi e papranueshme",
+    "slug": "kurti-aktgjykimi-ndaj-ish-krereve-te-uck-se-eshte-padrejtesi-e-papranueshme",
+    "permbajtja": "Kryeministri i Kosovës, Albin Kurti, e ka cilësuar si ëpadrejtësi të papranueshmeë shpalljen fajtorë dhe dënimet ndaj Hashim Thaëit, Kadri Veselit, Rexhep Selimit dhe Jakup Krasniqit.\r\n\r\nëShpallja fajtorë dhe dënimi kaq i rëndë për katër ish-krerë të Ushtrisë ëlirimtare të Kosovës është padrejtësi e papranueshme, ndëshkim i madh dhe i dëmshëmë, tha Kurti në reagimin e tij.\r\n\r\nAi kundërshtoi edhe formulimin se aktgjykimi është shqiptuar ënë emër të popullit të Kosovësë, duke thënë se kjo ëformulë e zbrazët nuk duhet ngatërruar me vullnetin e popullitë.\r\n\r\nKurti kërkoi që aktgjykimi i shkallës së parë të ndryshohet në apel.\r\n\r\nëKy aktgjykim patjetër duhet ndryshuar dhe korrigjuar në shkallën e apelit dhe atë sa më parë, tha ai.\r\n\r\nKurti shprehu gjithashtu mbështetje për familjet e katër ish-krerëve të UëK-së dhe bashkëluftëtarët e tyre.\r\n\r\n<iframe src=\"https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1616652803157803%2F&show_text=true&width=560&t=0\" width=\"560\" height=\"429\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\" allowFullScreen=\"true\"></iframe>",
+    "data_publikimit": "2026-09-16T18:43:23.755Z",
+    "kategoria": 3,
+    "foto": "media/lajmet/kurti_zbxle0",
+    "shikime": 21,
+    "youtube_id": null
+  }
+},
+{
+  "model": "lajmet.koment",
+  "pk": 1,
+  "fields": {
+    "artikulli": 11,
+    "emri": "Anonim",
+    "permbajtja": "zgjedhje e duhur",
+    "data_publikimit": "2026-09-11T22:27:58.244Z",
+    "is_approved": true
+  }
+},
+{
+  "model": "lajmet.koment",
+  "pk": 2,
+  "fields": {
+    "artikulli": 9,
+    "emri": "Anonim",
+    "permbajtja": "rrofte doktori",
+    "data_publikimit": "2026-09-14T16:04:18.407Z",
+    "is_approved": true
+  }
+},
+{
+  "model": "lajmet.koment",
+  "pk": 3,
+  "fields": {
+    "artikulli": 19,
+    "emri": "Anonim",
+    "permbajtja": "bravo kurti",
+    "data_publikimit": "2026-09-18T18:35:11.235Z",
+    "is_approved": true
+  }
+},
+{
+  "model": "lajmet.reklama",
+  "pk": 1,
+  "fields": {
+    "titulli": "Fibank Albania",
+    "imazhi": "media/reklama/abada630dd8a7373bb67ab0368daf54f_jxft0g",
+    "linku": "https://www.fibank.al/en/individe/depozita-dhe-investime/depozita/depozite-me-afat-%22kursimet-e-viteve-te-arta-2026%22/",
+    "is_active": true,
+    "data_krijimit": "2026-09-10T22:22:56.030Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-09-10T21:59:13.268Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "11",
+    "object_repr": "Albulena Haxhiu zgjidhet Kryetare e Kuvendit të Kosovës",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-09-10T22:00:49.864Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "10",
+    "object_repr": "Shefi i NATO-s: Vonesat në mbështetjen për Ukrainën kushtojnë jetë",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-09-10T22:12:39.177Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "9",
+    "object_repr": "Sali Berisha kalon oqeanin/ Kreu i PD mbërrin në SHBA, pritet nga shqiptarët në aeroport",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-09-10T22:13:55.815Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "9",
+    "object_repr": "Sali Berisha kalon oqeanin/ Kreu i PD mbërrin në SHBA, pritet nga shqiptarët në aeroport",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-09-10T22:14:24.283Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "1",
+    "object_repr": "Sali Berisha udhëton drejt SHBA-ve",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-09-10T22:16:27.452Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "8",
+    "object_repr": "Digjen disa shtëpi në Himarë, situata me zjarre drejt përmirësimit",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-09-10T22:16:55.571Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "6",
+    "object_repr": "Zelensky paralajmëron kompanitë ajrore: Qielli rus po bëhet i rrezikshëm",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-09-10T22:17:59.000Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "5",
+    "object_repr": "Gjermania thotë se Rusia qëndron pas \"sulmit hibrid\" në aeroportin e Lajpcigut",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-09-10T22:18:17.127Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "4",
+    "object_repr": "Trump: Nuk po përpiqem që Teherani të negociojë, Hormuzi është nën kontrollin e SHBA",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-09-10T22:18:37.178Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "4",
+    "object_repr": "Trump: Nuk po përpiqem që Teherani të negociojë, Hormuzi është nën kontrollin e SHBA",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-09-10T22:18:56.367Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "4",
+    "object_repr": "Trump: Nuk po përpiqem që Teherani të negociojë, Hormuzi është nën kontrollin e SHBA",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-09-10T22:19:10.063Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "3",
+    "object_repr": "Trump paralajmëron: SHBA do ta godasë ashpër Iranin",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-09-10T22:19:19.841Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "4",
+    "object_repr": "Trump: Nuk po përpiqem që Teherani të negociojë, Hormuzi është nën kontrollin e SHBA",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-09-10T22:19:54.703Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "2",
+    "object_repr": "Protestuesit rrethojnë hyrjen kryesore të Kryeministrisë, përplasen me efektivët e Policisë",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-09-10T22:22:56.036Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "reklama"
+    ],
+    "object_id": "1",
+    "object_repr": "Fibank Albania",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-09-10T22:23:29.401Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "video"
+    ],
+    "object_id": "1",
+    "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-09-10T22:46:22.781Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "video"
+    ],
+    "object_id": "1",
+    "object_repr": "Sali Berisha udhëton drejt SHBA-ve: Udhëtim i viteve për mua, miqve do u them që unë erdha",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-09-14T16:34:37.373Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "7",
+    "object_repr": "BE: I takon Kushtetueses ta gjykojë formimin e Qeverisë dhe të Kuvendit",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-09-14T16:53:56.708Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "12",
+    "object_repr": "Berisha: Nuk kam qenë kurrë non grata",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-09-14T16:55:13.329Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "12",
+    "object_repr": "Berisha: Nuk kam qenë kurrë non grata",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-09-14T16:57:07.771Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "13",
+    "object_repr": "A do e lëshojë Rama, Ballukun? Berisha: Ka një tension real midis tyre",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-09-14T16:57:39.852Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "13",
+    "object_repr": "A do e lëshojë Rama, Ballukun? Berisha: Ka një tension real midis tyre",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Foto\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-09-14T21:48:46.988Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "13",
+    "object_repr": "A do e lëshojë Rama, Ballukun? Berisha: Ka një tension real midis tyre",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permbajtja\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-09-14T21:49:38.790Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "12",
+    "object_repr": "Berisha: Nuk kam qenë kurrë non grata",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permbajtja\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-09-16T18:32:44.467Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "14",
+    "object_repr": "Haga njollos Kosovën! Dënohen ëlirimtarët, Thaëi, Krasniqi, Veseli, Selimi",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-09-16T18:34:33.889Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "15",
+    "object_repr": "Rama reagon pas aktgjykimit të Speciales: ëMarreë",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-09-16T18:37:13.634Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "16",
+    "object_repr": "Haradinaj bën thirrje për qetësi: Beteja për drejtësi të vazhdojë në shkallën e dytë",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-09-16T18:38:05.892Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "17",
+    "object_repr": "Haxhiu: Dënimet janë goditje e rëndë, fjala e fundit juridike nuk është thënë",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-09-16T18:41:30.715Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "18",
+    "object_repr": "Berisha: Vendimi për ish-drejtuesit e UëK-së i padrejtë! Asgjë s' mund të errësojë luftën ëlirimtare të Kosovës",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-09-16T18:43:23.757Z",
+    "user": [
+      "Renatoo"
+    ],
+    "content_type": [
+      "lajmet",
+      "artikull"
+    ],
+    "object_id": "19",
+    "object_repr": "Kurti: Aktgjykimi ndaj ish-krerëve të UëK-së është padrejtësi e papranueshme",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+}
+]

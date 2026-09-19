@@ -79,14 +79,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'portal_lajmesh.wsgi.application'
 
 
-# Database Configuration (Lidhet me PostgreSQL kur ekziston DATABASE_URL)
+# Database Configuration
+# conn_max_age=0 parandalon lidhjet e prishura (stale connections) pas 'sleep mode' ne Render
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
 if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.config(
             default=DATABASE_URL,
-            conn_max_age=600,
+            conn_max_age=0,
             ssl_require=True
         )
     }
