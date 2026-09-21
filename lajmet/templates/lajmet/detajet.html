@@ -33,12 +33,9 @@
             <!-- Titull me h1, me i zi dhe me font ultra-bold -->
             <h1 class="fw-bolder text-dark mb-3" style="font-weight: 800;">{{ artikull.titulli }}</h1>
             
-            <!-- Vetem data e publikimit dhe etiketa Premium nëse është rasti -->
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- Vetem data e publikimit (etiketa e verdhe u hoq) -->
+            <div class="mb-3">
                 <p class="text-muted mb-0"><small>Publikuar më: {{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small></p>
-                {% if artikull.eshte_premium %}
-                    <span class="badge bg-warning text-dark px-3 py-2 fw-bold">OPINION EKSKLUZIV (PREMIUM)</span>
-                {% endif %}
             </div>
             
             {% if artikull.foto %}
@@ -60,7 +57,7 @@
                     <!-- Kutia Bllokuese e Paywall (Stil Profesional) -->
                     <div class="card my-5 border-danger shadow-sm bg-light">
                         <div class="card-body text-center p-4">
-                            <h3 class="fw-bold text-danger mb-3">Ky është një artikull ekskluziv Opinion</h3>
+                            <h3 class="fw-bold text-danger mb-3">Ky është një artikull ekskluziv</h3>
                             <p class="text-muted mb-4">
                                 Për të vazhduar leximin e këtij shkrimi të plotë dhe analizave të tjera të thelluara, bëhuni pjesë e abonentëve tanë.
                             </p>
