@@ -89,3 +89,10 @@ def detajet_e_lajmit(request, slug):
         'ka_akses': ka_akses,
     }
     return render(request, 'lajmet/detajet.html', context)
+
+def faqja_e_abonimit(request):
+    kategorite = Kategoria.objects.all()
+    context = {
+        'kategorite': kategorite,
+    }
+    return render(request, 'lajmet/abonohu.html', context)

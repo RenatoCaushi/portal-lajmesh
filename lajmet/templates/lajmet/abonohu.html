@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block meta_tags %}
+    <title>Abonohu - Konfidenciale News</title>
+    <meta name="description" content="Zgjidhni planin tuaj të abonimit për të lexuar artikuj ekskluzivë dhe opinione në Konfidenciale News.">
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row text-center mb-5">
+        <div class="col-md-8 mx-auto">
+            <h1 class="fw-bolder text-dark display-5 mb-3" style="font-weight: 800;">Bëhuni Abonent i Konfidenciale</h1>
+            <p class="text-muted fs-5">Fitoni akses të pakufizuar në të gjitha opinionet, analizat e thelluara dhe artikujt ekskluzivë të portalit tonë.</p>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 mb-3 text-center justify-content-center">
+        <!-- Paketa Mujore -->
+        <div class="col-md-5 mb-4">
+            <div class="card mb-4 rounded-3 shadow-sm border-danger">
+                <div class="card-header py-3 bg-danger text-white">
+                    <h4 class="my-0 fw-bold">Paketa Mujore</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">€5<small class="text-muted fw-light">/muaj</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4 text-start px-4">
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Akses i plotë në të gjitha Opinionet</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Pa reklama shpërqendruese</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Mundësi anulimi në çdo kohë</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-danger fw-bold">Zgjidh Mujoren</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paketa Vjetore -->
+        <div class="col-md-5 mb-4">
+            <div class="card mb-4 rounded-3 shadow-sm border-dark">
+                <div class="card-header py-3 bg-dark text-white">
+                    <h4 class="my-0 fw-bold">Paketa Vjetore <span class="badge bg-warning text-dark ms-2">Kurseni 20%</span></h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">€48<small class="text-muted fw-light">/vit</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4 text-start px-4">
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Të gjitha përfitimet e paketës mujore</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Çmim më ekonomik (përfitoni 2 muaj falas)</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Mbështetje e gazetarisë investigative</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-dark fw-bold">Zgjidh Vjetoren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="{% url 'faqja_kryesore' %}" class="btn btn-secondary">Kthehu te kryefaqja</a>
+    </div>
+</div>
+{% endblock %}
