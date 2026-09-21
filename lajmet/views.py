@@ -49,9 +49,7 @@ def faqja_kryesore(request):
 def detajet_e_lajmit(request, slug):
     artikull = get_object_or_404(Artikull, slug=slug)
     
-    # Rrit numrin e shikimeve
-    artikull.shikime += 1
-    artikull.save(update_fields=['shikime'])
+    # HEQUR: Rritja e numrit të shikimeve (pasi fusha shikime u fshi)
 
     # Trajtimi i dërgimit të formularit të komenteve
     if request.method == 'POST':
@@ -74,9 +72,20 @@ def detajet_e_lajmit(request, slug):
     except Exception:
         reklama = None
 
+    # Kontrolli për Paywall:
+    # Për momentin le të përcaktojmë se një përdorues ka akses nëse është i loguar (superuser ose staff),
+    # ose mund ta përshtasim sipas dëshirës. Për testim, përdoruesit e loguar shohin gjithçka.
+    ka_akses = True
+    if artikull.eshte_premium:
+        # Nëse artikulli është premium, kontrollojmë nëse përdoruesi është i loguar
+        # (Më vonë mund ta lidhim me një model Abonimi)
+        if not request.user.is_authenticated:
+            ka_akses = False
+
     context = {
         'artikull': artikull,
         'kategorite': kategorite,
         'reklama': reklama,
+        'ka_akses': ka_akses,
     }
     return render(request, 'lajmet/detajet.html', context)

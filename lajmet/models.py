@@ -20,8 +20,12 @@ class Artikull(models.Model):
     data_publikimit = models.DateTimeField(auto_now_add=True)
     kategoria = models.ForeignKey(Kategoria, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to="lajmet/", blank=True, null=True)
-    shikime = models.PositiveIntegerField(
-        default=0, verbose_name="Numri i shikimeve"
+    
+    # Fusha e re për Paywall (Opinionet me pagesë/abonim)
+    eshte_premium = models.BooleanField(
+        default=False, 
+        verbose_name="Artikull Premium (Paywall)", 
+        help_text="Zgjidhni nëse ky artikull kërkon abonim/pagesë për t'u lexuar plotësisht."
     )
 
     youtube_id = models.CharField(
@@ -45,7 +49,6 @@ class Artikull(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             base_slug = slugify(self.titulli)
-            # Nëse titulli përmban vetëm karaktere speciale/shkronja që nuk konvertohen direkt, sigurojmë një fallback
             if not base_slug:
                 base_slug = "lajm"
             slug = base_slug
@@ -128,7 +131,6 @@ class Video(models.Model):
         ordering = ["-data_publikimit"]
 
     def save(self, *args, **kwargs):
-        # Nxjerr automatikisht ID-në 11-shifrore nga çdo lloj linku
         if self.youtube_id:
             pattern = r"(?:v=|\/([0-9A-Za-z_-]{11}).*|youtu\.be\/)([0-9A-Za-z_-]{11})"
             match = re.search(pattern, self.youtube_id)
@@ -161,7 +163,6 @@ class Reklama(models.Model):
         return self.titulli
 
 
-# --- MODELI PËR RUAJTJEN E ABONIMEVE PUSH (Web Push API) ---
 class PushSubscription(models.Model):
     endpoint = models.TextField(unique=True, verbose_name="Endpoint URL")
     p256dh = models.CharField(max_length=255, verbose_name="P256DH Key")

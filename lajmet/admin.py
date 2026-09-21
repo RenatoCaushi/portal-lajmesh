@@ -8,11 +8,11 @@ class KategoriaAdmin(admin.ModelAdmin):
 
 @admin.register(Artikull)
 class ArtikullAdmin(admin.ModelAdmin):
-    list_display = ('titulli', 'kategoria', 'data_publikimit', 'shikime')
-    list_filter = ('kategoria', 'data_publikimit')
+    list_display = ('titulli', 'kategoria', 'data_publikimit', 'eshte_premium')
+    list_filter = ('kategoria', 'eshte_premium', 'data_publikimit')
     search_fields = ('titulli', 'permbajtja')
-    readonly_fields = ('shikime',)
-    ordering = ('-data_publikimit',)  # <-- SHTO KËTË RRESHT
+    readonly_fields = ('data_publikimit',)
+    ordering = ('-data_publikimit',)
 
 @admin.register(Koment)
 class KomentAdmin(admin.ModelAdmin):
