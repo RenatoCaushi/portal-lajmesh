@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.core.paginator import Paginator
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, logout
 from .models import Artikull, Kategoria, Koment, Reklama
 
 
@@ -49,8 +51,6 @@ def faqja_kryesore(request):
 def detajet_e_lajmit(request, slug):
     artikull = get_object_or_404(Artikull, slug=slug)
     
-    # HEQUR: Rritja e numrit të shikimeve (pasi fusha shikime u fshi)
-
     # Trajtimi i dërgimit të formularit të komenteve
     if request.method == 'POST':
         emri = request.POST.get('emri', '').strip()
@@ -73,12 +73,8 @@ def detajet_e_lajmit(request, slug):
         reklama = None
 
     # Kontrolli për Paywall:
-    # Për momentin le të përcaktojmë se një përdorues ka akses nëse është i loguar (superuser ose staff),
-    # ose mund ta përshtasim sipas dëshirës. Për testim, përdoruesit e loguar shohin gjithçka.
     ka_akses = True
     if artikull.eshte_premium:
-        # Nëse artikulli është premium, kontrollojmë nëse përdoruesi është i loguar
-        # (Më vonë mund ta lidhim me një model Abonimi)
         if not request.user.is_authenticated:
             ka_akses = False
 
@@ -90,9 +86,51 @@ def detajet_e_lajmit(request, slug):
     }
     return render(request, 'lajmet/detajet.html', context)
 
+
 def faqja_e_abonimit(request):
     kategorite = Kategoria.objects.all()
     context = {
         'kategorite': kategorite,
     }
     return render(request, 'lajmet/abonohu.html', context)
+
+
+def regjistrohu(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('faqja_kryesore')
+    else:
+        form = UserCreationForm()
+    
+    kategorite = Kategoria.objects.all()
+    context = {
+        'form': form,
+        'kategorite': kategorite,
+    }
+    return render(request, 'lajmet/regjistrohu.html', context)
+
+
+def hyrje(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('faqja_kryesore')
+    else:
+        form = AuthenticationForm()
+    
+    kategorite = Kategoria.objects.all()
+    context = {
+        'form': form,
+        'kategorite': kategorite,
+    }
+    return render(request, 'lajmet/hyrje.html', context)
+
+
+def dil(request):
+    logout(request)
+    return redirect('faqja_kryesore')

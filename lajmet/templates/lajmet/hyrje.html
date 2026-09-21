@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block meta_tags %}
+    <title>Identifikohuni - Konfidenciale News</title>
+{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width: 500px;">
+    <div class="card shadow-sm p-4 border-0 rounded-3">
+        <h2 class="fw-bold mb-4 text-center text-dark">Identifikohuni</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-dark w-100 fw-bold py-2 mt-3">Hyr në Llogari</button>
+        </form>
+        <p class="text-center mt-4 text-muted">
+            Nuk keni llogari? <a href="{% url 'regjistrohu' %}" class="text-danger fw-bold text-decoration-none">Regjistrohu tani</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
