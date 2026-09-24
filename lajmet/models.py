@@ -12,6 +12,9 @@ class Kategoria(models.Model):
     def __str__(self):
         return self.emri
 
+    def get_absolute_url(self):
+        return reverse('faqja_kryesore') + f"?kategoria={self.id}"
+
 
 class Artikull(models.Model):
     titulli = models.CharField(max_length=200)
