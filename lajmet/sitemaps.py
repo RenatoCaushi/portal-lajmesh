@@ -13,7 +13,8 @@ class ArtikullSitemap(Sitemap):
         return obj.data_publikimit
 
     def location(self, obj):
-        return reverse('detajet_e_lajmit', args=[obj.slug])
+        # Përdorim pk (id) për të shmangur çdo gabim fushash
+        return reverse('detajet_e_lajmit', args=[obj.pk])
 
 class KategoriaSitemap(Sitemap):
     changefreq = "weekly"
