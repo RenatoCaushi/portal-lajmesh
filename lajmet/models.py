@@ -88,4 +88,83 @@ class Artikull(models.Model):
         teksti = re.sub(fb_post_pattern, fb_post_embed, teksti)
 
         teksti = teksti.replace("\r\n", "<br>").replace("\n", "<br>")
+        
         return teksti
+
+
+class Koment(models.Model):
+    artikulli = models.ForeignKey(
+        Artikull, on_delete=models.CASCADE, related_name="komentet"
+    )
+    emri = models.CharField(
+        max_length=100, default="Anonim", blank=True, null=True
+    )
+    permbajtja = models.TextField()
+    data_publikimit = models.DateTimeField(auto_now_add=True)
+    is_approved = models.BooleanField(default=True, verbose_name="I aprovuar")
+
+    def __str__(self):
+        return f"Koment te {self.artikulli.titulli}"
+
+
+class Video(models.Model):
+    titulli = models.CharField(max_length=200, verbose_name="Titulli i Videos")
+    youtube_id = models.CharField(
+        max_length=100,
+        verbose_name="YouTube Video ID ose Link",
+        help_text="Mund të vendosni vetëm ID-në ose të gjithë linkun e YouTube.",
+    )
+    data_publikimit = models.DateTimeField(
+        auto_now_add=True, verbose_name="Data e Publikimit"
+    )
+
+    class Meta:
+        verbose_name = "Video"
+        verbose_name_plural = "Videot"
+        ordering = ["-data_publikimit"]
+
+    def save(self, *args, **kwargs):
+        if self.youtube_id:
+            pattern = r"(?:v=|\/([0-9A-Za-z_-]{11}).*|youtu\.be\/)([0-9A-Za-z_-]{11})"
+            match = re.search(pattern, self.youtube_id)
+            if match:
+                self.youtube_id = match.group(2) or match.group(1)
+            else:
+                self.youtube_id = self.youtube_id.strip()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.titulli
+
+
+class Reklama(models.Model):
+    titulli = models.CharField(
+        max_length=100, verbose_name="Emri i Reklamës / Klientit"
+    )
+    imazhi = models.ImageField(upload_to="reklama/", verbose_name="Foto Banneri")
+    linku = models.URLField(verbose_name="Linku i Destinacionit")
+    is_active = models.BooleanField(
+        default=True, verbose_name="Aktivizo Reklamën"
+    )
+    data_krijimit = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Reklamë"
+        verbose_name_plural = "Reklumat"
+
+    def __str__(self):
+        return self.titulli
+
+
+class PushSubscription(models.Model):
+    endpoint = models.TextField(unique=True, verbose_name="Endpoint URL")
+    p256dh = models.CharField(max_length=255, verbose_name="P256DH Key")
+    auth = models.CharField(max_length=255, verbose_name="Auth Key")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Data e Regjistrimit")
+
+    class Meta:
+        verbose_name = "Abonim Njoftimesh"
+        verbose_name_plural = "Abonimet e Njoftimeve"
+
+    def __str__(self):
+        return f"Abonues #{self.id}"
