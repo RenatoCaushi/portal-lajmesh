@@ -62,4 +62,30 @@ class Artikull(models.Model):
         super().save(*args, **kwargs)
 
     def permbajtja_me_embeds(self):
-        pass
+        teksti = self.permbajtja
+        insta_pattern = r"(https?://(?:www\.)?instagram\.com/(?:p|reel)/([^/?#&]+)/?)"
+        insta_embed = (
+            r'<blockquote class="instagram-media" data-instgrm-permalink="\1"'
+            r' data-instgrm-version="14" style="background:#FFF; border:0;'
+            r' border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0'
+            r' rgba(0,0,0,0.15); margin: 15px auto; max-width:540px;'
+            r' min-width:326px; padding:0; width:99.375%;"><a href="\1"'
+            r' target="_blank"></a></blockquote>'
+        )
+        teksti = re.sub(insta_pattern, insta_embed, teksti)
+
+        fb_reel_pattern = r"(https?://(?:www\.)?facebook\.com/(?:reel|watch|videos)/[^/\s]+/?)"
+        fb_reel_embed = (
+            r'<iframe src="https://www.facebook.com/plugins/video.php?href=\1&show_text=false&width=350"'
+            r' width="350" height="500" style="border:none;overflow:hidden;display:block;margin:20px auto;"'
+            r' scrolling="no" frameborder="0" allowfullscreen="true"'
+            r' allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>'
+        )
+        teksti = re.sub(fb_reel_pattern, fb_reel_embed, teksti)
+
+        fb_post_pattern = r"(https?://(?:www\.)?facebook\.com/[^/\s]+/posts/[^/\s]+/?)"
+        fb_post_embed = r'<div class="fb-post mb-3 d-flex justify-content-center" data-href="\1" data-width="500"></div>'
+        teksti = re.sub(fb_post_pattern, fb_post_embed, teksti)
+
+        teksti = teksti.replace("\r\n", "<br>").replace("\n", "<br>")
+        return teksti
