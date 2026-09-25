@@ -15,7 +15,7 @@
             {% for artikull in slider_lajmet %}
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
                     {% if artikull.foto %}
-                        <img src="{{ artikull.foto.url }}" class="d-block w-100" alt="{{ artikull.titulli }}" style="height: 420px; object-fit: contain; background-color: #111;">
+                        <img src="{{ artikull.foto.url }}" class="d-block w-100" alt="{{ artikull.titulli }}" style="height: 420px; object-fit: cover;">
                     {% else %}
                         <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 420px;">
                             <span>Pa Imazh</span>
