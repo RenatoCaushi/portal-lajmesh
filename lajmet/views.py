@@ -3,6 +3,8 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
+from django.http import HttpResponse
+from django.urls import reverse
 from .models import Artikull, Kategoria, Koment, Reklama
 
 
@@ -134,3 +136,46 @@ def hyrje(request):
 def dil(request):
     logout(request)
     return redirect('faqja_kryesore')
+
+
+def sitemap_xml(request):
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>']
+    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    
+    # 1. Faqja kryesore
+    xml.append('  <url>')
+    xml.append(f'    <loc>{request.build_absolute_uri(reverse("faqja_kryesore"))}</loc>')
+    xml.append('    <changefreq>daily</changefreq>')
+    xml.append('    <priority>1.0</priority>')
+    xml.append('  </url>')
+    
+    # 2. Faqet statike kryesore
+    faqet_statike = ['abonohu', 'regjistrohu', 'hyr']
+    for faqe in faqet_statike:
+        try:
+            url = request.build_absolute_uri(reverse(faqe))
+            xml.append('  <url>')
+            xml.append(f'    <loc>{url}</loc>')
+            xml.append('    <changefreq>monthly</changefreq>')
+            xml.append('    <priority>0.7</priority>')
+            xml.append('  </url>')
+        except Exception:
+            pass
+
+    # 3. Artikujt duke përdorur slug-un ekzistues
+    try:
+        artikujt = Artikull.objects.all().order_by('-data_publikimit')[:200]
+        for art in artikujt:
+            if art.slug:
+                url = request.build_absolute_uri(reverse('detajet_e_lajmit', kwargs={'slug': art.slug}))
+                xml.append('  <url>')
+                xml.append(f'    <loc>{url}</loc>')
+                xml.append('    <changefreq>never</changefreq>')
+                xml.append('    <priority>0.6</priority>')
+                xml.append('  </url>')
+    except Exception:
+        pass
+            
+    xml.append('</urlset>')
+    
+    return HttpResponse("\n".join(xml), content_type="application/xml")
