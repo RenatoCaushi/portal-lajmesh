@@ -82,7 +82,7 @@
                     <a href="https://api.whatsapp.com/send?text={{ artikull.titulli|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" target="_blank" rel="noopener" class="btn btn-success">
                         <i class="bi bi-whatsapp me-1"></i> WhatsApp
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri|urlencode }}&text={{ artikull.titulli|urlencode }}" target="_blank" rel="noopener" class="btn btn-dark">
+                    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri|urlencode }}&text={{ artikull.titulli|urlencode }}" target="_blank" rel="noopener" class="btn-dark btn">
                         <i class="bi bi-twitter-x me-1"></i> Twitter / X
                     </a>
                 </div>
@@ -101,30 +101,41 @@
                     <button type="submit" class="btn btn-danger">Dërgo Komentin</button>
                 </form>
 
-                <hr>
+                <!-- Lista e komenteve shfaqet VETËM nëse ka të paktën një koment të miratuar -->
+                {% with total_komente=artikull.komentet.all|dictsortreversed:"data_publikimit" %}
+                    {% comment %} Kontrollojmë nëse ka ndonjë koment të miratuar {% endcomment %}
+                    {% setvar has_approved=False %}
+                {% endwith %}
 
-                <!-- Lista e komenteve të ruajtura -->
-                <h6 class="fw-bold mb-3 text-dark">Komentet:</h6>
-                {% for koment in artikull.komentet.all %}
-                    {% if koment.is_approved %}
-                        <div class="border-bottom pb-2 mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <strong class="text-dark">{% if koment.emri %}{{ koment.emri }}{% else %}Anonim{% endif %}</strong>
-                                <small class="text-muted">{{ koment.data_publikimit|date:"d/m/Y H:i" }}</small>
-                            </div>
-                            <p class="mb-0 mt-1 text-secondary">{{ koment.permbajtja }}</p>
+                {% if artikull.komentet.all %}
+                    {% comment %} Bëjmë një kontroll të shpejtë nëse ekziston të paktën një koment i miratuar {% endcomment %}
+                    {% with approved_count=0 %}
+                        {% for k in artikull.komentet.all %}
+                            {% if k.is_approved %}
+                                {% if forloop.first %}
+                                    <hr>
+                                    <h6 class="fw-bold mb-3 text-dark">Komentet:</h6>
+                                {% endif %}
+                                <div class="border-bottom pb-2 mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <strong class="text-dark">{% if k.emri %}{{ k.emri }}{% else %}Anonim{% endif %}</strong>
+                                        <small class="text-muted">{{ k.data_publikimit|date:"d/m/Y H:i" }}</small>
+                                    </div>
+                                    <p class="mb-0 mt-1 text-secondary">{{ k.permbajtja }}</p>
 
-                            <!-- Butoni i fshirjes shfaqet VETËM për administratorin/stafin e loguar -->
-                            {% if request.user.is_staff %}
-                                <div class="text-end mt-2">
-                                    <a href="{% url 'fshi_komentin' koment.id %}" class="btn btn-sm btn-outline-danger py-0 px-2" onclick="return confirm('A jeni i sigurt që doni ta fshini këtë koment?');">
-                                        <i class="bi bi-trash"></i> Fshi
-                                    </a>
+                                    <!-- Butoni i fshirjes shfaqet VETËM për administratorin/stafin e loguar -->
+                                    {% if request.user.is_staff %}
+                                        <div class="text-end mt-2">
+                                            <a href="{% url 'fshi_komentin' k.id %}" class="btn btn-sm btn-outline-danger py-0 px-2" onclick="return confirm('A jeni i sigurt që doni ta fshini këtë koment?');">
+                                                <i class="bi bi-trash"></i> Fshi
+                                            </a>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             {% endif %}
-                        </div>
-                    {% endif %}
-                {% endfor %}
+                        {% endfor %}
+                    {% endwith %}
+                {% endif %}
             </div>
 
         </div>
