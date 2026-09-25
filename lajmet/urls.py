@@ -8,6 +8,9 @@ urlpatterns = [
     path('hyr/', views.hyrje, name='hyrje'),
     path('dil/', views.dil, name='dil'),
     
+    # Rruga për fshirjen e komenteve nga administratori
+    path('koment/fshi/<int:koment_id>/', views.fshi_komentin, name='fshi_komentin'),
+    
     # Rëndësishme: Shtohet KËTU para slug-ut
     path('sitemap.xml', views.sitemap_xml, name='sitemap_xml'),
     

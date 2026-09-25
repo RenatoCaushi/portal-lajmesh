@@ -113,6 +113,15 @@
                                 <small class="text-muted">{{ koment.data_publikimit|date:"d/m/Y H:i" }}</small>
                             </div>
                             <p class="mb-0 mt-1 text-secondary">{{ koment.permbajtja }}</p>
+
+                            <!-- Butoni i fshirjes shfaqet VETËM për administratorin/stafin e loguar -->
+                            {% if request.user.is_staff %}
+                                <div class="text-end mt-2">
+                                    <a href="{% url 'fshi_komentin' koment.id %}" class="btn btn-sm btn-outline-danger py-0 px-2" onclick="return confirm('A jeni i sigurt që doni ta fshini këtë koment?');">
+                                        <i class="bi bi-trash"></i> Fshi
+                                    </a>
+                                </div>
+                            {% endif %}
                         </div>
                     {% endif %}
                 {% endfor %}

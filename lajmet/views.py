@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
+from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse
 from django.urls import reverse
 from .models import Artikull, Kategoria, Koment, Reklama
@@ -136,6 +137,14 @@ def hyrje(request):
 def dil(request):
     logout(request)
     return redirect('faqja_kryesore')
+
+
+@staff_member_required
+def fshi_komentin(request, koment_id):
+    koment = get_object_or_404(Koment, id=koment_id)
+    artikull_slug = koment.artikulli.slug
+    koment.delete()
+    return redirect('detajet_e_lajmit', slug=artikull_slug)
 
 
 def sitemap_xml(request):
