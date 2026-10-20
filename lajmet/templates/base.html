@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    {% block meta_tags %}
-    <title>Konfidenciale News</title>
-    <meta name="description" content="Burimi juaj i besueshëm për lajmet më të fundit në kohë reale.">
     <meta name="google-site-verification" content="tA0MmoonBOGyO3ZN3e5lJx4U5xLMIL1nlpjLxjB_y1Q" />
-    <meta property="og:site_name" content="KONFIDENCIALE NEWS">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="KONFIDENCIALE NEWS">
-    <meta property="og:description" content="Burimi juaj i besueshëm për lajmet më të fundit në kohë reale.">
-    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    
+    <!-- BLLOKU I META TAGEVE (Mbishkruhet automatikisht te detail.html per çdo artikull) -->
+    {% block meta_tags %}
+        <title>Konfidenciale News</title>
+        <meta name="description" content="Burimi juaj i besueshëm për lajmet më të fundit në kohë reale.">
+        <meta property="og:site_name" content="KONFIDENCIALE NEWS">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="KONFIDENCIALE NEWS">
+        <meta property="og:description" content="Burimi juaj i besueshëm për lajmet më të fundit në kohë reale.">
+        <meta property="og:url" content="{{ request.build_absolute_uri }}">
     {% endblock %}
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +21,7 @@
 </head>
 <body class="bg-light d-flex flex-column min-vh-100">
 
-    <!-- NAVBAR I KUQ (BG-DANGER) ME KATEGORITË NE NGJYRË TË BARDHË -->
+    <!-- NAVBAR I KUQ (BG-DANGER) ME KATEGORITË NË NGJYRË TË BARDHË -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold text-white fs-4 me-4" href="{% url 'faqja_kryesore' %}">KONFIDENCIALE NEWS</a>
