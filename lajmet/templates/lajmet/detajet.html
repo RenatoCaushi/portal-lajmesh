@@ -4,28 +4,39 @@
     <title>{{ artikull.titulli }} - Konfidenciale News</title>
     <meta name="description" content="{{ artikull.permbajtja|striptags|truncatewords:25 }}">
 
+    <link rel="canonical" href="https://{{ request.get_host }}{{ request.path }}" />
+
     <!-- Meta tagat për Facebook (Open Graph / Large Image Card) -->
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Konfidenciale News" />
+    <meta property="og:locale" content="sq_AL" />
     <meta property="og:title" content="{{ artikull.titulli|striptags }}" />
     <meta property="og:description" content="{{ artikull.permbajtja|striptags|truncatewords:25 }}" />
-    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
-    
+    <meta property="og:url" content="https://{{ request.get_host }}{{ request.path }}" />
+    <meta property="article:published_time" content="{{ artikull.data_publikimit|date:'c' }}" />
+
     {% if artikull.foto %}
-        <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ artikull.foto.url }}" />
-        <meta property="og:image:secure_url" content="{{ request.scheme }}://{{ request.get_host }}{{ artikull.foto.url }}" />
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        {% with foto_url=artikull.foto.url %}
+            {% if "res.cloudinary.com/oornuwp6/image/upload/" in foto_url %}
+                <!-- Foto në Cloudinary: e kërkojmë të prerë saktë 1200x630 dhe në JPG, që Facebook ta pranojë gjithmonë -->
+                {% with rest=foto_url|cut:"https://res.cloudinary.com/oornuwp6/image/upload/" %}
+                    <meta property="og:image" content="https://res.cloudinary.com/oornuwp6/image/upload/c_fill,w_1200,h_630,q_auto,f_jpg/{{ rest }}" />
+                {% endwith %}
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+            {% elif foto_url|slice:":4" == "http" %}
+                <meta property="og:image" content="{{ foto_url }}" />
+            {% else %}
+                <meta property="og:image" content="https://{{ request.get_host }}{{ foto_url }}" />
+            {% endif %}
+        {% endwith %}
     {% endif %}
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Twitter Card (merr foton nga og:image) -->
+    <meta name="twitter:card" content="{% if artikull.foto %}summary_large_image{% else %}summary{% endif %}" />
     <meta name="twitter:title" content="{{ artikull.titulli|striptags }}" />
     <meta name="twitter:description" content="{{ artikull.permbajtja|striptags|truncatewords:25 }}" />
-    {% if artikull.foto %}
-        <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ artikull.foto.url }}" />
-    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -77,17 +88,19 @@
             <!-- BUTTONAT E SHPËRNDARJES NË RRJETE SOCIALE -->
             <div class="p-3 bg-white rounded shadow-sm border my-4">
                 <h5 class="fw-bold mb-3 text-dark">Shpërndaje këtë lajm:</h5>
+                {% with share_url="https://"|add:request.get_host|add:request.path %}
                 <div class="d-flex flex-wrap gap-2">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}" target="_blank" rel="noopener" class="btn btn-primary">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url|urlencode:'' }}" target="_blank" rel="noopener" class="btn btn-primary">
                         <i class="bi bi-facebook me-1"></i> Facebook
                     </a>
-                    <a href="https://api.whatsapp.com/send?text={{ artikull.titulli|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" target="_blank" rel="noopener" class="btn btn-success">
+                    <a href="https://api.whatsapp.com/send?text={{ artikull.titulli|urlencode }}%20{{ share_url|urlencode:'' }}" target="_blank" rel="noopener" class="btn btn-success">
                         <i class="bi bi-whatsapp me-1"></i> WhatsApp
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri|urlencode }}&text={{ artikull.titulli|urlencode }}" target="_blank" rel="noopener" class="btn-dark btn">
+                    <a href="https://twitter.com/intent/tweet?url={{ share_url|urlencode:'' }}&text={{ artikull.titulli|urlencode }}" target="_blank" rel="noopener" class="btn-dark btn">
                         <i class="bi bi-twitter-x me-1"></i> Twitter / X
                     </a>
                 </div>
+                {% endwith %}
             </div>
 
             <!-- SEKSIONI I KOMENTEVE -->
