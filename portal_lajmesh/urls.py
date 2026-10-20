@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import TemplateView  # Importo këtë
+from django.views.generic import TemplateView
 
 from django.contrib.sitemaps.views import sitemap
 from lajmet.sitemaps import ArtikullSitemap, KategoriaSitemap
@@ -31,6 +31,9 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('lajmet.urls')),
+    
+    # Rruga e re për CKEditor-in (E detyrueshme që të mos japi error 500)
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
     
     # Sitemap
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
