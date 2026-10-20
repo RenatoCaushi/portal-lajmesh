@@ -42,10 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',      # E nevojshme per sitemap
+    'django.contrib.sitemaps',   # Shto kete
     'cloudinary_storage',
     'cloudinary',
     'lajmet',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

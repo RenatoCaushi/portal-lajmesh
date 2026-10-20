@@ -18,12 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView  # Importo këtë
 
-# 1. Shto këto importe për sitemap-in
 from django.contrib.sitemaps.views import sitemap
 from lajmet.sitemaps import ArtikullSitemap, KategoriaSitemap
 
-# 2. Përcakto fjalorin e sitemaps
 sitemaps = {
     'artikujt': ArtikullSitemap,
     'kategorite': KategoriaSitemap,
@@ -33,8 +32,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('lajmet.urls')),
     
-    # 3. Shto rrugën e sitemap.xml
+    # Sitemap
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    
+    # Robots.txt
+    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 ]
 
 if settings.DEBUG:

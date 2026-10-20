@@ -1,56 +1,73 @@
 import re
 from django.db import models
+from django.utils import timezone  # Shtohet per menaxhimin e orarit
 from django.utils.text import slugify
 from django.urls import reverse
-
+from django_ckeditor_5.fields import CKEditor5Field  # Për editorin me Bold, Link, etj.
+ 
 class Kategoria(models.Model):
     emri = models.CharField(max_length=50)
-
+ 
     class Meta:
         verbose_name_plural = "Kategoritë"
-
+ 
     def __str__(self):
         return self.emri
-
+ 
     def get_absolute_url(self):
         return reverse('faqja_kryesore') + f"?kategoria={self.id}"
-
-
+ 
+ 
 class Artikull(models.Model):
     titulli = models.CharField(max_length=200)
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
-    permbajtja = models.TextField()
-    data_publikimit = models.DateTimeField(auto_now_add=True)
+    
+    # Zëvendësuam TextField me CKEditor5Field që të kesh butona Bold, Italic, Hiperlink, etj.
+    permbajtja = CKEditor5Field('Përmbajtja', config_name='extends')
+    
+    # Orari i personalizuar & Schedule (Lejon vendosjen manuale të datës dhe orës)
+    data_publikimit = models.DateTimeField(
+        default=timezone.now, 
+        verbose_name="Data dhe Ora e Publikimit"
+    )
+    
+    # Opsionalisht: Për të bërë schedule të plotë, mund të shtosh edhe këtë fushë Boolean
+    eshte_publikuar = models.BooleanField(
+        default=True, 
+        verbose_name="Publikuar (Aktiv)"
+    )
+
     kategoria = models.ForeignKey(Kategoria, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to="lajmet/", blank=True, null=True)
     
     eshte_premium = models.BooleanField(
-        default=False, 
+        default=False,
         verbose_name="Artikull Premium (Paywall)", 
         help_text="Zgjidhni nëse ky artikull kërkon abonim/pagesë për t'u lexuar plotësisht."
     )
-
+ 
     youtube_id = models.CharField(
         max_length=50,
         blank=True,
         null=True,
         verbose_name="YouTube Video ID",
         help_text=(
-            "Shkruaj vetëm ID-në e videos (p.sh. për linkun"
-            " https://www.youtube.com/watch?v=dQw4w9WgXcQ vendos vetëm"
-            " dQw4w9WgXcQ)"
+            "Shkruaj vetëm ID-në e videos (p.sh. për linkun "
+            "https://www.youtube.com/watch?v=dQw4w9WgXcQ vendos vetëm "
+            "dQw4w9WgXcQ)"
         ),
     )
-
+ 
     class Meta:
         verbose_name_plural = "Artikujt"
-
+        ordering = ['-data_publikimit']
+ 
     def __str__(self):
         return self.titulli
-
+ 
     def get_absolute_url(self):
         return reverse('detajet_e_lajmit', args=[self.slug])
-
+ 
     def save(self, *args, **kwargs):
         if not self.slug:
             base_slug = slugify(self.titulli)
@@ -63,35 +80,35 @@ class Artikull(models.Model):
                 count += 1
             self.slug = slug
         super().save(*args, **kwargs)
-
+ 
     def permbajtja_me_embeds(self):
         teksti = self.permbajtja
         insta_pattern = r"(https?://(?:www\.)?instagram\.com/(?:p|reel)/([^/?#&]+)/?)"
         insta_embed = (
-            r'<blockquote class="instagram-media" data-instgrm-permalink="\1"'
-            r' data-instgrm-version="14" style="background:#FFF; border:0;'
-            r' border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0'
-            r' rgba(0,0,0,0.15); margin: 15px auto; max-width:540px;'
-            r' min-width:326px; padding:0; width:99.375%;"><a href="\1"'
-            r' target="_blank"></a></blockquote>'
+           r'<blockquote class="instagram-media" data-instgrm-permalink="\1"'
+           r' data-instgrm-version="14" style="background:#FFF; border:0;'
+           r' border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0'
+           r' rgba(0,0,0,0.15); margin: 15px auto; max-width:540px;'
+           r' min-width:326px; padding:0; width:99.375%;"><a href="\1"'
+           r' target="_blank"></a></blockquote>'
         )
         teksti = re.sub(insta_pattern, insta_embed, teksti)
-
+ 
         fb_reel_pattern = r"(https?://(?:www\.)?facebook\.com/(?:reel|watch|videos)/[^/\s]+/?)"
         fb_reel_embed = (
-            r'<iframe src="https://www.facebook.com/plugins/video.php?href=\1&show_text=false&width=350"'
-            r' width="350" height="500" style="border:none;overflow:hidden;display:block;margin:20px auto;"'
-            r' scrolling="no" frameborder="0" allowfullscreen="true"'
-            r' allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>'
+           r'<iframe src="https://www.facebook.com/plugins/video.php?href=\1&show_text=false&width=350"'
+           r' width="350" height="500" style="border:none;overflow:hidden;display:block;margin:20px auto;"'
+           r' scrolling="no" frameborder="0" allowfullscreen="true"'
+           r' allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;'
+           r' web-share"></iframe>'
         )
         teksti = re.sub(fb_reel_pattern, fb_reel_embed, teksti)
-
+ 
         fb_post_pattern = r"(https?://(?:www\.)?facebook\.com/[^/\s]+/posts/[^/\s]+/?)"
         fb_post_embed = r'<div class="fb-post mb-3 d-flex justify-content-center" data-href="\1" data-width="500"></div>'
         teksti = re.sub(fb_post_pattern, fb_post_embed, teksti)
-
-        teksti = teksti.replace("\r\n", "<br>").replace("\n", "<br>")
-        
+ 
+        # Meqenëse CKEditor përdor HTML tag-e, kujdes me replace e rreshtave të reja nëse përdor formatim të pasur
         return teksti
 
 
@@ -105,11 +122,11 @@ class Koment(models.Model):
     permbajtja = models.TextField()
     data_publikimit = models.DateTimeField(auto_now_add=True)
     is_approved = models.BooleanField(default=True, verbose_name="I aprovuar")
-
+ 
     def __str__(self):
         return f"Koment te {self.artikulli.titulli}"
-
-
+ 
+ 
 class Video(models.Model):
     titulli = models.CharField(max_length=200, verbose_name="Titulli i Videos")
     youtube_id = models.CharField(
@@ -120,12 +137,12 @@ class Video(models.Model):
     data_publikimit = models.DateTimeField(
         auto_now_add=True, verbose_name="Data e Publikimit"
     )
-
+ 
     class Meta:
         verbose_name = "Video"
         verbose_name_plural = "Videot"
         ordering = ["-data_publikimit"]
-
+ 
     def save(self, *args, **kwargs):
         if self.youtube_id:
             pattern = r"(?:v=|\/([0-9A-Za-z_-]{11}).*|youtu\.be\/)([0-9A-Za-z_-]{11})"
@@ -135,11 +152,11 @@ class Video(models.Model):
             else:
                 self.youtube_id = self.youtube_id.strip()
         super().save(*args, **kwargs)
-
+ 
     def __str__(self):
         return self.titulli
-
-
+ 
+ 
 class Reklama(models.Model):
     titulli = models.CharField(
         max_length=100, verbose_name="Emri i Reklamës / Klientit"
@@ -150,24 +167,24 @@ class Reklama(models.Model):
         default=True, verbose_name="Aktivizo Reklamën"
     )
     data_krijimit = models.DateTimeField(auto_now_add=True)
-
+ 
     class Meta:
         verbose_name = "Reklamë"
         verbose_name_plural = "Reklumat"
-
+ 
     def __str__(self):
         return self.titulli
-
-
+ 
+     
 class PushSubscription(models.Model):
     endpoint = models.TextField(unique=True, verbose_name="Endpoint URL")
     p256dh = models.CharField(max_length=255, verbose_name="P256DH Key")
     auth = models.CharField(max_length=255, verbose_name="Auth Key")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Data e Regjistrimit")
-
+ 
     class Meta:
         verbose_name = "Abonim Njoftimesh"
         verbose_name_plural = "Abonimet e Njoftimeve"
-
+ 
     def __str__(self):
         return f"Abonues #{self.id}"

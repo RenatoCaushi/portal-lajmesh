@@ -8,11 +8,16 @@ class KategoriaAdmin(admin.ModelAdmin):
 
 @admin.register(Artikull)
 class ArtikullAdmin(admin.ModelAdmin):
+    # Shtuam fushat e reja në list_display dhe list_filter për kontroll më të mirë
     list_display = ('titulli', 'kategoria', 'data_publikimit', 'eshte_premium')
     list_filter = ('kategoria', 'eshte_premium', 'data_publikimit')
     search_fields = ('titulli', 'permbajtja')
-    readonly_fields = ('data_publikimit',)
+    
+    # E hoqëm nga readonly_fields që të mund të caktosh/ndryshosh orarin lirisht (Schedule)
+    # readonly_fields = ('data_publikimit',) 
+    
     ordering = ('-data_publikimit',)
+    prepopulated_fields = {'slug': ('titulli',)} # Gjeneron automatikisht slug-un nga titulli
 
 @admin.register(Koment)
 class KomentAdmin(admin.ModelAdmin):
