@@ -42,10 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',      # E nevojshme per sitemap
+    'django.contrib.sites',       # E nevojshme per sitemap
     'django.contrib.sitemaps',   # Shto kete
     'cloudinary_storage',
     'cloudinary',
+    'django_ckeditor_5',         # Pakoja e editorit për Bold, Links, etj.
     'lajmet',
 ]
 
@@ -185,6 +186,35 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Zgjidhja për YouTube Embed Error 153: Lejon shfletuesin të dërgojë Referer Header te YouTube
 SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+
+# Konfigurimi i CKEditor 5 për panelin e adminit dhe formatimin e tekstit
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'imageUpload'],
+    },
+    'extends': {
+        'blockToolbar': [
+            'paragraph', 'heading1', 'heading2', 'heading3',
+            '|',
+            'bulletedList', 'numberedList',
+            '|',
+            'blockQuote',
+        ],
+        'toolbar': [
+            'heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'link', 'underline', 'strikethrough',
+            'code', 'subscript', 'superscript', 'highlight', '|', 'codeBlock', 'sourceEditing', 'insertImage',
+            'bulletedList', 'numberedList', 'todoList', '|', 'blockQuote', 'imageUpload', '|',
+            'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'mediaEmbed', 'removeFormat',
+            'insertTable',
+        ],
+        'image': {
+            'toolbar': ['imageTextAlternative', 'imageStyle:full', 'imageStyle:side'],
+        },
+        'table': {
+            'contentToolbar': ['tableColumn', 'tableRow', 'tableCellProperties', 'tableProperties'],
+        },
+    },
+}
 
 # Konfigurim i veçantë vetëm për testet: Përdor SQLite në memorie që të mos përdorë/bllokojë PostgreSQL
 if 'test' in sys.argv:
