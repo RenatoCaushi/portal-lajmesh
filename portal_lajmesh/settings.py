@@ -213,6 +213,17 @@ CKEDITOR_5_CONFIGS = {
         'table': {
             'contentToolbar': ['tableColumn', 'tableRow', 'tableCellProperties', 'tableProperties'],
         },
+        # Lejon etiketën iframe që videot nga Facebook/YouTube të mos fshihen nga editori
+        'htmlSupport': {
+            'allow': [
+                {
+                    'name': 'iframe',
+                    'attributes': True,
+                    'classes': True,
+                    'styles': True
+                }
+            ]
+        }
     },
 }
 
