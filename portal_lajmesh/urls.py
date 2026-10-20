@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import TemplateView
+from django.http import HttpResponse
 
 from django.contrib.sitemaps.views import sitemap
 from lajmet.sitemaps import ArtikullSitemap, KategoriaSitemap
@@ -28,18 +28,32 @@ sitemaps = {
     'kategorite': KategoriaSitemap,
 }
 
+
+def robots_txt(request):
+    """robots.txt pa skedar template: nuk mund të japë gabim 500 nëse mungon një skedar."""
+    lines = [
+        "User-agent: *",
+        "Disallow: /admin/",
+        "Disallow: /ckeditor5/",
+        "Allow: /",
+        "",
+        "Sitemap: https://%s/sitemap.xml" % request.get_host(),
+    ]
+    return HttpResponse(
+        "\n".join(lines) + "\n", content_type="text/plain; charset=utf-8"
+    )
+
+
 urlpatterns = [
+    # Robots.txt dhe sitemap vihen para 'lajmet.urls', që asnjë rrugë tjetër të mos i kapë
+    path('robots.txt', robots_txt, name='robots_txt'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+
     path('admin/', admin.site.urls),
     path('', include('lajmet.urls')),
-    
+
     # Rruga e re për CKEditor-in (E detyrueshme që të mos japi error 500)
     path("ckeditor5/", include('django_ckeditor_5.urls')),
-    
-    # Sitemap
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    
-    # Robots.txt
-    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 ]
 
 if settings.DEBUG:
