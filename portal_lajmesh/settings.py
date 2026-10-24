@@ -153,11 +153,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Konfigurimi i Cloudinary
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'oornuwp6',
-    'API_KEY': '975767264233752',
-    'API_SECRET': 'iis2W8k6iKbS6Uvb_Fz6Qkk3bZ8'
+    'CLOUD_NAME': os.environ.get('oornuwp6'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 }
-
 # Parandalon dështimin e WhiteNoise nëse mungon ndonjë skedar statik
 WHITENOISE_MANIFEST_STRICT = False
 
