@@ -2,13 +2,19 @@ from django import forms
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Kategoria, Artikull, Koment, Video, Reklama, Media
+from .models import Kategoria, Tag, Artikull, Koment, Video, Reklama, Media
 from .widgets import MediaPickerWidget
 
 
 @admin.register(Kategoria)
 class KategoriaAdmin(admin.ModelAdmin):
     list_display = ('id', 'emri')
+    search_fields = ('emri',)
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('emri', 'slug')
     search_fields = ('emri',)
 
 
@@ -48,10 +54,11 @@ class ArtikullAdminForm(forms.ModelForm):
 class ArtikullAdmin(admin.ModelAdmin):
     form = ArtikullAdminForm
     list_display = ('titulli', 'kategoria', 'data_publikimit', 'eshte_premium')
-    list_filter = ('kategoria', 'eshte_premium', 'data_publikimit')
+    list_filter = ('kategoria', 'tagjet', 'eshte_premium', 'data_publikimit')
     search_fields = ('titulli', 'permbajtja')
     ordering = ('-data_publikimit',)
     prepopulated_fields = {'slug': ('titulli',)}
+    filter_horizontal = ('tagjet',)
 
 
 @admin.register(Koment)

@@ -19,6 +19,30 @@ class Kategoria(models.Model):
         return reverse('faqja_kryesore') + f"?kategoria={self.id}"
 
 
+class Tag(models.Model):
+    emri = models.CharField(max_length=50, unique=True, verbose_name="Emri i etiketës")
+    slug = models.SlugField(max_length=60, unique=True, blank=True)
+
+    class Meta:
+        verbose_name = "Etiketë"
+        verbose_name_plural = "Etiketat"
+        ordering = ["emri"]
+
+    def __str__(self):
+        return self.emri
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.emri) or "etiketa"
+            slug = base_slug
+            count = 1
+            while Tag.objects.filter(slug=slug).exclude(id=self.id).exists():
+                slug = f"{base_slug}-{count}"
+                count += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+
 class Media(models.Model):
     titulli = models.CharField(max_length=200, blank=True, verbose_name="Titulli")
     skedari = models.ImageField(upload_to="biblioteka/%Y/%m/", verbose_name="Foto")
@@ -50,6 +74,13 @@ class Artikull(models.Model):
     )
 
     kategoria = models.ForeignKey(Kategoria, on_delete=models.CASCADE)
+
+    tagjet = models.ManyToManyField(
+        Tag,
+        blank=True,
+        related_name="artikuj",
+        verbose_name="Etiketat (Tags)",
+    )
 
     # Fusha e vjetër (mbetet që artikujt ekzistues të mos humbin foton)
     foto = models.ImageField(upload_to="lajmet/", blank=True, null=True)
