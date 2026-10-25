@@ -1,6 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+
+    <!-- BANNER I PORTALIT -->
+    <div class="text-center mb-4">
+        <img src="{% static 'img/og-default.png' %}" alt="KONFIDENCIALE NEWS" class="img-fluid rounded shadow-sm" style="max-width: 600px; width: 100%;">
+    </div>
 
     <!-- SLIDER (CAROUSEL) I LAJMEVE KRYESORE -->
     {% if slider_lajmet %}
