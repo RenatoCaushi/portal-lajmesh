@@ -12,12 +12,9 @@
     <meta property="og:url" content="{{ request.build_absolute_uri }}" />
     <meta property="article:published_time" content="{{ artikull.data_publikimit|date:'c' }}" />
 
-    {% if artikull.foto %}
-        <meta property="og:image" content="{{ artikull.og_image_url }}" />
-        <meta property="og:image:secure_url" content="{{ artikull.og_image_url }}" />
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+    {% if artikull.foto_url %}
+        <meta property="og:image" content="{{ artikull.foto_url }}" />
+        <meta property="og:image:secure_url" content="{{ artikull.foto_url }}" />
         <meta property="og:image:alt" content="{{ artikull.titulli|striptags }}" />
     {% endif %}
 
@@ -25,8 +22,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ artikull.titulli|striptags }}" />
     <meta name="twitter:description" content="{{ artikull.permbajtja|striptags|truncatewords:25 }}" />
-    {% if artikull.foto %}
-        <meta name="twitter:image" content="{{ artikull.og_image_url }}" />
+    {% if artikull.foto_url %}
+        <meta name="twitter:image" content="{{ artikull.foto_url }}" />
     {% endif %}
 {% endblock %}
 
@@ -42,9 +39,9 @@
                 <p class="text-muted mb-0"><small>Publikuar më: {{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small></p>
             </div>
             
-            {% if artikull.foto %}
+            {% if artikull.foto_url %}
                 <!-- Foto që mbush gjithë gjerësinë në mënyrë perfekte -->
-                <img src="{{ artikull.foto.url }}" class="w-100 rounded mb-4 shadow-sm" style="max-height: 480px; object-fit: cover;" alt="{{ artikull.titulli }}">
+                <img src="{{ artikull.foto_url }}" class="w-100 rounded mb-4 shadow-sm" style="max-height: 480px; object-fit: cover;" alt="{{ artikull.titulli }}">
             {% endif %}
             
             <!-- SHFAQJA E PËRMBAJTJES SË ARTIKULLIT ME LOGJIKËN E PAYWALL DHE EMBEDS -->
@@ -73,6 +70,18 @@
                     </div>
                 {% endif %}
             </div>
+
+            <!-- ETIKETAT (TAGS) -->
+            {% with tagjet=artikull.tagjet.all %}
+                {% if tagjet %}
+                    <div class="d-flex flex-wrap align-items-center gap-2 mt-4">
+                        <strong class="text-dark me-1">Etiketat:</strong>
+                        {% for tag in tagjet %}
+                            <a href="{% url 'lajmet_sipas_etiketes' tag.slug %}" class="badge rounded-pill text-bg-secondary text-decoration-none px-3 py-2">#{{ tag.emri }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
             
             <a href="{% url 'faqja_kryesore' %}" class="btn btn-secondary mt-4 mb-4">Kthehu te kryefaqja</a>
 

@@ -6,7 +6,7 @@ from django.contrib.auth import login, logout
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse
 from django.urls import reverse
-from .models import Artikull, Kategoria, Koment, Reklama
+from .models import Artikull, Kategoria, Koment, Reklama, Tag
 
 
 def faqja_kryesore(request):
@@ -88,6 +88,25 @@ def detajet_e_lajmit(request, slug):
         'ka_akses': ka_akses,
     }
     return render(request, 'lajmet/detajet.html', context)
+
+
+def lajmet_sipas_etiketes(request, slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    lajmet_list = (
+        Artikull.objects.filter(tagjet=tag)
+        .select_related('foto_media', 'kategoria')
+        .order_by('-data_publikimit')
+    )
+
+    paginator = Paginator(lajmet_list, 12)
+    lajmet = paginator.get_page(request.GET.get('page'))
+
+    context = {
+        'tag': tag,
+        'lajmet': lajmet,
+        'kategorite': Kategoria.objects.all(),
+    }
+    return render(request, 'lajmet/etiketa.html', context)
 
 
 def faqja_e_abonimit(request):

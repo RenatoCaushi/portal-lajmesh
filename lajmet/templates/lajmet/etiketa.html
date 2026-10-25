@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block meta_tags %}
+    <title>#{{ tag.emri }} - Konfidenciale News</title>
+    <meta name="description" content="Lajmet me etiketën {{ tag.emri }} në Konfidenciale News">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="fw-bolder text-dark mb-4" style="font-weight: 800;">#{{ tag.emri }}</h1>
+
+    <div class="row g-4">
+        {% for artikull in lajmet %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    {% if artikull.foto_url %}
+                        <a href="{{ artikull.get_absolute_url }}">
+                            <img src="{{ artikull.foto_url }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ artikull.titulli }}">
+                        </a>
+                    {% endif %}
+                    <div class="card-body">
+                        <small class="text-muted">{{ artikull.kategoria.emri }} · {{ artikull.data_publikimit|date:"d/m/Y H:i" }}</small>
+                        <h5 class="card-title fw-bold mt-1">
+                            <a href="{{ artikull.get_absolute_url }}" class="text-dark text-decoration-none">{{ artikull.titulli }}</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-muted">Nuk ka ende lajme me këtë etiketë.</p>
+        {% endfor %}
+    </div>
+
+    {% if lajmet.has_other_pages %}
+        <nav class="d-flex justify-content-center gap-2 my-4">
+            {% if lajmet.has_previous %}
+                <a class="btn btn-outline-dark" href="?page={{ lajmet.previous_page_number }}">&laquo; Mbrapa</a>
+            {% endif %}
+            <span class="btn btn-light disabled">Faqja {{ lajmet.number }} nga {{ lajmet.paginator.num_pages }}</span>
+            {% if lajmet.has_next %}
+                <a class="btn btn-outline-dark" href="?page={{ lajmet.next_page_number }}">Para &raquo;</a>
+            {% endif %}
+        </nav>
+    {% endif %}
+
+    <a href="{% url 'faqja_kryesore' %}" class="btn btn-secondary mb-4">Kthehu te kryefaqja</a>
+</div>
+{% endblock %}
