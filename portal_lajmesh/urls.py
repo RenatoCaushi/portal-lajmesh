@@ -22,6 +22,7 @@ from django.http import HttpResponse
 
 from django.contrib.sitemaps.views import sitemap
 from lajmet.sitemaps import ArtikullSitemap, KategoriaSitemap
+from lajmet import media_api
 
 sitemaps = {
     'artikujt': ArtikullSitemap,
@@ -35,6 +36,7 @@ def robots_txt(request):
         "User-agent: *",
         "Disallow: /admin/",
         "Disallow: /ckeditor5/",
+        "Disallow: /media-api/",
         "Allow: /",
         "",
         "Sitemap: https://%s/sitemap.xml" % request.get_host(),
@@ -48,6 +50,10 @@ urlpatterns = [
     # Robots.txt dhe sitemap vihen para 'lajmet.urls', që asnjë rrugë tjetër të mos i kapë
     path('robots.txt', robots_txt, name='robots_txt'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+
+    # API e mediatekës (vetëm për staff)
+    path('media-api/lista/', media_api.media_lista, name='media_lista'),
+    path('media-api/ngarko/', media_api.media_ngarko, name='media_ngarko'),
 
     path('admin/', admin.site.urls),
     path('', include('lajmet.urls')),

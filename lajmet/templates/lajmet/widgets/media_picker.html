@@ -1,0 +1,238 @@
+<div class="mp" data-list-url="{{ list_url }}" data-upload-url="{{ upload_url }}">
+  <input type="hidden" class="mp-input" name="{{ widget.name }}" id="{{ widget.attrs.id }}" value="{{ widget.value|default_if_none:'' }}">
+
+  <div class="mp-preview">{% if widget.foto %}<img src="{{ widget.foto.skedari.url }}" alt="">{% endif %}</div>
+
+  <button type="button" class="button mp-open">Zgjidh foto</button>
+  <button type="button" class="button mp-clear" {% if not widget.foto %}hidden{% endif %}>Hiq foton</button>
+
+  <div class="mp-modal" hidden>
+    <div class="mp-box">
+      <div class="mp-head">
+        <strong>Figurë e zgjedhur</strong>
+        <button type="button" class="mp-close" aria-label="Mbyll">&times;</button>
+      </div>
+
+      <div class="mp-tabs">
+        <button type="button" class="mp-tab" data-tab="upload">Ngarkoni kartela</button>
+        <button type="button" class="mp-tab mp-active" data-tab="lib">Mediatekë</button>
+      </div>
+
+      <div class="mp-pane" data-pane="upload" hidden>
+        <div class="mp-drop">
+          <p>Zgjidh një ose më shumë foto nga kompjuteri (deri në 10 MB secila)</p>
+          <input type="file" class="mp-file" accept="image/*" multiple>
+        </div>
+        <p class="mp-status"></p>
+      </div>
+
+      <div class="mp-pane" data-pane="lib">
+        <input type="search" class="mp-search" placeholder="Kërko foto...">
+        <div class="mp-grid"></div>
+        <p class="mp-empty" hidden>Nuk u gjet asnjë foto.</p>
+        <button type="button" class="button mp-more" hidden>Shfaq më shumë</button>
+      </div>
+
+      <div class="mp-foot">
+        <button type="button" class="button default mp-pick" disabled>Vëre si figurë të zgjedhur</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mp-preview img { max-height: 140px; max-width: 260px; border-radius: 6px; display: block; margin-bottom: 8px; }
+  .mp [hidden] { display: none !important; }
+  .mp-modal { position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 10000; display: flex; align-items: center; justify-content: center; }
+  .mp-box { background: var(--body-bg, #fff); color: var(--body-fg, #333); width: min(1000px, 94vw); height: min(680px, 90vh); border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; }
+  .mp-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--border-color, #ccc); }
+  .mp-close { background: none; border: 0; font-size: 26px; cursor: pointer; color: inherit; }
+  .mp-tabs { display: flex; gap: 6px; padding: 8px 16px 0; border-bottom: 1px solid var(--border-color, #ccc); }
+  .mp-tab { background: none; border: 1px solid transparent; border-bottom: 0; padding: 8px 14px; cursor: pointer; color: inherit; border-radius: 4px 4px 0 0; }
+  .mp-tab.mp-active { border-color: var(--border-color, #ccc); background: var(--body-bg, #fff); font-weight: 600; position: relative; top: 1px; }
+  .mp-pane { flex: 1; overflow: auto; padding: 14px 16px; }
+  .mp-search { width: 260px; margin-bottom: 12px; }
+  .mp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+  .mp-tile { aspect-ratio: 1; cursor: pointer; border: 3px solid transparent; border-radius: 4px; overflow: hidden; background: #8883; }
+  .mp-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .mp-tile.mp-sel { border-color: var(--primary, #417690); }
+  .mp-drop { border: 2px dashed var(--border-color, #ccc); border-radius: 8px; padding: 50px 20px; text-align: center; }
+  .mp-foot { padding: 12px 16px; border-top: 1px solid var(--border-color, #ccc); text-align: right; }
+  .mp-more { margin-top: 12px; }
+</style>
+
+<script>
+(function () {
+  function init(root) {
+    var listUrl = root.dataset.listUrl;
+    var uploadUrl = root.dataset.uploadUrl;
+    var input = root.querySelector('.mp-input');
+    var preview = root.querySelector('.mp-preview');
+    var openBtn = root.querySelector('.mp-open');
+    var clearBtn = root.querySelector('.mp-clear');
+    var modal = root.querySelector('.mp-modal');
+    var closeBtn = modal.querySelector('.mp-close');
+    var tabs = modal.querySelectorAll('.mp-tab');
+    var panes = modal.querySelectorAll('.mp-pane');
+    var grid = modal.querySelector('.mp-grid');
+    var search = modal.querySelector('.mp-search');
+    var moreBtn = modal.querySelector('.mp-more');
+    var emptyMsg = modal.querySelector('.mp-empty');
+    var fileInput = modal.querySelector('.mp-file');
+    var statusEl = modal.querySelector('.mp-status');
+    var pickBtn = modal.querySelector('.mp-pick');
+
+    var selected = null;
+    var page = 1;
+    var loadedOnce = false;
+    var timer = null;
+
+    function showTab(name) {
+      tabs.forEach(function (t) {
+        t.classList.toggle('mp-active', t.dataset.tab === name);
+      });
+      panes.forEach(function (p) {
+        p.hidden = p.dataset.pane !== name;
+      });
+    }
+
+    function makeTile(item) {
+      var tile = document.createElement('div');
+      tile.className = 'mp-tile';
+      tile.title = item.titulli;
+      var img = document.createElement('img');
+      img.src = item.url;
+      img.alt = item.titulli;
+      img.loading = 'lazy';
+      tile.appendChild(img);
+      tile.addEventListener('click', function () { select(tile, item); });
+      tile.addEventListener('dblclick', function () { select(tile, item); pick(); });
+      return tile;
+    }
+
+    function select(tile, item) {
+      grid.querySelectorAll('.mp-sel').forEach(function (el) {
+        el.classList.remove('mp-sel');
+      });
+      tile.classList.add('mp-sel');
+      selected = item;
+      pickBtn.disabled = false;
+    }
+
+    function load(reset) {
+      if (reset) {
+        page = 1;
+        grid.textContent = '';
+        selected = null;
+        pickBtn.disabled = true;
+      }
+      var url = listUrl + '?page=' + page + '&q=' + encodeURIComponent(search.value);
+      fetch(url, { credentials: 'same-origin' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          data.items.forEach(function (item) { grid.appendChild(makeTile(item)); });
+          moreBtn.hidden = !data.has_next;
+          emptyMsg.hidden = grid.children.length > 0;
+          page += 1;
+        })
+        .catch(function () {
+          emptyMsg.textContent = 'Gabim gjatë ngarkimit të listës.';
+          emptyMsg.hidden = false;
+        });
+    }
+
+    function pick() {
+      if (!selected) return;
+      input.value = selected.id;
+      preview.textContent = '';
+      var img = document.createElement('img');
+      img.src = selected.url;
+      img.alt = '';
+      preview.appendChild(img);
+      clearBtn.hidden = false;
+      close();
+    }
+
+    function open() {
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      if (!loadedOnce) { loadedOnce = true; load(true); }
+    }
+
+    function close() {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    function csrf() {
+      var el = document.querySelector('input[name=csrfmiddlewaretoken]');
+      return el ? el.value : '';
+    }
+
+    function upload(files) {
+      if (!files.length) return;
+      var fd = new FormData();
+      Array.prototype.forEach.call(files, function (f) { fd.append('skedari', f); });
+      statusEl.textContent = 'Po ngarkohet...';
+
+      fetch(uploadUrl, {
+        method: 'POST',
+        body: fd,
+        credentials: 'same-origin',
+        headers: { 'X-CSRFToken': csrf() }
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var msg = [];
+          if (data.items.length) msg.push('U ngarkuan ' + data.items.length + ' foto.');
+          if (data.errors.length) msg.push(data.errors.join(' '));
+          statusEl.textContent = msg.join(' ');
+
+          if (data.items.length) {
+            emptyMsg.hidden = true;
+            var firstTile = null;
+            data.items.slice().reverse().forEach(function (item) {
+              var tile = makeTile(item);
+              grid.insertBefore(tile, grid.firstChild);
+              firstTile = tile;
+              firstItem = item;
+            });
+            var newest = data.items[0];
+            select(grid.firstChild, newest);
+            showTab('lib');
+          }
+        })
+        .catch(function () { statusEl.textContent = 'Gabim gjatë ngarkimit.'; })
+        .then(function () { fileInput.value = ''; });
+    }
+    var firstItem = null;
+
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) close();
+    });
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () { showTab(t.dataset.tab); });
+    });
+    moreBtn.addEventListener('click', function () { load(false); });
+    search.addEventListener('input', function () {
+      clearTimeout(timer);
+      timer = setTimeout(function () { load(true); }, 300);
+    });
+    fileInput.addEventListener('change', function () { upload(fileInput.files); });
+    pickBtn.addEventListener('click', pick);
+    clearBtn.addEventListener('click', function () {
+      input.value = '';
+      preview.textContent = '';
+      clearBtn.hidden = true;
+    });
+  }
+
+  document.querySelectorAll('.mp:not([data-ready])').forEach(function (root) {
+    root.dataset.ready = '1';
+    init(root);
+  });
+})();
+</script>
