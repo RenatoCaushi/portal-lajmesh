@@ -1,12 +1,60 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block content %}
 
-    <!-- BANNER I PORTALIT -->
-    <div class="text-center mb-4">
-        <img src="{% static 'img/og-default.png' %}" alt="KONFIDENCIALE NEWS" class="img-fluid rounded shadow-sm" style="max-width: 600px; width: 100%;">
-    </div>
+    <style>
+        .brand-strip {
+            position: relative;
+            overflow: hidden;
+            border-radius: .5rem;
+            background: linear-gradient(100deg, #9b1c2a 0%, #dc3545 55%, #b02a37 100%);
+            color: #fff;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            padding: 1.25rem 1.75rem;
+            box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .15);
+        }
+        .brand-strip__text { position: relative; z-index: 2; }
+        .brand-strip__line {
+            width: 56px; height: 4px; background: #fff;
+            border-radius: 2px; margin-bottom: .6rem;
+        }
+        .brand-strip__title {
+            margin: 0; font-weight: 800; letter-spacing: .04em;
+            font-size: clamp(1.25rem, 3.2vw, 2rem); line-height: 1.1;
+        }
+        .brand-strip__sub {
+            margin: .35rem 0 0; opacity: .9;
+            font-size: clamp(.85rem, 1.6vw, 1.05rem);
+        }
+        .brand-strip__ring {
+            position: absolute; border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, .28);
+            animation: brandPulse 4s ease-in-out infinite;
+        }
+        .brand-strip__ring--1 { width: 260px; height: 260px; right: -60px; top: -110px; }
+        .brand-strip__ring--2 { width: 170px; height: 170px; right: 20px; top: -60px; animation-delay: 1.2s; }
+        .brand-strip::after {
+            content: "";
+            position: absolute; top: 0; bottom: 0; width: 35%;
+            left: -45%;
+            background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .28), transparent);
+            transform: skewX(-20deg);
+            animation: brandShine 5s ease-in-out infinite;
+        }
+        @keyframes brandPulse {
+            0%, 100% { transform: scale(1); opacity: .9; }
+            50% { transform: scale(1.12); opacity: .45; }
+        }
+        @keyframes brandShine {
+            0% { left: -45%; }
+            55%, 100% { left: 120%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .brand-strip__ring, .brand-strip::after { animation: none; }
+        }
+    </style>
 
     <!-- SLIDER (CAROUSEL) I LAJMEVE KRYESORE -->
     {% if slider_lajmet %}
@@ -97,6 +145,17 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- SHIRITI HORIZONTAL I MARKËS (ANIMUAR) -->
+    <div class="brand-strip mb-5" role="img" aria-label="KONFIDENCIALE NEWS - Burimi juaj i besueshëm për lajmet më të fundit">
+        <div class="brand-strip__ring brand-strip__ring--1"></div>
+        <div class="brand-strip__ring brand-strip__ring--2"></div>
+        <div class="brand-strip__text">
+            <div class="brand-strip__line"></div>
+            <h2 class="brand-strip__title">KONFIDENCIALE NEWS</h2>
+            <p class="brand-strip__sub">Burimi juaj i besueshëm për lajmet më të fundit</p>
         </div>
     </div>
 
@@ -198,30 +257,4 @@
                 <iframe class="w-100 h-100 border-0 flex-grow-1" style="min-height: 380px;" 
                     src="https://www.youtube.com/embed/${video1_id}?playlist=${video1_id}&loop=0&autoplay=0" 
                     title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen></iframe>`;
-        }
-
-        const box2 = document.getElementById('yt-box-2');
-        if (box2) {
-            box2.innerHTML = `
-                <iframe class="w-100 h-100 border-0" 
-                    src="https://www.youtube.com/embed/${video2_id}?playlist=${video2_id}&loop=0&autoplay=0" 
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen></iframe>`;
-        }
-
-        const box3 = document.getElementById('yt-box-3');
-        if (box3) {
-            box3.innerHTML = `
-                <iframe class="w-100 h-100 border-0" 
-                    src="https://www.youtube.com/embed/${video3_id}?playlist=${video3_id}&loop=0&autoplay=0" 
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen></iframe>`;
-        }
-    });
-</script>
-
-{% endblock %}
+                    allow="accelerometer; autoplay; clipboard-write;
