@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="sq">
 <head>
@@ -7,8 +8,7 @@
     
     <!-- BLLOKU I META TAGEVE (Mbishkruhet automatikisht te detail.html per çdo artikull) -->
     {% block meta_tags %}
-        {# Vendos këtu adresën e plotë të banerit pasi ta ngarkosh te Cloudinary (shih udhëzimet) #}
-        {% with og_default_image="" %}
+        {% static 'img/og-default.png' as og_default_path %}
         <title>Konfidenciale News</title>
         <meta name="description" content="Burimi juaj i besueshëm për lajmet më të fundit në kohë reale.">
         <meta property="og:site_name" content="KONFIDENCIALE NEWS">
@@ -16,18 +16,16 @@
         <meta property="og:title" content="KONFIDENCIALE NEWS">
         <meta property="og:description" content="Burimi juaj i besueshëm për lajmet më të fundit në kohë reale.">
         <meta property="og:url" content="{{ request.build_absolute_uri }}">
+        <meta property="og:image" content="https://{{ request.get_host }}{{ og_default_path }}">
+        <meta property="og:image:secure_url" content="https://{{ request.get_host }}{{ og_default_path }}">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="KONFIDENCIALE NEWS">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="KONFIDENCIALE NEWS">
         <meta name="twitter:description" content="Burimi juaj i besueshëm për lajmet më të fundit në kohë reale.">
-        {% if og_default_image %}
-            <meta property="og:image" content="{{ og_default_image }}">
-            <meta property="og:image:secure_url" content="{{ og_default_image }}">
-            <meta property="og:image:type" content="image/jpeg">
-            <meta property="og:image:width" content="1200">
-            <meta property="og:image:height" content="630">
-            <meta name="twitter:image" content="{{ og_default_image }}">
-        {% endif %}
-        {% endwith %}
+        <meta name="twitter:image" content="https://{{ request.get_host }}{{ og_default_path }}">
     {% endblock %}
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
