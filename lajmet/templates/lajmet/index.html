@@ -60,7 +60,8 @@
         </div>
     {% endif %}
 
-    <!-- SEKSIONI I VIDEOVE YOUTUBE -->
+    <!-- SEKSIONI I VIDEOVE YOUTUBE (AUTOMATIK NGA KANALI) -->
+    {% if youtube_videot %}
     <div class="my-5 p-4 bg-dark text-white rounded shadow-lg">
         <h2 class="mb-4 text-warning border-bottom border-warning pb-2 d-flex justify-content-between align-items-center">
             <span><i class="bi bi-youtube me-2"></i>Videot e Fundit</span>
@@ -69,30 +70,55 @@
             </a>
         </h2>
 
+        {% with v1=youtube_videot.0 v2=youtube_videot.1 v3=youtube_videot.2 %}
         <div class="row g-3 align-items-stretch">
             <!-- Videoja Kryesore (Majtas) -->
             <div class="col-lg-7 d-flex">
-                <div class="card bg-secondary border-0 shadow rounded overflow-hidden w-100 h-100 d-flex flex-column" id="yt-box-1">
-                    <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet videoja...</div>
+                <div class="card bg-secondary border-0 shadow rounded overflow-hidden w-100 h-100 d-flex flex-column">
+                    <iframe class="w-100 h-100 border-0 flex-grow-1" style="min-height: 380px;"
+                        src="https://www.youtube.com/embed/{{ v1.id }}"
+                        title="{{ v1.titulli|default:'YouTube video player' }}"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen></iframe>
                 </div>
             </div>
 
             <!-- 2 Videot e vogla (Djathtas) -->
             <div class="col-lg-5 d-flex flex-column gap-3">
+                {% if v2 %}
                 <div class="card bg-secondary border-0 shadow rounded overflow-hidden">
-                    <div class="ratio ratio-16x9" id="yt-box-2">
-                        <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet videoja...</div>
+                    <div class="ratio ratio-16x9">
+                        <iframe class="w-100 h-100 border-0"
+                            src="https://www.youtube.com/embed/{{ v2.id }}"
+                            title="{{ v2.titulli|default:'YouTube video player' }}"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen></iframe>
                     </div>
                 </div>
+                {% endif %}
 
+                {% if v3 %}
                 <div class="card bg-secondary border-0 shadow rounded overflow-hidden">
-                    <div class="ratio ratio-16x9" id="yt-box-3">
-                        <div class="p-4 text-center text-white-50 my-auto">Po ngarkohet videoja...</div>
+                    <div class="ratio ratio-16x9">
+                        <iframe class="w-100 h-100 border-0"
+                            src="https://www.youtube.com/embed/{{ v3.id }}"
+                            title="{{ v3.titulli|default:'YouTube video player' }}"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen></iframe>
                     </div>
                 </div>
+                {% endif %}
             </div>
         </div>
+        {% endwith %}
     </div>
+    {% endif %}
 
     <!-- LISTA E LAJMEVE TË TJERA -->
     <h2 class="mb-4 border-bottom pb-2">
@@ -178,44 +204,5 @@
         </ul>
     </nav>
     {% endif %}
-
-    <!-- JAVASCRIPT SHFAQJEN E VIDEOVE -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const video1_id = "KxZQDFELNVU"; 
-        const video2_id = "Ix0lO1v0Uk4"; 
-        const video3_id = "ufRy7OTX_lE"; 
-
-        const box1 = document.getElementById('yt-box-1');
-        if (box1) {
-            box1.innerHTML = `
-                <iframe class="w-100 h-100 border-0 flex-grow-1" style="min-height: 380px;" 
-                    src="https://www.youtube.com/embed/${video1_id}?playlist=${video1_id}&loop=0&autoplay=0" 
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen></iframe>`;
-        }
-
-        const box2 = document.getElementById('yt-box-2');
-        if (box2) {
-            box2.innerHTML = `
-                <iframe class="w-100 h-100 border-0" 
-                    src="https://www.youtube.com/embed/${video2_id}?playlist=${video2_id}&loop=0&autoplay=0" 
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen></iframe>`;
-        }
-
-        const box3 = document.getElementById('yt-box-3');
-        if (box3) {
-            box3.innerHTML = `
-                <iframe class="w-100 h-100 border-0" 
-                    src="https://www.youtube.com/embed/${video3_id}?playlist=${video3_id}&loop=0&autoplay=0" 
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen></iframe>`;
-        }
-    });
-</script>
 
 {% endblock %}

@@ -7,6 +7,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse
 from django.urls import reverse
 from .models import Artikull, Kategoria, Koment, Reklama, Tag
+from .youtube import merr_videot_e_fundit
 
 
 def faqja_kryesore(request):
@@ -47,6 +48,7 @@ def faqja_kryesore(request):
         'kategorite': kategorite,
         'reklama': reklama,
         'kategoria_zgjedhur': kategoria_id,
+        'youtube_videot': merr_videot_e_fundit(3),
     }
     return render(request, 'lajmet/index.html', context)
 
