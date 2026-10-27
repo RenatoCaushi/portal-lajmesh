@@ -27,6 +27,10 @@ DEBUG = os.environ.get('RENDER', '') == ''
 # Lejon Render dhe çdo host tjetër të hyjë në faqe
 ALLOWED_HOSTS = ['*']
 
+# Render është pas një proxy: kjo e bën Django të njohë që kërkesa vjen me HTTPS
+# (i nevojshme që URL-të absolute dhe meta tagat Open Graph të dalin me https://)
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 # Lejon përdorimin e CSRF në Render (për format dhe admin panelin)
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
