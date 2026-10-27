@@ -1,3 +1,4 @@
+import os
 import re
 from django.db import models
 from django.utils import timezone
@@ -130,6 +131,29 @@ class Artikull(models.Model):
         if self.foto:
             return self.foto.url
         return None
+
+    @property
+    def og_image_is_cloudinary(self):
+        """True nëse foto është në Cloudinary (pra e transformojmë në 1200x630 JPG)."""
+        url = self.foto_url
+        return bool(url and "res.cloudinary.com" in url and "/image/upload/" in url)
+
+    @property
+    def og_image_url(self):
+        """
+        URL e fotos për Facebook (Open Graph): 1200x630, format JPG.
+        Për foto në Cloudinary shton transformimin në URL dhe e detyron
+        shtesën .jpg. Përndryshe kthen URL-në normale.
+        """
+        url = self.foto_url
+        marker = "/image/upload/"
+        if url and "res.cloudinary.com" in url and marker in url:
+            base, rest = url.split(marker, 1)
+            # Hiq parametrat e mundshëm (?...) dhe zëvendëso shtesën me .jpg
+            rest = rest.split("?", 1)[0]
+            rest = os.path.splitext(rest)[0] + ".jpg"
+            return f"{base}{marker}w_1200,h_630,c_fill,g_auto,f_jpg,q_auto/{rest}"
+        return url
 
     def save(self, *args, **kwargs):
         if not self.slug:
