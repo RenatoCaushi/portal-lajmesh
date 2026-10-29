@@ -14,29 +14,31 @@
     <meta property="og:url" content="https://{{ request.get_host }}{{ request.path }}" />
     <meta property="article:published_time" content="{{ artikull.data_publikimit|date:'c' }}" />
 
-    {% if artikull.og_image_url %}
-        <meta property="og:image" content="{{ artikull.og_image_url }}" />
-        <meta property="og:image:secure_url" content="{{ artikull.og_image_url }}" />
-        {% if artikull.og_image_is_cloudinary %}
-            <meta property="og:image:type" content="image/jpeg" />
-            <meta property="og:image:width" content="1200" />
-            <meta property="og:image:height" content="630" />
+    {% with og_img=artikull.og_image_url %}
+        {% if og_img %}
+            <meta property="og:image" content="{% if og_img|slice:':1' == '/' %}https://{{ request.get_host }}{% endif %}{{ og_img }}" />
+            <meta property="og:image:secure_url" content="{% if og_img|slice:':1' == '/' %}https://{{ request.get_host }}{% endif %}{{ og_img }}" />
+            {% if artikull.og_image_is_cloudinary %}
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+            {% endif %}
+        {% else %}
+            <meta property="og:image" content="https://{{ request.get_host }}{{ og_default_path }}" />
+            <meta property="og:image:secure_url" content="https://{{ request.get_host }}{{ og_default_path }}" />
         {% endif %}
-    {% else %}
-        <meta property="og:image" content="https://{{ request.get_host }}{{ og_default_path }}" />
-        <meta property="og:image:secure_url" content="https://{{ request.get_host }}{{ og_default_path }}" />
-    {% endif %}
-    <meta property="og:image:alt" content="{{ artikull.titulli|striptags }}" />
+        <meta property="og:image:alt" content="{{ artikull.titulli|striptags }}" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ artikull.titulli|striptags }}" />
-    <meta name="twitter:description" content="{{ artikull.permbajtja|striptags|truncatewords:25 }}" />
-    {% if artikull.og_image_url %}
-        <meta name="twitter:image" content="{{ artikull.og_image_url }}" />
-    {% else %}
-        <meta name="twitter:image" content="https://{{ request.get_host }}{{ og_default_path }}" />
-    {% endif %}
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="{{ artikull.titulli|striptags }}" />
+        <meta name="twitter:description" content="{{ artikull.permbajtja|striptags|truncatewords:25 }}" />
+        {% if og_img %}
+            <meta name="twitter:image" content="{% if og_img|slice:':1' == '/' %}https://{{ request.get_host }}{% endif %}{{ og_img }}" />
+        {% else %}
+            <meta name="twitter:image" content="https://{{ request.get_host }}{{ og_default_path }}" />
+        {% endif %}
+    {% endwith %}
 {% endblock %}
 
 {% block content %}
