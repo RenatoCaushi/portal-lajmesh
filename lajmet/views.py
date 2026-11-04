@@ -1,11 +1,14 @@
+from datetime import timedelta
+
 from django.shortcuts import render, get_object_or_404, redirect
-from django.db.models import Q
+from django.db.models import Q, F
 from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse
 from django.urls import reverse
+from django.utils import timezone
 from .models import Artikull, Kategoria, Koment, Reklama, Tag
 from .youtube import merr_videot_e_fundit
 
@@ -38,7 +41,25 @@ def faqja_kryesore(request):
     except Exception:
         reklama = None
 
-    paginator = Paginator(lajmet_list, 6) 
+    # "Më të lexuarat": top 5 nga 7 ditët e fundit, sipas numrit të leximeve.
+    # Nëse nuk ka asnjë të tillë, merr top 5 të të gjitha kohërave.
+    # Shfaqen vetëm në faqen kryesore, pa kërkim dhe pa filtër kategorie.
+    me_te_lexuarat = []
+    if not kerko and not kategoria_id:
+        para_7_ditesh = timezone.now() - timedelta(days=7)
+        me_te_lexuarat = list(
+            Artikull.objects.filter(
+                data_publikimit__gte=para_7_ditesh,
+                shikime__gt=0,
+            ).order_by('-shikime', '-data_publikimit')[:5]
+        )
+        if not me_te_lexuarat:
+            me_te_lexuarat = list(
+                Artikull.objects.filter(shikime__gt=0)
+                .order_by('-shikime', '-data_publikimit')[:5]
+            )
+
+    paginator = Paginator(lajmet_list, 6)
     page_number = request.GET.get('page')
     lajmet = paginator.get_page(page_number)
 
@@ -49,13 +70,14 @@ def faqja_kryesore(request):
         'reklama': reklama,
         'kategoria_zgjedhur': kategoria_id,
         'youtube_videot': merr_videot_e_fundit(3),
+        'me_te_lexuarat': me_te_lexuarat,
     }
     return render(request, 'lajmet/index.html', context)
 
 
 def detajet_e_lajmit(request, slug):
     artikull = get_object_or_404(Artikull, slug=slug)
-    
+
     # Trajtimi i dërgimit të formularit të komenteve
     if request.method == 'POST':
         emri = request.POST.get('emri', '').strip()
@@ -70,8 +92,13 @@ def detajet_e_lajmit(request, slug):
             )
             return redirect('detajet_e_lajmit', slug=artikull.slug)
 
+    # Numëruesi i leximeve: rritet vetëm kur faqja hapet (GET),
+    # dhe jo kur hyn stafi (admini), që të mos fryhen numrat.
+    if request.method == 'GET' and not request.user.is_staff:
+        Artikull.objects.filter(pk=artikull.pk).update(shikime=F('shikime') + 1)
+
     kategorite = Kategoria.objects.all()
-    
+
     try:
         reklama = Reklama.objects.filter(is_active=True).last()
     except Exception:
@@ -128,7 +155,7 @@ def regjistrohu(request):
             return redirect('faqja_kryesore')
     else:
         form = UserCreationForm()
-    
+
     kategorite = Kategoria.objects.all()
     context = {
         'form': form,
@@ -146,7 +173,7 @@ def hyrje(request):
             return redirect('faqja_kryesore')
     else:
         form = AuthenticationForm()
-    
+
     kategorite = Kategoria.objects.all()
     context = {
         'form': form,
@@ -171,14 +198,14 @@ def fshi_komentin(request, koment_id):
 def sitemap_xml(request):
     xml = ['<?xml version="1.0" encoding="UTF-8"?>']
     xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    
+
     # 1. Faqja kryesore
     xml.append('  <url>')
     xml.append(f'    <loc>{request.build_absolute_uri(reverse("faqja_kryesore"))}</loc>')
     xml.append('    <changefreq>daily</changefreq>')
     xml.append('    <priority>1.0</priority>')
     xml.append('  </url>')
-    
+
     # 2. Faqet statike kryesore
     faqet_statike = ['abonohu', 'regjistrohu', 'hyr']
     for faqe in faqet_statike:
@@ -205,7 +232,7 @@ def sitemap_xml(request):
                 xml.append('  </url>')
     except Exception:
         pass
-            
+
     xml.append('</urlset>')
-    
+
     return HttpResponse("\n".join(xml), content_type="application/xml")

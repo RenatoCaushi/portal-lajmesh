@@ -114,6 +114,12 @@ class Artikull(models.Model):
         ),
     )
 
+    # Numëruesi i leximeve (përdoret te "Më të lexuarat")
+    shikime = models.PositiveIntegerField(
+        default=0,
+        verbose_name="Numri i leximeve",
+    )
+
     class Meta:
         verbose_name_plural = "Artikujt"
         ordering = ['-data_publikimit']
