@@ -33,6 +33,20 @@
 </head>
 <body class="bg-light d-flex flex-column min-vh-100">
 
+    <!-- SHIRITI I LAJMIT TË FUNDIT (BREAKING NEWS) - shfaqet vetëm nëse ka një lajm aktiv -->
+    {% if lajmi_i_fundit %}
+    <div class="bg-dark text-white py-2 border-bottom border-danger">
+        <div class="container d-flex align-items-center gap-3">
+            <span class="badge bg-danger text-uppercase flex-shrink-0">Lajm i fundit</span>
+            {% if lajmi_i_fundit.linku %}
+                <a href="{{ lajmi_i_fundit.linku }}" class="text-white text-decoration-none fw-semibold">{{ lajmi_i_fundit.teksti }}</a>
+            {% else %}
+                <span class="fw-semibold">{{ lajmi_i_fundit.teksti }}</span>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
     <!-- NAVBAR I KUQ (BG-DANGER) ME KATEGORITË NË NGJYRË TË BARDHË -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
         <div class="container">

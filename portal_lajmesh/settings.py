@@ -81,6 +81,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'lajmet.context_processors.kategorite_processor',
+                'lajmet.lajmi_processor.lajmi_i_fundit_processor',
             ],
         },
     },

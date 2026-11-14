@@ -2,7 +2,7 @@ from django import forms
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Kategoria, Tag, Artikull, Koment, Video, Reklama, Media
+from .models import Kategoria, Tag, Artikull, Koment, Video, Reklama, Media, LajmIFundit
 from .widgets import MediaPickerWidget
 
 
@@ -80,3 +80,11 @@ class ReklamaAdmin(admin.ModelAdmin):
     list_filter = ('is_active', 'data_krijimit')
     search_fields = ('titulli',)
     list_editable = ('is_active',)
+
+
+@admin.register(LajmIFundit)
+class LajmIFunditAdmin(admin.ModelAdmin):
+    list_display = ('teksti', 'eshte_aktiv', 'data_krijimit')
+    list_filter = ('eshte_aktiv', 'data_krijimit')
+    search_fields = ('teksti',)
+    list_editable = ('eshte_aktiv',)

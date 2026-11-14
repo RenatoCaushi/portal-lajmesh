@@ -280,3 +280,28 @@ class PushSubscription(models.Model):
 
     def __str__(self):
         return f"Abonues #{self.id}"
+
+
+class LajmIFundit(models.Model):
+    teksti = models.CharField(
+        max_length=200,
+        verbose_name="Teksti i lajmit urgjent",
+    )
+    linku = models.URLField(
+        blank=True,
+        verbose_name="Linku (opsional)",
+        help_text="Nëse e plotësoni, shiriti do të hapë këtë link kur klikohet.",
+    )
+    eshte_aktiv = models.BooleanField(
+        default=True,
+        verbose_name="Aktiv (shfaqet në faqe)",
+    )
+    data_krijimit = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Lajm i Fundit"
+        verbose_name_plural = "Lajmet e Fundit (Breaking News)"
+        ordering = ["-data_krijimit"]
+
+    def __str__(self):
+        return self.teksti
